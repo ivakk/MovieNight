@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\MovieNightOOD\\MovieNightOOD.csproj": {}
+    "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNightOOD\\MovieNightOOD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\MovieNightOOD\\MovieNightOOD.csproj": {
+    "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNightOOD\\MovieNightOOD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\MovieNightOOD\\MovieNightOOD.csproj",
+        "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNightOOD\\MovieNightOOD.csproj",
         "projectName": "MovieNightOOD",
-        "projectPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\MovieNightOOD\\MovieNightOOD.csproj",
+        "projectPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNightOOD\\MovieNightOOD.csproj",
         "packagesPath": "C:\\Users\\ivoml\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\MovieNightOOD\\obj\\",
+        "outputPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNightOOD\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,6 +43,12 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -62,7 +68,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\MovieNight\\MovieNight.csproj": {}
+    "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\MovieNight.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\MovieNight\\MovieNight.csproj": {
+    "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\MovieNight.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\MovieNight\\MovieNight.csproj",
+        "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\MovieNight.csproj",
         "projectName": "MovieNight",
-        "projectPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\MovieNight\\MovieNight.csproj",
+        "projectPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\MovieNight.csproj",
         "packagesPath": "C:\\Users\\ivoml\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\MovieNight\\obj\\",
+        "outputPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\SharedLibrary\\SharedLibrary.csproj": {
-                "projectPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\SharedLibrary\\SharedLibrary.csproj"
+              "C:\\Users\\ivoml\\Desktop\\MovieNight\\SharedLibrary\\SharedLibrary.csproj": {
+                "projectPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\SharedLibrary\\SharedLibrary.csproj"
               }
             }
           }
@@ -47,6 +47,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -66,18 +72,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\SharedLibrary\\SharedLibrary.csproj": {
+    "C:\\Users\\ivoml\\Desktop\\MovieNight\\SharedLibrary\\SharedLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\SharedLibrary\\SharedLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\MovieNight\\SharedLibrary\\SharedLibrary.csproj",
         "projectName": "SharedLibrary",
-        "projectPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\SharedLibrary\\SharedLibrary.csproj",
+        "projectPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\SharedLibrary\\SharedLibrary.csproj",
         "packagesPath": "C:\\Users\\ivoml\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight\\SharedLibrary\\obj\\",
+        "outputPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\SharedLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -109,6 +115,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -125,7 +137,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
