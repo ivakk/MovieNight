@@ -221,16 +221,16 @@ $.validator.addMethod( "cifES", function( value, element ) {
 	for ( i = 0; i < number.length; i++ ) {
 		n = parseInt( number[ i ], 10 );
 
-		// Odd positions
+		// Odd roles
 		if ( isOdd( i ) ) {
 
-			// Odd positions are multiplied first.
+			// Odd roles are multiplied first.
 			n *= 2;
 
 			// If the multiplication is bigger than 10 we need to adjust
 			odd_sum += n < 10 ? n : n - 9;
 
-		// Even positions
+		// Even roles
 		// Just sum them
 		} else {
 			even_sum += n;

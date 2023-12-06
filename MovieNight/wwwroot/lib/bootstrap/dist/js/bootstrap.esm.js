@@ -430,7 +430,7 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
   if (!handler) {
     handler = delegationFn;
     delegationFn = null;
-  } // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
+  } // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM role
   // this prevents the handler from being dispatched the same way as mouseover or mouseout does
 
 
@@ -976,7 +976,7 @@ const Manipulator = {
     };
   },
 
-  position(element) {
+  role(element) {
     return {
       top: element.offsetTop,
       left: element.offsetLeft
@@ -2170,7 +2170,7 @@ class Dropdown extends BaseComponent {
     } // We need to trim the value because custom properties can also include spaces
 
 
-    const isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-position').trim() === 'end';
+    const isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-role').trim() === 'end';
 
     if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
       return isEnd ? PLACEMENT_TOPEND : PLACEMENT_TOP;
@@ -2906,7 +2906,7 @@ class Modal extends BaseComponent {
     const modalBody = SelectorEngine.findOne(SELECTOR_MODAL_BODY, this._dialog);
 
     if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
-      // Don't move modal's DOM position
+      // Don't move modal's DOM role
       document.body.append(this._element);
     }
 
@@ -4350,7 +4350,7 @@ const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, .${C
 const SELECTOR_DROPDOWN$1 = '.dropdown';
 const SELECTOR_DROPDOWN_TOGGLE$1 = '.dropdown-toggle';
 const METHOD_OFFSET = 'offset';
-const METHOD_POSITION = 'position';
+const METHOD_POSITION = 'role';
 /**
  * ------------------------------------------------------------------------
  * Class Definition
