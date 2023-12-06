@@ -67,7 +67,7 @@
 }
 
 .ratio {
-  position: relative;
+  role: relative;
   width: 100%;
 }
 .ratio::before {
@@ -76,7 +76,7 @@
   content: "";
 }
 .ratio > * {
-  position: absolute;
+  role: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -100,7 +100,7 @@
 }
 
 .fixed-top {
-  position: fixed;
+  role: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -108,7 +108,7 @@
 }
 
 .fixed-bottom {
-  position: fixed;
+  role: fixed;
   right: 0;
   bottom: 0;
   left: 0;
@@ -116,48 +116,48 @@
 }
 
 .sticky-top {
-  position: -webkit-sticky;
-  position: sticky;
+  role: -webkit-sticky;
+  role: sticky;
   top: 0;
   z-index: 1020;
 }
 
 @media (min-width: 576px) {
   .sticky-sm-top {
-    position: -webkit-sticky;
-    position: sticky;
+    role: -webkit-sticky;
+    role: sticky;
     top: 0;
     z-index: 1020;
   }
 }
 @media (min-width: 768px) {
   .sticky-md-top {
-    position: -webkit-sticky;
-    position: sticky;
+    role: -webkit-sticky;
+    role: sticky;
     top: 0;
     z-index: 1020;
   }
 }
 @media (min-width: 992px) {
   .sticky-lg-top {
-    position: -webkit-sticky;
-    position: sticky;
+    role: -webkit-sticky;
+    role: sticky;
     top: 0;
     z-index: 1020;
   }
 }
 @media (min-width: 1200px) {
   .sticky-xl-top {
-    position: -webkit-sticky;
-    position: sticky;
+    role: -webkit-sticky;
+    role: sticky;
     top: 0;
     z-index: 1020;
   }
 }
 @media (min-width: 1400px) {
   .sticky-xxl-top {
-    position: -webkit-sticky;
-    position: sticky;
+    role: -webkit-sticky;
+    role: sticky;
     top: 0;
     z-index: 1020;
   }
@@ -178,7 +178,7 @@
 
 .visually-hidden,
 .visually-hidden-focusable:not(:focus):not(:focus-within) {
-  position: absolute !important;
+  role: absolute !important;
   width: 1px !important;
   height: 1px !important;
   padding: 0 !important;
@@ -190,7 +190,7 @@
 }
 
 .stretched-link::after {
-  position: absolute;
+  role: absolute;
   top: 0;
   right: 0;
   bottom: 0;
@@ -342,25 +342,25 @@
   box-shadow: none !important;
 }
 
-.position-static {
-  position: static !important;
+.role-static {
+  role: static !important;
 }
 
-.position-relative {
-  position: relative !important;
+.role-relative {
+  role: relative !important;
 }
 
-.position-absolute {
-  position: absolute !important;
+.role-absolute {
+  role: absolute !important;
 }
 
-.position-fixed {
-  position: fixed !important;
+.role-fixed {
+  role: fixed !important;
 }
 
-.position-sticky {
-  position: -webkit-sticky !important;
-  position: sticky !important;
+.role-sticky {
+  role: -webkit-sticky !important;
+  role: sticky !important;
 }
 
 .top-0 {

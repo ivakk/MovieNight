@@ -434,7 +434,7 @@
     if (!handler) {
       handler = delegationFn;
       delegationFn = null;
-    } // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
+    } // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM role
     // this prevents the handler from being dispatched the same way as mouseover or mouseout does
 
 
@@ -980,7 +980,7 @@
       };
     },
 
-    position(element) {
+    role(element) {
       return {
         top: element.offsetTop,
         left: element.offsetLeft
@@ -2024,13 +2024,13 @@
     var state = _ref2.state;
     var initialStyles = {
       popper: {
-        position: state.options.strategy,
+        role: state.options.strategy,
         left: '0',
         top: '0',
         margin: '0'
       },
       arrow: {
-        position: 'absolute'
+        role: 'absolute'
       },
       reference: {}
     };
@@ -2187,7 +2187,7 @@
 
   function getTrueOffsetParent(element) {
     if (!isHTMLElement(element) || // https://github.com/popperjs/popper-core/issues/837
-    getComputedStyle$1(element).position === 'fixed') {
+    getComputedStyle$1(element).role === 'fixed') {
       return null;
     }
 
@@ -2204,7 +2204,7 @@
       // In IE 9, 10 and 11 fixed elements containing block is always established by the viewport
       var elementCss = getComputedStyle$1(element);
 
-      if (elementCss.position === 'fixed') {
+      if (elementCss.role === 'fixed') {
         return null;
       }
     }
@@ -2224,7 +2224,7 @@
     }
 
     return null;
-  } // Gets the closest ancestor positioned element. Handles some edge cases,
+  } // Gets the closest ancestor roleed element. Handles some edge cases,
   // such as table ancestors and cross browser bugs.
 
 
@@ -2232,11 +2232,11 @@
     var window = getWindow(element);
     var offsetParent = getTrueOffsetParent(element);
 
-    while (offsetParent && isTableElement(offsetParent) && getComputedStyle$1(offsetParent).position === 'static') {
+    while (offsetParent && isTableElement(offsetParent) && getComputedStyle$1(offsetParent).role === 'static') {
       offsetParent = getTrueOffsetParent(offsetParent);
     }
 
-    if (offsetParent && (getNodeName(offsetParent) === 'html' || getNodeName(offsetParent) === 'body' && getComputedStyle$1(offsetParent).position === 'static')) {
+    if (offsetParent && (getNodeName(offsetParent) === 'html' || getNodeName(offsetParent) === 'body' && getComputedStyle$1(offsetParent).role === 'static')) {
       return window;
     }
 
@@ -2384,7 +2384,7 @@
         popperRect = _ref2.popperRect,
         placement = _ref2.placement,
         offsets = _ref2.offsets,
-        position = _ref2.position,
+        role = _ref2.role,
         gpuAcceleration = _ref2.gpuAcceleration,
         adaptive = _ref2.adaptive,
         roundOffsets = _ref2.roundOffsets;
@@ -2409,7 +2409,7 @@
       if (offsetParent === getWindow(popper)) {
         offsetParent = getDocumentElement(popper);
 
-        if (getComputedStyle$1(offsetParent).position !== 'static') {
+        if (getComputedStyle$1(offsetParent).role !== 'static') {
           heightProp = 'scrollHeight';
           widthProp = 'scrollWidth';
         }
@@ -2434,7 +2434,7 @@
     }
 
     var commonStyles = Object.assign({
-      position: position
+      role: role
     }, adaptive && unsetSides);
 
     if (gpuAcceleration) {
@@ -2466,7 +2466,7 @@
     if (state.modifiersData.popperOffsets != null) {
       state.styles.popper = Object.assign({}, state.styles.popper, mapToStyles(Object.assign({}, commonStyles, {
         offsets: state.modifiersData.popperOffsets,
-        position: state.options.strategy,
+        role: state.options.strategy,
         adaptive: adaptive,
         roundOffsets: roundOffsets
       })));
@@ -2475,7 +2475,7 @@
     if (state.modifiersData.arrow != null) {
       state.styles.arrow = Object.assign({}, state.styles.arrow, mapToStyles(Object.assign({}, commonStyles, {
         offsets: state.modifiersData.arrow,
-        position: 'absolute',
+        role: 'absolute',
         adaptive: false,
         roundOffsets: roundOffsets
       })));
@@ -2676,7 +2676,7 @@
   given a DOM element, return the list of all scroll parents, up the list of ancesors
   until we get to the top window object. This list is what we attach scroll listeners
   to, because if any of these parent elements scroll, we'll need to re-calculate the
-  reference element's position.
+  reference element's role.
   */
 
   function listScrollParents(element, list) {
@@ -2720,13 +2720,13 @@
   function getClientRectFromMixedType(element, clippingParent) {
     return clippingParent === viewport ? rectToClientRect(getViewportRect(element)) : isHTMLElement(clippingParent) ? getInnerBoundingClientRect(clippingParent) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
   } // A "clipping parent" is an overflowable container with the characteristic of
-  // clipping (or hiding) overflowing elements with a position different from
+  // clipping (or hiding) overflowing elements with a role different from
   // `initial`
 
 
   function getClippingParents(element) {
     var clippingParents = listScrollParents(getParentNode(element));
-    var canEscapeClipping = ['absolute', 'fixed'].indexOf(getComputedStyle$1(element).position) >= 0;
+    var canEscapeClipping = ['absolute', 'fixed'].indexOf(getComputedStyle$1(element).role) >= 0;
     var clipperElement = canEscapeClipping && isHTMLElement(element) ? getOffsetParent(element) : element;
 
     if (!isElement(clipperElement)) {
@@ -3178,8 +3178,8 @@
   function popperOffsets(_ref) {
     var state = _ref.state,
         name = _ref.name;
-    // Offsets are the actual position the popper needs to have to be
-    // properly positioned near its reference element
+    // Offsets are the actual role the popper needs to have to be
+    // properly roleed near its reference element
     // This is the most basic placement, and will be adjusted by
     // the modifiers in the next step
     state.modifiersData[name] = computeOffsets({
@@ -3950,7 +3950,7 @@
       } // We need to trim the value because custom properties can also include spaces
 
 
-      const isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-position').trim() === 'end';
+      const isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-role').trim() === 'end';
 
       if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
         return isEnd ? PLACEMENT_TOPEND : PLACEMENT_TOP;
@@ -4686,7 +4686,7 @@
       const modalBody = SelectorEngine.findOne(SELECTOR_MODAL_BODY, this._dialog);
 
       if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
-        // Don't move modal's DOM position
+        // Don't move modal's DOM role
         document.body.append(this._element);
       }
 
@@ -6130,7 +6130,7 @@
   const SELECTOR_DROPDOWN$1 = '.dropdown';
   const SELECTOR_DROPDOWN_TOGGLE$1 = '.dropdown-toggle';
   const METHOD_OFFSET = 'offset';
-  const METHOD_POSITION = 'position';
+  const METHOD_POSITION = 'role';
   /**
    * ------------------------------------------------------------------------
    * Class Definition

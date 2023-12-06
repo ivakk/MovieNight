@@ -146,19 +146,6 @@
             "rid": "win"
           }
         }
-      },
-      "SharedLibrary/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Data.SqlClient": "4.8.5"
-        },
-        "compile": {
-          "bin/placeholder/SharedLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SharedLibrary.dll": {}
-        }
       }
     }
   },
@@ -475,16 +462,10 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "SharedLibrary/1.0.0": {
-      "type": "project",
-      "path": "../SharedLibrary/SharedLibrary.csproj",
-      "msbuildProject": "../SharedLibrary/SharedLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "SharedLibrary >= 1.0.0",
       "System.Data.SqlClient >= 4.8.5"
     ]
   },
@@ -519,11 +500,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "C:\\Users\\ivoml\\Desktop\\MovieNight\\SharedLibrary\\SharedLibrary.csproj": {
-              "projectPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\SharedLibrary\\SharedLibrary.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

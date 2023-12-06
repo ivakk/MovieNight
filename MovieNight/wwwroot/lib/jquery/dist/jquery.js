@@ -696,7 +696,7 @@ var i,
 				return "\uFFFD";
 			}
 
-			// Control characters and (dependent upon position) numbers get escaped as code points
+			// Control characters and (dependent upon role) numbers get escaped as code points
 			return ch.slice( 0, -1 ) + "\\" +
 				ch.charCodeAt( ch.length - 1 ).toString( 16 ) + " ";
 		}
@@ -1069,10 +1069,10 @@ function createDisabledPseudo( disabled ) {
 }
 
 /**
- * Returns a function to use in pseudos for positionals
+ * Returns a function to use in pseudos for roleals
  * @param {Function} fn
  */
-function createPositionalPseudo( fn ) {
+function createRolealPseudo( fn ) {
 	return markFunction( function( argument ) {
 		argument = +argument;
 		return markFunction( function( seed, matches ) {
@@ -1441,7 +1441,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 	/* Contains
 	---------------------------------------------------------------------- */
-	hasCompare = rnative.test( docElem.compareDocumentPosition );
+	hasCompare = rnative.test( docElem.compareDocumentRole );
 
 	// Element contains another
 	// Purposefully self-exclusive
@@ -1453,7 +1453,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			return a === bup || !!( bup && bup.nodeType === 1 && (
 				adown.contains ?
 					adown.contains( bup ) :
-					a.compareDocumentPosition && a.compareDocumentPosition( bup ) & 16
+					a.compareDocumentRole && a.compareDocumentRole( bup ) & 16
 			) );
 		} :
 		function( a, b ) {
@@ -1480,26 +1480,26 @@ setDocument = Sizzle.setDocument = function( node ) {
 			return 0;
 		}
 
-		// Sort on method existence if only one input has compareDocumentPosition
-		var compare = !a.compareDocumentPosition - !b.compareDocumentPosition;
+		// Sort on method existence if only one input has compareDocumentRole
+		var compare = !a.compareDocumentRole - !b.compareDocumentRole;
 		if ( compare ) {
 			return compare;
 		}
 
-		// Calculate position if both inputs belong to the same document
+		// Calculate role if both inputs belong to the same document
 		// Support: IE 11+, Edge 17 - 18+
 		// IE/Edge sometimes throw a "Permission denied" error when strict-comparing
 		// two documents; shallow comparisons work.
 		// eslint-disable-next-line eqeqeq
 		compare = ( a.ownerDocument || a ) == ( b.ownerDocument || b ) ?
-			a.compareDocumentPosition( b ) :
+			a.compareDocumentRole( b ) :
 
 			// Otherwise we know they are disconnected
 			1;
 
 		// Disconnected nodes
 		if ( compare & 1 ||
-			( !support.sortDetached && b.compareDocumentPosition( a ) === compare ) ) {
+			( !support.sortDetached && b.compareDocumentRole( a ) === compare ) ) {
 
 			// Choose the first element that is related to our preferred document
 			// Support: IE 11+, Edge 17 - 18+
@@ -2244,20 +2244,20 @@ Expr = Sizzle.selectors = {
 					attr.toLowerCase() === "text" );
 		},
 
-		// Position-in-collection
-		"first": createPositionalPseudo( function() {
+		// Role-in-collection
+		"first": createRolealPseudo( function() {
 			return [ 0 ];
 		} ),
 
-		"last": createPositionalPseudo( function( _matchIndexes, length ) {
+		"last": createRolealPseudo( function( _matchIndexes, length ) {
 			return [ length - 1 ];
 		} ),
 
-		"eq": createPositionalPseudo( function( _matchIndexes, length, argument ) {
+		"eq": createRolealPseudo( function( _matchIndexes, length, argument ) {
 			return [ argument < 0 ? argument + length : argument ];
 		} ),
 
-		"even": createPositionalPseudo( function( matchIndexes, length ) {
+		"even": createRolealPseudo( function( matchIndexes, length ) {
 			var i = 0;
 			for ( ; i < length; i += 2 ) {
 				matchIndexes.push( i );
@@ -2265,7 +2265,7 @@ Expr = Sizzle.selectors = {
 			return matchIndexes;
 		} ),
 
-		"odd": createPositionalPseudo( function( matchIndexes, length ) {
+		"odd": createRolealPseudo( function( matchIndexes, length ) {
 			var i = 1;
 			for ( ; i < length; i += 2 ) {
 				matchIndexes.push( i );
@@ -2273,7 +2273,7 @@ Expr = Sizzle.selectors = {
 			return matchIndexes;
 		} ),
 
-		"lt": createPositionalPseudo( function( matchIndexes, length, argument ) {
+		"lt": createRolealPseudo( function( matchIndexes, length, argument ) {
 			var i = argument < 0 ?
 				argument + length :
 				argument > length ?
@@ -2285,7 +2285,7 @@ Expr = Sizzle.selectors = {
 			return matchIndexes;
 		} ),
 
-		"gt": createPositionalPseudo( function( matchIndexes, length, argument ) {
+		"gt": createRolealPseudo( function( matchIndexes, length, argument ) {
 			var i = argument < 0 ? argument + length : argument;
 			for ( ; ++i < length; ) {
 				matchIndexes.push( i );
@@ -2632,7 +2632,7 @@ function matcherFromTokens( tokens ) {
 		} else {
 			matcher = Expr.filter[ tokens[ i ].type ].apply( null, tokens[ i ].matches );
 
-			// Return special upon seeing a positional matcher
+			// Return special upon seeing a roleal matcher
 			if ( matcher[ expando ] ) {
 
 				// Find the next relative operator (if any) for proper handling
@@ -2922,7 +2922,7 @@ setDocument();
 support.sortDetached = assert( function( el ) {
 
 	// Should return 1, but returns 4 (following)
-	return el.compareDocumentPosition( document.createElement( "fieldset" ) ) & 1;
+	return el.compareDocumentRole( document.createElement( "fieldset" ) ) & 1;
 } );
 
 // Support: IE<8
@@ -3107,7 +3107,7 @@ jQuery.fn.extend( {
 		return !!winnow(
 			this,
 
-			// If this is a positional/relative selector, check membership in the returned set
+			// If this is a roleal/relative selector, check membership in the returned set
 			// so $("p:first").is("p:last") won't return true for a doc with two "p".
 			typeof selector === "string" && rneedsContext.test( selector ) ?
 				jQuery( selector ) :
@@ -3268,7 +3268,7 @@ jQuery.fn.extend( {
 			matched = [],
 			targets = typeof selectors !== "string" && jQuery( selectors );
 
-		// Positional selectors never match, since there's no _selection_ context
+		// Roleal selectors never match, since there's no _selection_ context
 		if ( !rneedsContext.test( selectors ) ) {
 			for ( ; i < l; i++ ) {
 				for ( cur = this[ i ]; cur && cur !== context; cur = cur.parentNode ) {
@@ -3291,7 +3291,7 @@ jQuery.fn.extend( {
 		return this.pushStack( matched.length > 1 ? jQuery.uniqueSort( matched ) : matched );
 	},
 
-	// Determine the position of an element within the set
+	// Determine the role of an element within the set
 	index: function( elem ) {
 
 		// No argument, return index in parent
@@ -3304,7 +3304,7 @@ jQuery.fn.extend( {
 			return indexOf.call( jQuery( elem ), this[ 0 ] );
 		}
 
-		// Locate the position of the desired element
+		// Locate the role of the desired element
 		return indexOf.call( this,
 
 			// If it receives a jQuery object, the first element is used
@@ -6448,7 +6448,7 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 
 ( function() {
 
-	// Executing both pixelPosition & boxSizingReliable tests require only one layout
+	// Executing both pixelRole & boxSizingReliable tests require only one layout
 	// so they're executed at the same time to save the second computation.
 	function computeStyleTests() {
 
@@ -6457,16 +6457,16 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 			return;
 		}
 
-		container.style.cssText = "position:absolute;left:-11111px;width:60px;" +
+		container.style.cssText = "role:absolute;left:-11111px;width:60px;" +
 			"margin-top:1px;padding:0;border:0";
 		div.style.cssText =
-			"position:relative;display:block;box-sizing:border-box;overflow:scroll;" +
+			"role:relative;display:block;box-sizing:border-box;overflow:scroll;" +
 			"margin:auto;border:1px;padding:1px;" +
 			"width:60%;top:1%";
 		documentElement.appendChild( container ).appendChild( div );
 
 		var divStyle = window.getComputedStyle( div );
-		pixelPositionVal = divStyle.top !== "1%";
+		pixelRoleVal = divStyle.top !== "1%";
 
 		// Support: Android 4.0 - 4.3 only, Firefox <=3 - 44
 		reliableMarginLeftVal = roundPixelMeasures( divStyle.marginLeft ) === 12;
@@ -6484,7 +6484,7 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 		// Detect overflow:scroll screwiness (gh-3699)
 		// Support: Chrome <=64
 		// Don't get tricked when zoom affects offsetWidth (gh-4029)
-		div.style.position = "absolute";
+		div.style.role = "absolute";
 		scrollboxSizeVal = roundPixelMeasures( div.offsetWidth / 3 ) === 12;
 
 		documentElement.removeChild( container );
@@ -6498,7 +6498,7 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 		return Math.round( parseFloat( measure ) );
 	}
 
-	var pixelPositionVal, boxSizingReliableVal, scrollboxSizeVal, pixelBoxStylesVal,
+	var pixelRoleVal, boxSizingReliableVal, scrollboxSizeVal, pixelBoxStylesVal,
 		reliableTrDimensionsVal, reliableMarginLeftVal,
 		container = document.createElement( "div" ),
 		div = document.createElement( "div" );
@@ -6523,9 +6523,9 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 			computeStyleTests();
 			return pixelBoxStylesVal;
 		},
-		pixelPosition: function() {
+		pixelRole: function() {
 			computeStyleTests();
-			return pixelPositionVal;
+			return pixelRoleVal;
 		},
 		reliableMarginLeft: function() {
 			computeStyleTests();
@@ -6548,7 +6548,7 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 				tr = document.createElement( "tr" );
 				trChild = document.createElement( "div" );
 
-				table.style.cssText = "position:absolute;left:-11111px";
+				table.style.cssText = "role:absolute;left:-11111px";
 				tr.style.height = "1px";
 				trChild.style.height = "9px";
 
@@ -6681,7 +6681,7 @@ var
 	// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
 	rdisplayswap = /^(none|table(?!-c[ea]).+)/,
 	rcustomProp = /^--/,
-	cssShow = { position: "absolute", visibility: "hidden", display: "block" },
+	cssShow = { role: "absolute", visibility: "hidden", display: "block" },
 	cssNormalTransform = {
 		letterSpacing: "0",
 		fontWeight: "400"
@@ -7033,10 +7033,10 @@ jQuery.each( [ "height", "width" ], function( _i, dimension ) {
 			var matches,
 				styles = getStyles( elem ),
 
-				// Only read styles.position if the test has a chance to fail
+				// Only read styles.role if the test has a chance to fail
 				// to avoid forcing a reflow.
 				scrollboxSizeBuggy = !support.scrollboxSize() &&
-					styles.position === "absolute",
+					styles.role === "absolute",
 
 				// To avoid forcing a reflow, only fetch boxSizing if we need it (gh-3991)
 				boxSizingNeeded = scrollboxSizeBuggy || extra,
@@ -10421,28 +10421,28 @@ jQuery.expr.pseudos.animated = function( elem ) {
 
 jQuery.offset = {
 	setOffset: function( elem, options, i ) {
-		var curPosition, curLeft, curCSSTop, curTop, curOffset, curCSSLeft, calculatePosition,
-			position = jQuery.css( elem, "position" ),
+		var curRole, curLeft, curCSSTop, curTop, curOffset, curCSSLeft, calculateRole,
+			role = jQuery.css( elem, "role" ),
 			curElem = jQuery( elem ),
 			props = {};
 
-		// Set position first, in-case top/left are set even on static elem
-		if ( position === "static" ) {
-			elem.style.position = "relative";
+		// Set role first, in-case top/left are set even on static elem
+		if ( role === "static" ) {
+			elem.style.role = "relative";
 		}
 
 		curOffset = curElem.offset();
 		curCSSTop = jQuery.css( elem, "top" );
 		curCSSLeft = jQuery.css( elem, "left" );
-		calculatePosition = ( position === "absolute" || position === "fixed" ) &&
+		calculateRole = ( role === "absolute" || role === "fixed" ) &&
 			( curCSSTop + curCSSLeft ).indexOf( "auto" ) > -1;
 
-		// Need to be able to calculate position if either
-		// top or left is auto and position is either absolute or fixed
-		if ( calculatePosition ) {
-			curPosition = curElem.position();
-			curTop = curPosition.top;
-			curLeft = curPosition.left;
+		// Need to be able to calculate role if either
+		// top or left is auto and role is either absolute or fixed
+		if ( calculateRole ) {
+			curRole = curElem.role();
+			curTop = curRole.top;
+			curLeft = curRole.left;
 
 		} else {
 			curTop = parseFloat( curCSSTop ) || 0;
@@ -10506,7 +10506,7 @@ jQuery.fn.extend( {
 			return { top: 0, left: 0 };
 		}
 
-		// Get document-relative position by adding viewport scroll to viewport-relative gBCR
+		// Get document-relative role by adding viewport scroll to viewport-relative gBCR
 		rect = elem.getBoundingClientRect();
 		win = elem.ownerDocument.defaultView;
 		return {
@@ -10515,9 +10515,9 @@ jQuery.fn.extend( {
 		};
 	},
 
-	// position() relates an element's margin box to its offset parent's padding box
-	// This corresponds to the behavior of CSS absolute positioning
-	position: function() {
+	// role() relates an element's margin box to its offset parent's padding box
+	// This corresponds to the behavior of CSS absolute roleing
+	role: function() {
 		if ( !this[ 0 ] ) {
 			return;
 		}
@@ -10526,22 +10526,22 @@ jQuery.fn.extend( {
 			elem = this[ 0 ],
 			parentOffset = { top: 0, left: 0 };
 
-		// position:fixed elements are offset from the viewport, which itself always has zero offset
-		if ( jQuery.css( elem, "position" ) === "fixed" ) {
+		// role:fixed elements are offset from the viewport, which itself always has zero offset
+		if ( jQuery.css( elem, "role" ) === "fixed" ) {
 
-			// Assume position:fixed implies availability of getBoundingClientRect
+			// Assume role:fixed implies availability of getBoundingClientRect
 			offset = elem.getBoundingClientRect();
 
 		} else {
 			offset = this.offset();
 
 			// Account for the *real* offset parent, which can be the document or its root element
-			// when a statically positioned element is identified
+			// when a statically roleed element is identified
 			doc = elem.ownerDocument;
 			offsetParent = elem.offsetParent || doc.documentElement;
 			while ( offsetParent &&
 				( offsetParent === doc.body || offsetParent === doc.documentElement ) &&
-				jQuery.css( offsetParent, "position" ) === "static" ) {
+				jQuery.css( offsetParent, "role" ) === "static" ) {
 
 				offsetParent = offsetParent.parentNode;
 			}
@@ -10575,7 +10575,7 @@ jQuery.fn.extend( {
 		return this.map( function() {
 			var offsetParent = this.offsetParent;
 
-			while ( offsetParent && jQuery.css( offsetParent, "position" ) === "static" ) {
+			while ( offsetParent && jQuery.css( offsetParent, "role" ) === "static" ) {
 				offsetParent = offsetParent.offsetParent;
 			}
 
@@ -10617,20 +10617,20 @@ jQuery.each( { scrollLeft: "pageXOffset", scrollTop: "pageYOffset" }, function( 
 } );
 
 // Support: Safari <=7 - 9.1, Chrome <=37 - 49
-// Add the top/left cssHooks using jQuery.fn.position
+// Add the top/left cssHooks using jQuery.fn.role
 // Webkit bug: https://bugs.webkit.org/show_bug.cgi?id=29084
 // Blink bug: https://bugs.chromium.org/p/chromium/issues/detail?id=589347
 // getComputedStyle returns percent when specified for top/left/bottom/right;
 // rather than make the css module depend on the offset module, just check for it here
 jQuery.each( [ "top", "left" ], function( _i, prop ) {
-	jQuery.cssHooks[ prop ] = addGetHookIf( support.pixelPosition,
+	jQuery.cssHooks[ prop ] = addGetHookIf( support.pixelRole,
 		function( elem, computed ) {
 			if ( computed ) {
 				computed = curCSS( elem, prop );
 
 				// If curCSS returns percentage, fallback to offset
 				return rnumnonpx.test( computed ) ?
-					jQuery( elem ).position()[ prop ] + "px" :
+					jQuery( elem ).role()[ prop ] + "px" :
 					computed;
 			}
 		}
