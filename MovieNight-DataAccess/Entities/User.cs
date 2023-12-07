@@ -33,7 +33,6 @@ namespace MovieNight_DataAccess.Entities
         public User()
         {
         }
-
         public User(string username, string password)
         {
             UserDALManager controller = new UserDALManager();

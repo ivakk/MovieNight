@@ -17,12 +17,10 @@ namespace MovieNight_BusinessLogic.Services
         {
             return controller.GetAll();
         }
-
         public User GetUserById(int id)
         {
             return controller.GetUserById(id);
         }
-        
         public bool CreateUser(User user)
         {
             return controller.InsertUser(user);

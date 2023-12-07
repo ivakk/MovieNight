@@ -2,3 +2,30 @@
 @model MovieNight.Pages.Account.LoginModel
 @{
 }
+
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Your Page Title</title>
+
+
+<div class="login-box">
+    <h1>Login</h1>
+    <form class="login-form" method="post">
+        <div class="input-group">
+            <input type="text" asp-for="Username" placeholder="Username" />
+        </div>
+        <div class="input-group">
+            <input type="password" asp-for="Password" placeholder="Password" />
+        </div>
+        <button type="submit">Login</button>
+    
+    <!-- Error box -->
+    <div class="alert alert-danger" role="alert" runat="server" id="errorDiv"
+             @if (string.IsNullOrEmpty(ViewData["Error"] as string)) {
+        <text>style="display:none;"</text>}>
+            @ViewData["Error"]
+    </div>
+    </form>
+
+</div>
