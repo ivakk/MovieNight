@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj": {}
+    "C:\\Users\\ivoml\\Desktop\\zxmc\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj": {
+    "C:\\Users\\ivoml\\Desktop\\zxmc\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\zxmc\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj",
         "projectName": "MovieNight-DataAccess",
-        "projectPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj",
+        "projectPath": "C:\\Users\\ivoml\\Desktop\\zxmc\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj",
         "packagesPath": "C:\\Users\\ivoml\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNight-DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\ivoml\\Desktop\\zxmc\\movienight\\MovieNight-DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

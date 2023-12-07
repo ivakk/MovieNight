@@ -84,6 +84,7 @@
             passwordEntry.Location = new Point(259, 214);
             passwordEntry.Margin = new Padding(3, 2, 3, 2);
             passwordEntry.Name = "passwordEntry";
+            passwordEntry.PasswordChar = '●';
             passwordEntry.Size = new Size(199, 23);
             passwordEntry.TabIndex = 3;
             // 
@@ -137,7 +138,7 @@
             MaximizeBox = false;
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "MovieNight";
+            Text = "8";
             Load += login_Load;
             ((System.ComponentModel.ISupportInitialize)reveal).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

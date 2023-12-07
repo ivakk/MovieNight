@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IbEcc6PpYfO04FvHE0mfPHvGZMwthtlOp9XVuVDV1CE3KdbWvw1S271Q5PR0EumHEVYK9xP7cXeSG1sxnfv4Lw==",
+  "dgSpecHash": "LmvFLLVGo3s6nVh1wqUpkjkLg3zxPczHx+vnDb3HcvYL5KP4rNYCJrSzKE7Cds6UMBSQ/VZJb7rQ+uem1DGVcQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ivoml\\Desktop\\MovieNight\\MovieNightOOD\\MovieNightOOD.csproj",
+  "projectFilePath": "C:\\Users\\ivoml\\Desktop\\zxmc\\movienight\\MovieNightOOD\\MovieNightOOD.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ivoml\\.nuget\\packages\\awssdk.core\\3.7.202.20\\awssdk.core.3.7.202.20.nupkg.sha512",
     "C:\\Users\\ivoml\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",

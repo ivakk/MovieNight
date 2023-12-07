@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using MovieNight_DataAccess.Entities;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace MovieNightOOD
@@ -52,19 +53,10 @@ namespace MovieNightOOD
             }
             else
             {
-
-
                 try
                 {
-
                     User user = new User(username, password);
-                    SqlCommand cmd = new SqlCommand($"SELECT * FROM {tableName} WHERE username = @username AND role = 'admin'", connection);
-                    cmd.Parameters.AddWithValue("@username", usernameEntry.Text);
-                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                    DataTable dTable = new DataTable();
-                    sda.Fill(dTable);
-
-                    if (dTable.Rows.Count > 0)
+                    if (user.Role == "admin")
                     {
                         Menu menu = new Menu(user, this);
                         menu.Show();
@@ -72,11 +64,7 @@ namespace MovieNightOOD
                     }
                     else
                     {
-                        MessageBox.Show("Please check your account information or permissions and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        usernameEntry.Clear();
-                        passwordEntry.Clear();
-
-                        usernameEntry.Focus();
+                        MessageBox.Show("You do not have access!");
                     }
                 }
                 catch (Exception ex)
