@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovieNight_Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,10 @@ namespace MovieNight_InterfacesDAL.IManagers
 {
     public interface IMovieDALManager
     {
+        Movie GetMovieById(int id);
+        List<Movie> GetAllMovies();
+        void UpdateMovies(Movie newMovie);
+        void DeleteMovies(int Id);
+        void CreateMovies(Movie newMovie);
     }
 }

@@ -1,5 +1,5 @@
 ﻿using MovieNight_BusinessLogic.Services;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
 using MovieNightOOD.Forms;
 using MovieNightOOD.Forms.UserSubForms;
 using System;
@@ -11,12 +11,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MovieNight_InterfacesLL.IServices;
 
 namespace MovieNightOOD.UserControls
 {
     public partial class UsersUC : UserControl
     {
-        UserManager userService = new UserManager();
+        private IUserManager userService;
         UsersForm usersForm;
         public User User { get; set; }
         public UsersUC(User user, UsersForm usersForm)

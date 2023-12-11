@@ -1726,6 +1726,32 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
+      },
+      "MovieNight-Classes/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.TeamFoundationServer.Client": "16.205.1"
+        },
+        "compile": {
+          "bin/placeholder/MovieNight-Classes.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MovieNight-Classes.dll": {}
+        }
+      },
+      "MovieNight-InterfacesDAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MovieNight-Classes": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MovieNight-InterfacesDAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MovieNight-InterfacesDAL.dll": {}
+        }
       }
     }
   },
@@ -5855,12 +5881,24 @@
         "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "MovieNight-Classes/1.0.0": {
+      "type": "project",
+      "path": "../MovieNight-Classes/MovieNight-Classes.csproj",
+      "msbuildProject": "../MovieNight-Classes/MovieNight-Classes.csproj"
+    },
+    "MovieNight-InterfacesDAL/1.0.0": {
+      "type": "project",
+      "path": "../MovieNight-InterfacesDAL/MovieNight-InterfacesDAL.csproj",
+      "msbuildProject": "../MovieNight-InterfacesDAL/MovieNight-InterfacesDAL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "AWSSDK.Core >= 3.7.202.20",
       "Microsoft.TeamFoundationServer.Client >= 16.205.1",
+      "MovieNight-Classes >= 1.0.0",
+      "MovieNight-InterfacesDAL >= 1.0.0",
       "System.Data.SqlClient >= 4.8.5"
     ]
   },
@@ -5871,11 +5909,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\zxmc\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj",
+      "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj",
       "projectName": "MovieNight-DataAccess",
-      "projectPath": "C:\\Users\\ivoml\\Desktop\\zxmc\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj",
+      "projectPath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj",
       "packagesPath": "C:\\Users\\ivoml\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ivoml\\Desktop\\zxmc\\movienight\\MovieNight-DataAccess\\obj\\",
+      "outputPath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5895,7 +5933,14 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj": {
+              "projectPath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj"
+            },
+            "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj": {
+              "projectPath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

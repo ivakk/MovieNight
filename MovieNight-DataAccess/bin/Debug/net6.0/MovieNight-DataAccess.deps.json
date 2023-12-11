@@ -10,6 +10,8 @@
         "dependencies": {
           "AWSSDK.Core": "3.7.202.20",
           "Microsoft.TeamFoundationServer.Client": "16.205.1",
+          "MovieNight-Classes": "1.0.0",
+          "MovieNight-InterfacesDAL": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {
@@ -961,6 +963,22 @@
             "fileVersion": "4.6.24705.1"
           }
         }
+      },
+      "MovieNight-Classes/1.0.0": {
+        "dependencies": {
+          "Microsoft.TeamFoundationServer.Client": "16.205.1"
+        },
+        "runtime": {
+          "MovieNight-Classes.dll": {}
+        }
+      },
+      "MovieNight-InterfacesDAL/1.0.0": {
+        "dependencies": {
+          "MovieNight-Classes": "1.0.0"
+        },
+        "runtime": {
+          "MovieNight-InterfacesDAL.dll": {}
+        }
       }
     }
   },
@@ -1627,6 +1645,16 @@
       "sha512": "sha512-A/uxsWi/Ifzkmd4ArTLISMbfFs6XpRPsXZonrIqyTY70xi8t+mDtvSM5Os0RqyRDobjMBwIDHDL4NOIbkDwf7A==",
       "path": "system.xml.xpath.xmldocument/4.3.0",
       "hashPath": "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
+    },
+    "MovieNight-Classes/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MovieNight-InterfacesDAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

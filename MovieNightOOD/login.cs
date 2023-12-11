@@ -7,23 +7,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
+using MovieNight_BusinessLogic.Services;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using MovieNight_InterfacesLL.IServices;
+using Microsoft.Extensions.DependencyInjection;
 
 
 namespace MovieNightOOD
 {
     public partial class Login : Form
     {
+        private readonly IUserManager userManager;
 
-        private readonly string tableName = "Users";
 
-        public Login()
+        public Login(IUserManager userManager)
         {
             InitializeComponent();
+            this.userManager = userManager;
         }
-        SqlConnection connection = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi503708;User Id=dbi503708;Password=dbi123;");
 
         private void reveal_MouseDown(object sender, MouseEventArgs e)
         {
@@ -55,7 +58,8 @@ namespace MovieNightOOD
             {
                 try
                 {
-                    User user = new User(username, password);
+                    User user = userManager.CheckUser(usernameEntry.Text, passwordEntry.Text);
+                    System.Diagnostics.Debug.WriteLine(user.Id, user.FirstName + "asd");
                     if (user.Role == "admin")
                     {
                         Menu menu = new Menu(user, this);

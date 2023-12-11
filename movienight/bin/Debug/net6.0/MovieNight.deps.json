@@ -9,6 +9,7 @@
       "MovieNight/1.0.0": {
         "dependencies": {
           "MovieNight-BusinessLogic": "1.0.0",
+          "MovieNight-Classes": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {
@@ -963,20 +964,48 @@
       },
       "MovieNight-BusinessLogic/1.0.0": {
         "dependencies": {
-          "MovieNight-DataAccess": "1.0.0"
+          "MovieNight-DataAccess": "1.0.0",
+          "MovieNight-InterfacesDAL": "1.0.0",
+          "MovieNight-InterfacesLL": "1.0.0"
         },
         "runtime": {
           "MovieNight-BusinessLogic.dll": {}
+        }
+      },
+      "MovieNight-Classes/1.0.0": {
+        "dependencies": {
+          "Microsoft.TeamFoundationServer.Client": "16.205.1"
+        },
+        "runtime": {
+          "MovieNight-Classes.dll": {}
         }
       },
       "MovieNight-DataAccess/1.0.0": {
         "dependencies": {
           "AWSSDK.Core": "3.7.202.20",
           "Microsoft.TeamFoundationServer.Client": "16.205.1",
+          "MovieNight-Classes": "1.0.0",
+          "MovieNight-InterfacesDAL": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {
           "MovieNight-DataAccess.dll": {}
+        }
+      },
+      "MovieNight-InterfacesDAL/1.0.0": {
+        "dependencies": {
+          "MovieNight-Classes": "1.0.0"
+        },
+        "runtime": {
+          "MovieNight-InterfacesDAL.dll": {}
+        }
+      },
+      "MovieNight-InterfacesLL/1.0.0": {
+        "dependencies": {
+          "MovieNight-Classes": "1.0.0"
+        },
+        "runtime": {
+          "MovieNight-InterfacesLL.dll": {}
         }
       }
     }
@@ -1650,7 +1679,22 @@
       "serviceable": false,
       "sha512": ""
     },
+    "MovieNight-Classes/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "MovieNight-DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MovieNight-InterfacesDAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MovieNight-InterfacesLL/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

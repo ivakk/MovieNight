@@ -5,10 +5,11 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using MovieNight_InterfacesDAL;
 
 namespace MovieNight_DataAccess
 {
-    public class PasswordHashing
+    public class PasswordHashing : IPasswordHashing
     {
         public string GenerateSHA256Hash(string password, string salt)
         {

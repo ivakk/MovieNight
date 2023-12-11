@@ -1,7 +1,7 @@
 ﻿using Amazon.Runtime.Internal.Transform;
 using Microsoft.TeamFoundation.SourceControl.WebApi.Legacy;
 using MovieNight_BusinessLogic.Services;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
 using MovieNightOOD.Forms;
 using MovieNightOOD.UserControls;
 using System;
@@ -13,12 +13,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MovieNight_InterfacesLL.IServices;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MovieNightOOD
 {
     public partial class Menu : Form
     {
-        UserManager userService = new UserManager();
+        private readonly IUserManager userManager;
+        private readonly IMovieManager movieManager;
+        private readonly ICategoryManager categoryManager;
+        public IServiceProvider ServiceProvider { get; private set; }
 
         Login loginForm;
         public User loggedInUser;

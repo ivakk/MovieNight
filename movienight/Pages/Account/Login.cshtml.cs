@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
+using MovieNight_BusinessLogic.Services;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Net.Mail;
+using MovieNight_DataAccess.Controllers;
 
 namespace MovieNight.Pages.Account
 {
@@ -26,16 +28,11 @@ namespace MovieNight.Pages.Account
 
         public void OnPost()
         {
-            if (string.IsNullOrWhiteSpace(Username) ||
-                string.IsNullOrWhiteSpace(Password))
-            {
-                ViewData["Error"] = "Please fill in all fields";
-                return;
-            }
+            UserManager userManager = new UserManager(new UserDALManager());
 
             try
             {
-                User user = new User(Username, Password);
+                User user = userManager.CheckUser(Username, Password);
 
                 var claims = new List<Claim>
                 {

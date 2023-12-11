@@ -1,5 +1,6 @@
 ﻿using MovieNight_BusinessLogic.Services;
-using MovieNight_DataAccess.Entities;
+using MovieNight_InterfacesLL.IServices;
+using MovieNight_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,13 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MovieNight_DataAccess.Controllers;
 
 namespace MovieNightOOD.Forms.MediaSubForms
 {
     public partial class AddSeriesForm : Form
     {
-        SeriesManager seriesManager = new SeriesManager();
-        CategoryManager categoryManager = new CategoryManager();
+        ISeriesManager seriesManager;
+        ICategoryManager categoryManager;
 
         private int seriesId = 0;
         private int season;
@@ -25,7 +27,8 @@ namespace MovieNightOOD.Forms.MediaSubForms
         public AddSeriesForm()
         {
             InitializeComponent();
-
+            seriesManager = new SeriesManager(new SeriesDALManager());
+            categoryManager = new CategoryManager(new CategoryDALManager());
             cbCategory.Items.AddRange(categoryManager.GetAll().ToArray());
         }
 

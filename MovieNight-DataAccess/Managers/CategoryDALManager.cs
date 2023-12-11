@@ -4,11 +4,12 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
+using MovieNight_InterfacesDAL.IManagers;
 
 namespace MovieNight_DataAccess.Controllers
 {
-    public class CategoryDALManager : Connection
+    public class CategoryDALManager : Connection, ICategoryDALManager
     {
 
         private readonly string tableName = "Categories";

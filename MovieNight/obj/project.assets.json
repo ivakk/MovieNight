@@ -1731,7 +1731,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "MovieNight-DataAccess": "1.0.0"
+          "MovieNight-DataAccess": "1.0.0",
+          "MovieNight-InterfacesDAL": "1.0.0",
+          "MovieNight-InterfacesLL": "1.0.0"
         },
         "compile": {
           "bin/placeholder/MovieNight-BusinessLogic.dll": {}
@@ -1740,12 +1742,27 @@
           "bin/placeholder/MovieNight-BusinessLogic.dll": {}
         }
       },
+      "MovieNight-Classes/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.TeamFoundationServer.Client": "16.205.1"
+        },
+        "compile": {
+          "bin/placeholder/MovieNight-Classes.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MovieNight-Classes.dll": {}
+        }
+      },
       "MovieNight-DataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "AWSSDK.Core": "3.7.202.20",
           "Microsoft.TeamFoundationServer.Client": "16.205.1",
+          "MovieNight-Classes": "1.0.0",
+          "MovieNight-InterfacesDAL": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "compile": {
@@ -1753,6 +1770,32 @@
         },
         "runtime": {
           "bin/placeholder/MovieNight-DataAccess.dll": {}
+        }
+      },
+      "MovieNight-InterfacesDAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MovieNight-Classes": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MovieNight-InterfacesDAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MovieNight-InterfacesDAL.dll": {}
+        }
+      },
+      "MovieNight-InterfacesLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MovieNight-Classes": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MovieNight-InterfacesLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MovieNight-InterfacesLL.dll": {}
         }
       }
     }
@@ -5889,15 +5932,31 @@
       "path": "../MovieNight-BusinessLogic/MovieNight-BusinessLogic.csproj",
       "msbuildProject": "../MovieNight-BusinessLogic/MovieNight-BusinessLogic.csproj"
     },
+    "MovieNight-Classes/1.0.0": {
+      "type": "project",
+      "path": "../MovieNight-Classes/MovieNight-Classes.csproj",
+      "msbuildProject": "../MovieNight-Classes/MovieNight-Classes.csproj"
+    },
     "MovieNight-DataAccess/1.0.0": {
       "type": "project",
       "path": "../MovieNight-DataAccess/MovieNight-DataAccess.csproj",
       "msbuildProject": "../MovieNight-DataAccess/MovieNight-DataAccess.csproj"
+    },
+    "MovieNight-InterfacesDAL/1.0.0": {
+      "type": "project",
+      "path": "../MovieNight-InterfacesDAL/MovieNight-InterfacesDAL.csproj",
+      "msbuildProject": "../MovieNight-InterfacesDAL/MovieNight-InterfacesDAL.csproj"
+    },
+    "MovieNight-InterfacesLL/1.0.0": {
+      "type": "project",
+      "path": "../MovieNight-InterfacesLL/MovieNight-InterfacesLL.csproj",
+      "msbuildProject": "../MovieNight-InterfacesLL/MovieNight-InterfacesLL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "MovieNight-BusinessLogic >= 1.0.0",
+      "MovieNight-Classes >= 1.0.0",
       "System.Data.SqlClient >= 4.8.5"
     ]
   },
@@ -5908,11 +5967,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\zxmc\\movienight\\MovieNight\\MovieNight.csproj",
+      "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight\\MovieNight.csproj",
       "projectName": "MovieNight",
-      "projectPath": "C:\\Users\\ivoml\\Desktop\\zxmc\\movienight\\MovieNight\\MovieNight.csproj",
+      "projectPath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight\\MovieNight.csproj",
       "packagesPath": "C:\\Users\\ivoml\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ivoml\\Desktop\\zxmc\\movienight\\MovieNight\\obj\\",
+      "outputPath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5933,8 +5992,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\ivoml\\Desktop\\zxmc\\movienight\\MovieNight-BusinessLogic\\MovieNight-BusinessLogic.csproj": {
-              "projectPath": "C:\\Users\\ivoml\\Desktop\\zxmc\\movienight\\MovieNight-BusinessLogic\\MovieNight-BusinessLogic.csproj"
+            "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-BusinessLogic\\MovieNight-BusinessLogic.csproj": {
+              "projectPath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-BusinessLogic\\MovieNight-BusinessLogic.csproj"
+            },
+            "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj": {
+              "projectPath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj"
             }
           }
         }

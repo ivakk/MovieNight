@@ -7,10 +7,7 @@ namespace MovieNight.Pages
     {
         public void OnGet()
         {
-            if (User.FindFirst("id") != null)
-            {
-                Response.Redirect("/Account/YourAccount");
-            }
+            
         }
     }
 }

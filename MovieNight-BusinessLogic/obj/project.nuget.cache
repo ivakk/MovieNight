@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LgAr93R+tEnxWpdBAOw+PJctnHj+Dxn5xkruDzlohbGjzZKSXCyFvkuEnpppyjYPEFxGyUzEfE2meSvGpqsSdg==",
+  "dgSpecHash": "NS7P5qMiF1HpNzBXFgrsU5jYfO8BHElSujRiU4aXZMtPa2sdkcvPJGkwC4zVOiq30HG8ylmRsxlD3qu0q7GirA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ivoml\\Desktop\\zxmc\\movienight\\MovieNight-BusinessLogic\\MovieNight-BusinessLogic.csproj",
+  "projectFilePath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-BusinessLogic\\MovieNight-BusinessLogic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ivoml\\.nuget\\packages\\awssdk.core\\3.7.202.20\\awssdk.core.3.7.202.20.nupkg.sha512",
     "C:\\Users\\ivoml\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",

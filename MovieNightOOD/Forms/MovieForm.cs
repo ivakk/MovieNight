@@ -1,5 +1,5 @@
 ﻿using MovieNight_BusinessLogic.Services;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
 using MovieNightOOD.Forms.MediaSubForms;
 using System;
 using System.Collections.Generic;
@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MovieNight_InterfacesLL.IServices;
+using MovieNight_DataAccess.Controllers;
 
 namespace MovieNightOOD.Forms
 {
@@ -18,12 +20,14 @@ namespace MovieNightOOD.Forms
         Menu menu;
         AddMovieForm addMovieForm;
 
-        MovieManager movieManager = new MovieManager();
-        CategoryManager categoryManager = new CategoryManager();
+        IMovieManager movieManager;
+        ICategoryManager categoryManager;
 
         public MovieForm(Menu menu)
         {
             InitializeComponent();
+            movieManager = new MovieManager(new MovieDALManager());
+            categoryManager = new CategoryManager(new CategoryDALManager());
             addMovieForm = new MediaSubForms.AddMovieForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
             this.menu = menu;
 
