@@ -4,13 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
+using MovieNight_InterfacesDAL.IManagers;
+using MovieNight_InterfacesLL.IServices;
 
 namespace MovieNight_BusinessLogic.Services
 {
-    public class CategoryManager
+    public class CategoryManager : ICategoryManager
     {
-        private CategoryDALManager controller = new CategoryDALManager();
+        ICategoryDALManager controller;
+
+        public CategoryManager(ICategoryDALManager controller)
+        {
+            this.controller = controller;
+        }
 
         public List<Category> GetAll()
         {

@@ -6,21 +6,23 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
+using MovieNight_InterfacesDAL;
+using MovieNight_InterfacesDAL.IManagers;
 
 namespace MovieNight_DataAccess.Controllers
 {
-    public class ObjectToWatchDALManager : Connection
+    public class ObjectToWatchDALManager : Connection, IObjectToWatchDALManager
     {
 
         private static readonly string tableName = "ObjectToWatch";
-        private CategoryDALManager categoryController = new CategoryDALManager();
+        private ICategoryDALManager categoryController;
 
         public ObjectToWatchDALManager()
         {
         }
 
-        public static int GetNextId()
+        public int GetNextId()
         {
             string query = $"SELECT IDENT_CURRENT('{tableName}')";
             int id = 0;
@@ -91,7 +93,7 @@ namespace MovieNight_DataAccess.Controllers
                 connection.Close();
             }
 
-            return new ObjectToWatch();
+            return obj;
         }
 
 

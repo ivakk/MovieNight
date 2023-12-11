@@ -1,6 +1,6 @@
 ﻿using MovieNight_BusinessLogic.Services;
 using MovieNight_DataAccess;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,13 +11,18 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MovieNight_InterfacesLL.IServices;
+using MovieNight_DataAccess.Controllers;
+using MovieNight_InterfacesLL;
+using MovieNight_BusinessLogic;
 
 namespace MovieNightOOD.Forms.UserSubForms
 {
     public partial class AddUserForm : Form
     {
-        UserManager userService = new UserManager();
-        PasswordHashing hashing = new PasswordHashing();
+
+        IUserManager userService;
+        IPasswordHashingManager hashing;
 
         //In case it is in edit mode
         User? User { get; set; }
@@ -27,6 +32,8 @@ namespace MovieNightOOD.Forms.UserSubForms
         public AddUserForm(UsersForm usersForm)
         {
             InitializeComponent();
+            userService = new UserManager(new UserDALManager());
+            hashing = new PasswordHashingManager(new PasswordHashing());
             this.usersForm = usersForm;
         }
 
@@ -34,6 +41,8 @@ namespace MovieNightOOD.Forms.UserSubForms
         {
             InitializeComponent();
             this.usersForm = usersForm;
+            userService = new UserManager(new UserDALManager());
+            hashing = new PasswordHashingManager(new PasswordHashing());
             this.User = user;
         }
 
@@ -55,8 +64,8 @@ namespace MovieNightOOD.Forms.UserSubForms
         {
             if (User == null)
             {
-                string passwordSalt = hashing.GenerateRandomSalt(10);
-                string passwordHash = hashing.GenerateSHA256Hash("MovieNight", passwordSalt);
+                string passwordSalt = hashing.passSalt(10);
+                string passwordHash = hashing.passHash("movienight", passwordSalt);
 
                 User user = new User(0,
                     tbFirstName.Text,

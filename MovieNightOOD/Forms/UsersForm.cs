@@ -1,5 +1,5 @@
 ﻿using MovieNight_BusinessLogic.Services;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
 using MovieNightOOD.Forms.MediaSubForms;
 using MovieNightOOD.Forms.UserSubForms;
 using MovieNightOOD.UserControls;
@@ -12,20 +12,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MovieNight_InterfacesLL.IServices;
+using MovieNight_DataAccess.Controllers;
+using MovieNight_InterfacesLL;
+using MovieNight_DataAccess;
+using MovieNight_BusinessLogic;
 
 namespace MovieNightOOD.Forms
 {
     public partial class UsersForm : Form
     {
-        UserManager userService = new UserManager();
-
         public Menu menu;
         AddUserForm addUserForm;
+
+        IUserManager userService;
+        IPasswordHashingManager hashing;
         public UsersForm(Menu menu)
         {
             InitializeComponent();
             this.menu = menu;
-
+            userService = new UserManager(new UserDALManager());
+            hashing = new PasswordHashingManager(new PasswordHashing());
             addUserForm = new AddUserForm(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
         }
 

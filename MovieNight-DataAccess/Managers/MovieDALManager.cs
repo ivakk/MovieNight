@@ -1,15 +1,15 @@
-﻿using MovieNight_DataAccess.Entities;
+﻿using MovieNight_Classes;
+using MovieNight_InterfacesDAL.IManagers;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 
 namespace MovieNight_DataAccess.Controllers
 {
-    public class MovieDALManager : ObjectToWatchDALManager
+    public class MovieDALManager : ObjectToWatchDALManager, IMovieDALManager
     {
 
         private string tableName = "Movies";
-        CategoryDALManager categoryDALManager = new CategoryDALManager();
 
         public MovieDALManager()
         {

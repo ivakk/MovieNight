@@ -6,15 +6,15 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
+using MovieNight_InterfacesDAL.IManagers;
 
 namespace MovieNight_DataAccess.Controllers
 {
-    public class SeriesDALManager : ObjectToWatchDALManager
+    public class SeriesDALManager : ObjectToWatchDALManager, ISeriesDALManager
     {
 
         private string tableName = "Series";
-        private CategoryDALManager categoryDALManager = new CategoryDALManager();
 
         public SeriesDALManager()
         {

@@ -71,7 +71,7 @@
             groupBox1.Size = new Size(520, 680);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
-            groupBox1.Text = "ADD USER";
+            groupBox1.Text = "ADD/EDIT USER";
             // 
             // label11
             // 
@@ -195,7 +195,7 @@
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(137, 43);
             btnAdd.TabIndex = 13;
-            btnAdd.Text = "Add";
+            btnAdd.Text = "Add/Edit";
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 

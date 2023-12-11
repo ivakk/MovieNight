@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MovieNight_BusinessLogic.Services;
-using MovieNight_DataAccess.Entities;
-
+using MovieNight_Classes;
+using MovieNight_DataAccess.Controllers;
+using MovieNight_DataAccess;
 
 namespace MovieNight.Pages.Account
 {
@@ -10,7 +11,7 @@ namespace MovieNight.Pages.Account
     {
         public void OnGet()
         {
-            UserManager userManager = new UserManager();
+            UserManager userManager = new UserManager(new UserDALManager());
 
             User? UserLogic;
 
@@ -29,7 +30,7 @@ namespace MovieNight.Pages.Account
             }
             else
             {
-                Response.Redirect("/Account/YourAccount");
+                Response.Redirect("/Account/Login");
             }
         }
     }

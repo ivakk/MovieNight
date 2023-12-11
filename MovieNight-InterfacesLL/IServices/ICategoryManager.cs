@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MovieNight_Classes;
 
 namespace MovieNight_InterfacesLL.IServices
 {
     public interface ICategoryManager
     {
+        List<Category> GetAll();
+        Category GetByName(string Name);
     }
 }

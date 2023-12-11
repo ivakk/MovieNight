@@ -4,13 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
+using MovieNight_InterfacesLL.IServices;
+using MovieNight_InterfacesDAL.IManagers;
 
 namespace MovieNight_BusinessLogic.Services
 {
-    public class MovieManager : ObjectToWatchManager
+    public class MovieManager : IMovieManager
     {
-        private MovieDALManager manager = new MovieDALManager();
+        IMovieDALManager manager;
+        public MovieManager(IMovieDALManager manager) 
+        {
+            this.manager = manager;
+        }
         public List<Movie> GetAll()
         {
             return (List<Movie>)manager.GetAllMovies();

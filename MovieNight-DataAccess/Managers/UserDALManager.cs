@@ -6,15 +6,18 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
 using System.Data;
+using MovieNight_InterfacesDAL.IManagers;
 
 namespace MovieNight_DataAccess.Controllers
 {
-    public class UserDALManager : Connection {
-
+    public class UserDALManager : Connection, IUserDALManager 
+    {
         private readonly string tableName = "Users";
-        public UserDALManager() { }
+        public UserDALManager() 
+        {
+        }
 
         /**
          * Query that gets a specific user using id

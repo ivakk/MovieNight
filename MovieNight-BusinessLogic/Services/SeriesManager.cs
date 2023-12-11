@@ -4,13 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
+using MovieNight_InterfacesLL.IServices;
+using MovieNight_InterfacesDAL.IManagers;
 
 namespace MovieNight_BusinessLogic.Services
 {
-    public class SeriesManager : ObjectToWatchManager
+    public class SeriesManager : ISeriesManager
     {
-        SeriesDALManager manager = new SeriesDALManager();
+        ISeriesDALManager manager;
+
+        public SeriesManager(ISeriesDALManager manager)
+        {
+            this.manager = manager;
+        }
         public List<Series> GetAll()
         {
             return (List<Series>)manager.GetAllSeries();
@@ -34,17 +41,14 @@ namespace MovieNight_BusinessLogic.Services
         }
         public void Create(Series series)
         {
-            base.Create(series);
             manager.CreateSeries(series);
         }
         public void Update(Series series)
         {
-            base.Update(series);
             manager.UpdateSeries(series);
         }
         public void Delete(int id)
         {
-            base.Delete(id);
             manager.DeleteSeries(id);
         }
     }

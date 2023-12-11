@@ -13,10 +13,10 @@
     <h1>Login</h1>
     <form class="login-form" method="post">
         <div class="input-group">
-            <input type="text" asp-for="Username" placeholder="Username" />
+            <input type="text" asp-for="Username" data-val="true" data-val-required="This field is required!" placeholder="Username *" />
         </div>
         <div class="input-group">
-            <input type="password" asp-for="Password" placeholder="Password" />
+            <input type="password" asp-for="Password" data-val="true" data-val-required="This field is required!" placeholder="Password *" />
         </div>
         <button type="submit">Login</button>
     

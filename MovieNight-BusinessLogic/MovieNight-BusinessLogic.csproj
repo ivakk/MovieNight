@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MovieNight-DataAccess\MovieNight-DataAccess.csproj" />
+    <ProjectReference Include="..\MovieNight-InterfacesDAL\MovieNight-InterfacesDAL.csproj" />
+    <ProjectReference Include="..\MovieNight-InterfacesLL\MovieNight-InterfacesLL.csproj" />
   </ItemGroup>
 
 </Project>

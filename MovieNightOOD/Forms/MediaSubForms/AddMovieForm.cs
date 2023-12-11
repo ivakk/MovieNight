@@ -1,5 +1,5 @@
 ﻿using MovieNight_BusinessLogic.Services;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,13 +9,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MovieNight_InterfacesLL.IServices;
+using MovieNight_DataAccess.Controllers;
 
 namespace MovieNightOOD.Forms.MediaSubForms
 {
     public partial class AddMovieForm : Form
     {
-        MovieManager movieManager = new MovieManager();
-        CategoryManager categoryManager = new CategoryManager();
+        IMovieManager movieManager;
+        ICategoryManager categoryManager;
 
         private int movieId = 0;
         private int rating;
@@ -23,7 +25,8 @@ namespace MovieNightOOD.Forms.MediaSubForms
         public AddMovieForm()
         {
             InitializeComponent();
-
+            movieManager = new MovieManager(new MovieDALManager());
+            categoryManager = new CategoryManager(new CategoryDALManager());
             cbCategory.Items.AddRange(categoryManager.GetAll().ToArray());
         }
 

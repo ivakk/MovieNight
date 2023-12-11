@@ -1,18 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MovieNight_BusinessLogic.Services;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Diagnostics.Eventing.Reader;
 using Microsoft.TeamFoundation.TestManagement.WebApi;
+using MovieNight_DataAccess.Controllers;
 
 namespace MovieNight.Pages
 {
     public class IndexModel : PageModel
     {
-        UserManager userManager = new UserManager();
+        UserManager userManager = new UserManager(new UserDALManager());
 
         private readonly ILogger<IndexModel> _logger;
 

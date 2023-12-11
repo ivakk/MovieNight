@@ -6,9 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-	
+
   <ItemGroup>
-    <ProjectReference Include="..\MovieNight-DataAccess\MovieNight-DataAccess.csproj" />
+    <ProjectReference Include="..\MovieNight-Classes\MovieNight-Classes.csproj" />
   </ItemGroup>
 
 </Project>

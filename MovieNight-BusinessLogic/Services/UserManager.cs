@@ -1,18 +1,27 @@
 ﻿using Microsoft.TeamFoundation.Test.WebApi;
 using MovieNight_DataAccess;
 using MovieNight_DataAccess.Controllers;
-using MovieNight_DataAccess.Entities;
+using MovieNight_Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MovieNight_InterfacesDAL.IManagers;
+using MovieNight_InterfacesLL.IServices;
+using MovieNight_InterfacesDAL;
 
 namespace MovieNight_BusinessLogic.Services
 {
-    public class UserManager
+    public class UserManager : IUserManager
     {
-        UserDALManager controller = new UserDALManager();
+        IUserDALManager controller;
+        public UserManager(IUserDALManager controller)
+        {
+            this.controller = controller;
+        }
+
+
         public List<User> GetAllUsers()
         {
             return controller.GetAll();
@@ -24,6 +33,19 @@ namespace MovieNight_BusinessLogic.Services
         public bool CreateUser(User user)
         {
             return controller.InsertUser(user);
+        }
+
+
+        public User CheckUser(string username, string password)
+        {
+            if (!controller.IsPasswordCorrect(username, password))
+            {
+                throw new ArgumentException("Your login details are incorrect.");
+            }
+
+            User user = controller.GetUserByUsername(username);
+
+            return user;
         }
 
         public List<User> GetBySearch(string search)
