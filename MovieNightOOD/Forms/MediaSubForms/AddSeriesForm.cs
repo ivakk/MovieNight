@@ -18,15 +18,17 @@ namespace MovieNightOOD.Forms.MediaSubForms
     {
         ISeriesManager seriesManager;
         ICategoryManager categoryManager;
+        SeriesForm seriesForm;
 
         private int seriesId = 0;
         private int season;
         private int episode;
         private int rating;
         private int year;
-        public AddSeriesForm()
+        public AddSeriesForm(SeriesForm seriesForm)
         {
             InitializeComponent();
+            this.seriesForm = seriesForm;
             seriesManager = new SeriesManager(new SeriesDALManager());
             categoryManager = new CategoryManager(new CategoryDALManager());
             cbCategory.Items.AddRange(categoryManager.GetAll().ToArray());
@@ -34,6 +36,7 @@ namespace MovieNightOOD.Forms.MediaSubForms
 
         public void SetSeriesId(int seriesId = 0)
         {
+            rating = Convert.ToInt32(cbRating.Text);
             this.seriesId = seriesId;
             Series series = seriesManager.GetById(seriesId);
             numSeason.Value = series.Season;
@@ -43,8 +46,8 @@ namespace MovieNightOOD.Forms.MediaSubForms
             tbImageLink.Text = series.ImageLink;
             tbTrailerLink.Text = series.TrailerLink;
             cbCategory.Text = series.Category.Name;
-            tbCountry.Text = series.Country;
-            numRating.Value = series.Rating;
+            cbCountry.Text = series.Country;
+            rating = series.Rating;
             numYear.Value = series.Year;
 
         }
@@ -52,16 +55,23 @@ namespace MovieNightOOD.Forms.MediaSubForms
         {
             season = Convert.ToInt32(numSeason.Value);
             episode = Convert.ToInt32(numEpisode.Value);
-            rating = Convert.ToInt32(numRating.Value);
+            rating = Convert.ToInt32(cbRating.Text);
             year = Convert.ToInt32(numYear.Value);
             Category category = categoryManager.GetByName(cbCategory.Text);
             Series series = new Series(seriesId, season, episode, tbTitle.Text, tbDescription.Text, tbImageLink.Text,
-                tbTrailerLink.Text, category, tbCountry.Text, rating, year);
+                tbTrailerLink.Text, category, cbCountry.Text, rating, year);
+            if (tbTitle.Text == null || tbDescription.Text == null || tbImageLink.Text == null || tbTrailerLink.Text == null || cbCategory.Text == null ||
+                cbCountry.Text == null || numYear.Text == null || numEpisode.Text == null || numSeason.Text == null)
+            {
+                MessageBox.Show("All fields marked with * are required!");
+            }
             if (series.Id == 0)
                 seriesManager.Create(series);
             else
                 seriesManager.Update(series);
             this.Hide();
+            seriesForm.menu.ChangeShownForm(seriesForm);
+            seriesForm.dgvSeries.DataSource = seriesManager.GetBySearch("");
         }
     }
 }

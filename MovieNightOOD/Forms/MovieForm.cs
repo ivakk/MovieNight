@@ -17,7 +17,7 @@ namespace MovieNightOOD.Forms
 {
     public partial class MovieForm : Form
     {
-        Menu menu;
+        public Menu menu;
         AddMovieForm addMovieForm;
 
         IMovieManager movieManager;
@@ -28,7 +28,7 @@ namespace MovieNightOOD.Forms
             InitializeComponent();
             movieManager = new MovieManager(new MovieDALManager());
             categoryManager = new CategoryManager(new CategoryDALManager());
-            addMovieForm = new MediaSubForms.AddMovieForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
+            addMovieForm = new MediaSubForms.AddMovieForm(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
             this.menu = menu;
 
             cbCategory.Items.AddRange(categoryManager.GetAll().ToArray());

@@ -96,6 +96,8 @@
             cbCategory.Name = "cbCategory";
             cbCategory.Size = new Size(203, 33);
             cbCategory.TabIndex = 6;
+            cbCategory.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbCategory.Items.Add("");
             // 
             // label1
             // 
@@ -210,7 +212,7 @@
         private ComboBox cbCategory;
         private Label label1;
         private Button btnSearch;
-        private DataGridView dgvMovies;
+        public DataGridView dgvMovies;
         private Button btnAdd;
         private Button btnDelete;
         private Button btnEdit;

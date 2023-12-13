@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MovieNight_InterfacesLL.IServices;
 using MovieNight_DataAccess.Controllers;
+using Microsoft.Extensions.Logging;
 
 namespace MovieNightOOD.Forms.MediaSubForms
 {
@@ -18,20 +19,24 @@ namespace MovieNightOOD.Forms.MediaSubForms
     {
         IMovieManager movieManager;
         ICategoryManager categoryManager;
+        MovieForm movieForm;
 
         private int movieId = 0;
         private int rating;
         private int year;
-        public AddMovieForm()
+        public AddMovieForm(MovieForm movieForm)
         {
             InitializeComponent();
+            this.movieForm = movieForm;
             movieManager = new MovieManager(new MovieDALManager());
             categoryManager = new CategoryManager(new CategoryDALManager());
             cbCategory.Items.AddRange(categoryManager.GetAll().ToArray());
+            this.movieForm = movieForm;
         }
 
         public void SetMovieId(int movieId = 0)
         {
+            rating = Convert.ToInt32(cbRating.Text);
             this.movieId = movieId;
             Movie movie = movieManager.GetById(movieId);
             tbTitle.Text = movie.Title;
@@ -39,23 +44,35 @@ namespace MovieNightOOD.Forms.MediaSubForms
             tbImageLink.Text = movie.ImageLink;
             tbTrailerLink.Text = movie.TrailerLink;
             cbCategory.Text = movie.Category.Name;
-            tbCountry.Text = movie.Country;
-            numRating.Value = movie.Rating;
+            cbCountry.Text = movie.Country;
+            rating = movie.Rating;
             numYear.Value = movie.Year;
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            rating = Convert.ToInt32(numRating.Value);
-            year = Convert.ToInt32(numYear.Value);
-            Category category = categoryManager.GetByName(cbCategory.Text);
-            Movie movie = new Movie(movieId, movieId, tbTitle.Text, tbDescription.Text, tbImageLink.Text, tbTrailerLink.Text, category, tbCountry.Text,
-                rating, year);
-            System.Diagnostics.Debug.WriteLine(movieId);
-            if (movieId == 0)
-                movieManager.Create(movie);
+            if (cbRating.Text != "")
+            {
+                rating = Convert.ToInt32(cbRating.Text);
+            }
+            if (tbTitle.Text == null || tbDescription.Text == null || tbImageLink.Text == null || tbTrailerLink.Text == null || cbCategory.Text == null ||
+                cbCountry.Text == null || numYear.Text == null)
+            {
+                MessageBox.Show("All fields marked with * are required!");
+            }
             else
-                movieManager.Update(movie);
-            this.Hide();
+            {
+                year = Convert.ToInt32(numYear.Value);
+                Category category = categoryManager.GetByName(cbCategory.Text);
+                Movie movie = new Movie(movieId, movieId, tbTitle.Text, tbDescription.Text, tbImageLink.Text, tbTrailerLink.Text, category, cbCountry.Text,
+                    rating, year);
+                if (movieId == 0)
+                    movieManager.Create(movie);
+                else
+                    movieManager.Update(movie);
+                this.Hide();
+                movieForm.menu.ChangeShownForm(movieForm);
+                movieForm.dgvMovies.DataSource = movieManager.GetBySearch("");
+            }
         }
 
         private void label5_Click(object sender, EventArgs e)

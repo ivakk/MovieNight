@@ -40,7 +40,7 @@ namespace MovieNight_BusinessLogic.Services
         {
             if (!controller.IsPasswordCorrect(username, password))
             {
-                throw new ArgumentException("Your login details are incorrect.");
+                throw new Exception();
             }
 
             User user = controller.GetUserByUsername(username);
