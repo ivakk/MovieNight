@@ -132,9 +132,6 @@ namespace MovieNight_DataAccess.Controllers
 
         public void DeleteSeries(int Id)
         {
-
-            base.DeleteObject(Id);
-
             // Set up the query
             string query = $"DELETE FROM {tableName} WHERE id = @id";
 
@@ -151,6 +148,8 @@ namespace MovieNight_DataAccess.Controllers
             {
                 // Execute the query and get the data
                 using SqlDataReader reader = command.ExecuteReader();
+                reader.Close();
+                base.DeleteObject(Id);
             }
             catch (SqlException e)
             {

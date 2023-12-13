@@ -9,7 +9,6 @@
       "MovieNight-BusinessLogic/1.0.0": {
         "dependencies": {
           "MovieNight-DataAccess": "1.0.0",
-          "MovieNight-InterfacesDAL": "1.0.0",
           "MovieNight-InterfacesLL": "1.0.0"
         },
         "runtime": {

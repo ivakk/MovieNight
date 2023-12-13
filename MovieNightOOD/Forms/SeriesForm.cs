@@ -17,7 +17,7 @@ namespace MovieNightOOD.Forms
 {
     public partial class SeriesForm : Form
     {
-        Menu menu;
+        public Menu menu;
         AddSeriesForm addSeriesForm;
 
         ISeriesManager seriesManager;
@@ -28,7 +28,7 @@ namespace MovieNightOOD.Forms
             InitializeComponent();
             seriesManager = new SeriesManager(new SeriesDALManager());
             categoryManager = new CategoryManager(new CategoryDALManager());
-            addSeriesForm = new MediaSubForms.AddSeriesForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
+            addSeriesForm = new MediaSubForms.AddSeriesForm(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
             this.menu = menu;
 
             cbCategory.Items.AddRange(categoryManager.GetAll().ToArray());

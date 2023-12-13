@@ -59,7 +59,6 @@ namespace MovieNightOOD
                 try
                 {
                     User user = userManager.CheckUser(usernameEntry.Text, passwordEntry.Text);
-                    System.Diagnostics.Debug.WriteLine(user.Id, user.FirstName + "asd");
                     if (user.Role == "admin")
                     {
                         Menu menu = new Menu(user, this);
@@ -71,9 +70,9 @@ namespace MovieNightOOD
                         MessageBox.Show("You do not have access!");
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show("" + ex);
+                    MessageBox.Show("Your login details are incorrect!");
                 }
             }
         }

@@ -5936,7 +5936,6 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "MovieNight-DataAccess >= 1.0.0",
-      "MovieNight-InterfacesDAL >= 1.0.0",
       "MovieNight-InterfacesLL >= 1.0.0"
     ]
   },
@@ -5974,9 +5973,6 @@
           "projectReferences": {
             "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj": {
               "projectPath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj"
-            },
-            "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj": {
-              "projectPath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj"
             },
             "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-InterfacesLL\\MovieNight-InterfacesLL.csproj": {
               "projectPath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-InterfacesLL\\MovieNight-InterfacesLL.csproj"

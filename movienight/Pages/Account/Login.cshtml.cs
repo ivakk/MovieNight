@@ -7,14 +7,19 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Net.Mail;
 using MovieNight_DataAccess.Controllers;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using MovieNight_InterfacesLL.IServices;
 
 namespace MovieNight.Pages.Account
 {
     public class LoginModel : PageModel
     {
         [BindProperty]
+        [Required]
         public string? Username { get; set; }
         [BindProperty]
+        [Required]
         public string? Password { get; set; }
 
         public void OnGet()
@@ -28,7 +33,7 @@ namespace MovieNight.Pages.Account
 
         public void OnPost()
         {
-            UserManager userManager = new UserManager(new UserDALManager());
+            IUserManager userManager = new UserManager(new UserDALManager());
 
             try
             {
@@ -45,9 +50,9 @@ namespace MovieNight.Pages.Account
 
                 Response.Redirect("/Account/YourAccount");
             }
-            catch (ArgumentException ex)
+            catch (Exception)
             {
-                ViewData["Error"] = ex.Message;
+                ViewData["Error"] = "Check your account details!";
             }
         }
     }

@@ -197,7 +197,10 @@ namespace MovieNight_DataAccess.Controllers
             string query = $"DELETE FROM {tableName} WHERE id = @Id";
 
             // Open the connection
-            connection.Open();
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
 
             // Creating Command string to combine the query and the connection String
             SqlCommand command = new SqlCommand(query, Connection.connection);
@@ -208,7 +211,8 @@ namespace MovieNight_DataAccess.Controllers
             try
             {
                 // Execute the query and get the data
-                //using SqlDataReader reader = command.ExecuteReader();
+                using SqlDataReader reader = command.ExecuteReader();
+                reader.Close();
             }
             catch (SqlException e)
             {
