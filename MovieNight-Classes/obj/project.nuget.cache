@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OCmLYlBagwc/4dLwBvsH2Q2X//1InhnUXECDxdk7pgQAwu2VDX4IpoSlTwPQonhHUpcJYpEKS4tvuyD0Q0V8qg==",
+  "dgSpecHash": "x7OdFhhxyGrg4il8i/C0w39IhalA/iInn3B/GSrQ2yslM7GjGimKFa1pgnfdMMIGsBPvHcgucpDvfEU0+O94tg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj",
+  "projectFilePath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ivoml\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Users\\ivoml\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",

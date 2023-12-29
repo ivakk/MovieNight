@@ -97,7 +97,7 @@ namespace MovieNight_DataAccess.Controllers
 
             string query =
                 $"UPDATE {tableName} SET " +
-                $"movieId = @movieId " +
+                $"length = @length " +
                 $"WHERE id = @id";
 
             // Open the connection
@@ -106,7 +106,7 @@ namespace MovieNight_DataAccess.Controllers
             // Creating Command string to combine the query and the connection String
             SqlCommand command = new SqlCommand(query, Connection.connection);
 
-            command.Parameters.AddWithValue("@movieId", newMovie.MovieId);
+            command.Parameters.AddWithValue("@length", newMovie.Length);
 
             try
             {
@@ -161,8 +161,8 @@ namespace MovieNight_DataAccess.Controllers
         {
             base.CreateObject(newMovie);
             string query =
-                $"INSERT INTO {tableName} (id, movieId) " +
-                $"VALUES (@id, @movieId)";
+                $"INSERT INTO {tableName} (id, length) " +
+                $"VALUES (@id, @length)";
 
             // Open the connection
             try
@@ -175,7 +175,7 @@ namespace MovieNight_DataAccess.Controllers
             // Creating Command string to combine the query and the connection String
             SqlCommand command = new SqlCommand(query, Connection.connection);
             command.Parameters.AddWithValue("@id", GetNextId());
-            command.Parameters.AddWithValue("@movieId", GetNextId());
+            command.Parameters.AddWithValue("@length", GetNextId());
             try
             {
                 // Execute the query and get the data

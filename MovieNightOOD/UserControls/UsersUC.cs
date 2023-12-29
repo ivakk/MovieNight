@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MovieNight_InterfacesLL.IServices;
+using MovieNight_DataAccess.Controllers;
 
 namespace MovieNightOOD.UserControls
 {
@@ -25,6 +26,7 @@ namespace MovieNightOOD.UserControls
             InitializeComponent();
             this.User = user;
             this.usersForm = usersForm;
+            userService = new UserManager(new UserDALManager());
         }
 
         private void UsersUC_Load(object sender, EventArgs e)

@@ -8,7 +8,7 @@ namespace MovieNight_InterfacesLL
 {
     public interface IPasswordHashingManager
     {
-        string passSalt(int length);
-        string passHash(string password, string passwordSalt);
+        string PassSalt(int length);
+        string PassHash(string password, string passwordSalt);
     }
 }

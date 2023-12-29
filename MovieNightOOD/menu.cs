@@ -20,9 +20,6 @@ namespace MovieNightOOD
 {
     public partial class Menu : Form
     {
-        private readonly IUserManager userManager;
-        private readonly IMovieManager movieManager;
-        private readonly ICategoryManager categoryManager;
         public IServiceProvider ServiceProvider { get; private set; }
 
         Login loginForm;

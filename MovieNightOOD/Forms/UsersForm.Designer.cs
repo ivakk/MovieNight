@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            btnUnbanLoad = new Button();
+            btnBanLoad = new Button();
             btnAdd = new Button();
             lblBrand = new Label();
             btnSearch = new Button();
@@ -40,6 +42,8 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.LightGray;
+            groupBox1.Controls.Add(btnUnbanLoad);
+            groupBox1.Controls.Add(btnBanLoad);
             groupBox1.Controls.Add(btnAdd);
             groupBox1.Controls.Add(lblBrand);
             groupBox1.Controls.Add(btnSearch);
@@ -51,6 +55,34 @@
             groupBox1.TabIndex = 11;
             groupBox1.TabStop = false;
             groupBox1.Text = "SEARCH";
+            // 
+            // btnUnbanLoad
+            // 
+            btnUnbanLoad.BackColor = Color.FromArgb(117, 54, 112);
+            btnUnbanLoad.FlatStyle = FlatStyle.Flat;
+            btnUnbanLoad.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUnbanLoad.ForeColor = Color.WhiteSmoke;
+            btnUnbanLoad.Location = new Point(408, 122);
+            btnUnbanLoad.Name = "btnUnbanLoad";
+            btnUnbanLoad.Size = new Size(188, 43);
+            btnUnbanLoad.TabIndex = 13;
+            btnUnbanLoad.Text = "Unban a User";
+            btnUnbanLoad.UseVisualStyleBackColor = false;
+            btnUnbanLoad.Click += btnUnbanLoad_Click;
+            // 
+            // btnBanLoad
+            // 
+            btnBanLoad.BackColor = Color.FromArgb(117, 54, 112);
+            btnBanLoad.FlatStyle = FlatStyle.Flat;
+            btnBanLoad.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBanLoad.ForeColor = Color.WhiteSmoke;
+            btnBanLoad.Location = new Point(215, 122);
+            btnBanLoad.Name = "btnBanLoad";
+            btnBanLoad.Size = new Size(154, 43);
+            btnBanLoad.TabIndex = 12;
+            btnBanLoad.Text = "Ban a User";
+            btnBanLoad.UseVisualStyleBackColor = false;
+            btnBanLoad.Click += button1_Click;
             // 
             // btnAdd
             // 
@@ -127,5 +159,7 @@
         private Button btnSearch;
         private TextBox tbSearch;
         private FlowLayoutPanel flpUsers;
+        private Button btnUnbanLoad;
+        private Button btnBanLoad;
     }
 }

@@ -52,7 +52,14 @@ namespace MovieNight.Pages.Account
             }
             catch (Exception)
             {
-                ViewData["Error"] = "Check your account details!";
+                if (userManager.BannedUser(userManager.GetByUsername(Username)))
+                {
+                    ViewData["Error"] = "You are currently banned!";
+                }
+                else
+                {
+                    ViewData["Error"] = "Check your account details!";
+                }
             }
         }
     }

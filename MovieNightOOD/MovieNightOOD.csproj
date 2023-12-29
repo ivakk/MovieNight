@@ -25,6 +25,12 @@
     <Compile Update="Forms\SeriesForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\UserSubForms\BanUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\UserSubForms\UnbanUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

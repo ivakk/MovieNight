@@ -22,6 +22,7 @@ namespace MovieNightOOD.Forms.MediaSubForms
         MovieForm movieForm;
 
         private int movieId = 0;
+        private int length;
         private int rating;
         private int year;
         public AddMovieForm(MovieForm movieForm)
@@ -37,6 +38,8 @@ namespace MovieNightOOD.Forms.MediaSubForms
         public void SetMovieId(int movieId = 0)
         {
             rating = Convert.ToInt32(cbRating.Text);
+            length = Convert.ToInt32(numLength.Text);
+            year = Convert.ToInt32(numYear.Value);
             this.movieId = movieId;
             Movie movie = movieManager.GetById(movieId);
             tbTitle.Text = movie.Title;
@@ -46,7 +49,8 @@ namespace MovieNightOOD.Forms.MediaSubForms
             cbCategory.Text = movie.Category.Name;
             cbCountry.Text = movie.Country;
             rating = movie.Rating;
-            numYear.Value = movie.Year;
+            year = movie.Year;
+            length = movie.Length;
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -54,16 +58,18 @@ namespace MovieNightOOD.Forms.MediaSubForms
             {
                 rating = Convert.ToInt32(cbRating.Text);
             }
+
             if (tbTitle.Text == null || tbDescription.Text == null || tbImageLink.Text == null || tbTrailerLink.Text == null || cbCategory.Text == null ||
-                cbCountry.Text == null || numYear.Text == null)
+                cbCountry.Text == null || numYear.Text == null || numLength.Text== null)
             {
                 MessageBox.Show("All fields marked with * are required!");
             }
             else
             {
+                length = Convert.ToInt32(numLength.Value);
                 year = Convert.ToInt32(numYear.Value);
                 Category category = categoryManager.GetByName(cbCategory.Text);
-                Movie movie = new Movie(movieId, movieId, tbTitle.Text, tbDescription.Text, tbImageLink.Text, tbTrailerLink.Text, category, cbCountry.Text,
+                Movie movie = new Movie(movieId, length, tbTitle.Text, tbDescription.Text, tbImageLink.Text, tbTrailerLink.Text, category, cbCountry.Text,
                     rating, year);
                 if (movieId == 0)
                     movieManager.Create(movie);

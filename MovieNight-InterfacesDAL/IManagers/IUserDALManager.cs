@@ -15,7 +15,10 @@ namespace MovieNight_InterfacesDAL.IManagers
         bool UpdateUser(User newUser);
         void DeleteUser(int id);
         bool InsertUser(User newUser);
-        bool IsPasswordCorrect(string username, string password);
-
+        void BanUser(User banUser, string reason);
+        void UnbanUser(User bannedUser);
+        bool IsUserBanned(User bannedUser);
+        bool ExistingUsername(string username);
+        bool ExistingEmail(string email);
     }
 }

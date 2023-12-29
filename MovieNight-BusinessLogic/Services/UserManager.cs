@@ -10,12 +10,14 @@ using System.Threading.Tasks;
 using MovieNight_InterfacesDAL.IManagers;
 using MovieNight_InterfacesLL.IServices;
 using MovieNight_InterfacesDAL;
+using System.Text.RegularExpressions;
 
 namespace MovieNight_BusinessLogic.Services
 {
     public class UserManager : IUserManager
     {
         IUserDALManager controller;
+        PasswordHashingManager passwordHasher = new PasswordHashingManager();
         public UserManager(IUserDALManager controller)
         {
             this.controller = controller;
@@ -30,20 +32,51 @@ namespace MovieNight_BusinessLogic.Services
         {
             return controller.GetUserById(id);
         }
+        public User GetByUsername(string username)
+        {
+            return controller.GetUserByUsername(username);
+        }
         public bool CreateUser(User user)
         {
             return controller.InsertUser(user);
         }
 
+        public bool IsUserPasswordCorrect(string username, string password)
+        {
+            /// <summary>
+            /// This function returns true, if the password is correct for the given username.
+            /// </summary>
+
+            // Get user by username property, 
+            User user = GetByUsername(username);
+
+            // If there is no user with the given username address, return false.
+            if (user == null)
+            {
+                // No user found with given username.
+                return false;
+            }
+
+            string hashedPasswordToCheck = passwordHasher.PassHash(password, user.PasswordSalt);
+
+            if (user.PasswordHash == hashedPasswordToCheck)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public User CheckUser(string username, string password)
         {
-            if (!controller.IsPasswordCorrect(username, password))
+            if (!IsUserPasswordCorrect(username, password))
             {
                 throw new Exception();
             }
 
-            User user = controller.GetUserByUsername(username);
+            User user = GetByUsername(username);
 
             return user;
         }
@@ -67,6 +100,37 @@ namespace MovieNight_BusinessLogic.Services
         public void DeleteUser(int id)
         {
             controller.DeleteUser(id);
+        }
+        public void BanningUser(User user, string reason)
+        {
+            controller.BanUser(user, reason);
+        }
+        public void UnbanningUser(User user)
+        {
+            controller.UnbanUser(user);
+        }
+        public bool BannedUser(User bannedUser)
+        {
+            if(controller.IsUserBanned(bannedUser) == true) { return true; }
+            return false;
+        }
+
+        public bool EmailCheck(string email)
+        {
+            Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", RegexOptions.IgnoreCase);
+
+            return emailRegex.IsMatch(email);
+        }
+
+        public bool UsernameExists(string username)
+        {
+            if (controller.ExistingUsername(username) == true) { return true; }
+            return false;
+        }
+        public bool EmailExists(string email)
+        {
+            if (controller.ExistingEmail(email) == true) { return true; }
+            return false;
         }
     }
 }

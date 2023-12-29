@@ -24,6 +24,9 @@ namespace MovieNightOOD.Forms
     {
         public Menu menu;
         AddUserForm addUserForm;
+        BanUserForm banUserForm;
+        UnbanUserForm unbanUserForm;
+
 
         IUserManager userService;
         IPasswordHashingManager hashing;
@@ -32,8 +35,10 @@ namespace MovieNightOOD.Forms
             InitializeComponent();
             this.menu = menu;
             userService = new UserManager(new UserDALManager());
-            hashing = new PasswordHashingManager(new PasswordHashing());
+            hashing = new PasswordHashingManager();
             addUserForm = new AddUserForm(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
+            banUserForm = new BanUserForm(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
+            unbanUserForm = new UnbanUserForm(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -62,6 +67,20 @@ namespace MovieNightOOD.Forms
                 flpUsers.Controls.Add(userControl);
                 userControl.Show();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            menu.pnlMainForm.Controls.Clear();
+            this.menu.pnlMainForm.Controls.Add(banUserForm);
+            banUserForm.Show();
+        }
+
+        private void btnUnbanLoad_Click(object sender, EventArgs e)
+        {
+            menu.pnlMainForm.Controls.Clear();
+            this.menu.pnlMainForm.Controls.Add(unbanUserForm);
+            unbanUserForm.Show();
         }
     }
 }
