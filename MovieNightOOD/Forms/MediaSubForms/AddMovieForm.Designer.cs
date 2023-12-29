@@ -46,13 +46,18 @@
             tbDescription = new TextBox();
             cbCategory = new ComboBox();
             label3 = new Label();
+            numLength = new NumericUpDown();
+            label8 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numYear).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numLength).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
             groupBox1.BackColor = Color.LightGray;
+            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(numLength);
             groupBox1.Controls.Add(cbRating);
             groupBox1.Controls.Add(cbCountry);
             groupBox1.Controls.Add(tbImageLink);
@@ -251,6 +256,26 @@
             label3.TabIndex = 5;
             label3.Text = "Category *";
             // 
+            // numLength
+            // 
+            numLength.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            numLength.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            numLength.Location = new Point(140, 462);
+            numLength.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
+            numLength.Name = "numLength";
+            numLength.Size = new Size(79, 32);
+            numLength.TabIndex = 47;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(51, 464);
+            label8.Name = "label8";
+            label8.Size = new Size(83, 25);
+            label8.TabIndex = 48;
+            label8.Text = "Length *";
+            // 
             // AddMovieForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -263,6 +288,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numYear).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numLength).EndInit();
             ResumeLayout(false);
         }
 
@@ -286,5 +312,7 @@
         private Label label1;
         private ComboBox cbCountry;
         private ComboBox cbRating;
+        private Label label8;
+        private NumericUpDown numLength;
     }
 }

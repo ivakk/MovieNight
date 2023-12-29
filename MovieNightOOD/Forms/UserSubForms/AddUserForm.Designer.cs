@@ -72,6 +72,7 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "ADD/EDIT USER";
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // label11
             // 
@@ -91,6 +92,7 @@
             tbUsername.Name = "tbUsername";
             tbUsername.Size = new Size(400, 32);
             tbUsername.TabIndex = 33;
+            tbUsername.TextChanged += tbUsername_TextChanged;
             // 
             // label10
             // 
@@ -100,6 +102,7 @@
             label10.Name = "label10";
             label10.Size = new Size(0, 25);
             label10.TabIndex = 31;
+            label10.Click += label10_Click;
             // 
             // label9
             // 
@@ -109,6 +112,7 @@
             label9.Name = "label9";
             label9.Size = new Size(0, 25);
             label9.TabIndex = 29;
+            label9.Click += label9_Click;
             // 
             // label8
             // 
@@ -118,6 +122,7 @@
             label8.Name = "label8";
             label8.Size = new Size(0, 25);
             label8.TabIndex = 27;
+            label8.Click += label8_Click;
             // 
             // label6
             // 
@@ -128,6 +133,7 @@
             label6.Size = new Size(86, 25);
             label6.TabIndex = 25;
             label6.Text = "Birthday:";
+            label6.Click += label6_Click;
             // 
             // dtpbirthday
             // 
@@ -139,6 +145,7 @@
             dtpbirthday.Size = new Size(276, 32);
             dtpbirthday.TabIndex = 24;
             dtpbirthday.Value = new DateTime(2023, 11, 7, 12, 0, 0, 0);
+            dtpbirthday.ValueChanged += dtpbirthday_ValueChanged;
             // 
             // label3
             // 
@@ -148,6 +155,7 @@
             label3.Name = "label3";
             label3.Size = new Size(0, 25);
             label3.TabIndex = 20;
+            label3.Click += label3_Click;
             // 
             // tbEmail
             // 
@@ -156,6 +164,7 @@
             tbEmail.Name = "tbEmail";
             tbEmail.Size = new Size(400, 32);
             tbEmail.TabIndex = 17;
+            tbEmail.TextChanged += tbEmail_TextChanged;
             // 
             // label4
             // 
@@ -166,6 +175,7 @@
             label4.Size = new Size(128, 25);
             label4.TabIndex = 16;
             label4.Text = "Email address";
+            label4.Click += label4_Click;
             // 
             // tbLastName
             // 
@@ -174,6 +184,7 @@
             tbLastName.Name = "tbLastName";
             tbLastName.Size = new Size(400, 32);
             tbLastName.TabIndex = 15;
+            tbLastName.TextChanged += tbLastName_TextChanged;
             // 
             // label2
             // 
@@ -184,6 +195,7 @@
             label2.Size = new Size(100, 25);
             label2.TabIndex = 14;
             label2.Text = "Last Name";
+            label2.Click += label2_Click;
             // 
             // btnAdd
             // 
@@ -206,6 +218,7 @@
             tbFirstName.Name = "tbFirstName";
             tbFirstName.Size = new Size(400, 32);
             tbFirstName.TabIndex = 3;
+            tbFirstName.TextChanged += tbFirstName_TextChanged;
             // 
             // label1
             // 
@@ -216,6 +229,7 @@
             label1.Size = new Size(102, 25);
             label1.TabIndex = 0;
             label1.Text = "First Name";
+            label1.Click += label1_Click;
             // 
             // AddUserForm
             // 

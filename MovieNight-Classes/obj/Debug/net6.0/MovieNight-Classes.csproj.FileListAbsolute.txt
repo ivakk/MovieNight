@@ -10,3 +10,15 @@ C:\Users\ivoml\Desktop\newest\movienight\MovieNight-Classes\obj\Debug\net6.0\Mov
 C:\Users\ivoml\Desktop\newest\movienight\MovieNight-Classes\obj\Debug\net6.0\refint\MovieNight-Classes.dll
 C:\Users\ivoml\Desktop\newest\movienight\MovieNight-Classes\obj\Debug\net6.0\MovieNight-Classes.pdb
 C:\Users\ivoml\Desktop\newest\movienight\MovieNight-Classes\obj\Debug\net6.0\ref\MovieNight-Classes.dll
+C:\Users\ivoml\Desktop\1412mn\movienight\MovieNight-Classes\bin\Debug\net6.0\MovieNight-Classes.deps.json
+C:\Users\ivoml\Desktop\1412mn\movienight\MovieNight-Classes\bin\Debug\net6.0\MovieNight-Classes.dll
+C:\Users\ivoml\Desktop\1412mn\movienight\MovieNight-Classes\bin\Debug\net6.0\MovieNight-Classes.pdb
+C:\Users\ivoml\Desktop\1412mn\movienight\MovieNight-Classes\obj\Debug\net6.0\MovieNight-Classes.csproj.AssemblyReference.cache
+C:\Users\ivoml\Desktop\1412mn\movienight\MovieNight-Classes\obj\Debug\net6.0\MovieNight-Classes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ivoml\Desktop\1412mn\movienight\MovieNight-Classes\obj\Debug\net6.0\MovieNight-Classes.AssemblyInfoInputs.cache
+C:\Users\ivoml\Desktop\1412mn\movienight\MovieNight-Classes\obj\Debug\net6.0\MovieNight-Classes.AssemblyInfo.cs
+C:\Users\ivoml\Desktop\1412mn\movienight\MovieNight-Classes\obj\Debug\net6.0\MovieNight-Classes.csproj.CoreCompileInputs.cache
+C:\Users\ivoml\Desktop\1412mn\movienight\MovieNight-Classes\obj\Debug\net6.0\MovieNight-Classes.dll
+C:\Users\ivoml\Desktop\1412mn\movienight\MovieNight-Classes\obj\Debug\net6.0\refint\MovieNight-Classes.dll
+C:\Users\ivoml\Desktop\1412mn\movienight\MovieNight-Classes\obj\Debug\net6.0\MovieNight-Classes.pdb
+C:\Users\ivoml\Desktop\1412mn\movienight\MovieNight-Classes\obj\Debug\net6.0\ref\MovieNight-Classes.dll

@@ -16,7 +16,7 @@ namespace MovieNight_DataAccess.Controllers
     {
 
         private static readonly string tableName = "ObjectToWatch";
-        private ICategoryDALManager categoryController;
+        private CategoryDALManager categoryController;
 
         public ObjectToWatchDALManager()
         {

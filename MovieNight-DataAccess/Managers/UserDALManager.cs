@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using MovieNight_Classes;
 using System.Data;
 using MovieNight_InterfacesDAL.IManagers;
+using System.Diagnostics;
 
 namespace MovieNight_DataAccess.Controllers
 {
@@ -25,6 +26,7 @@ namespace MovieNight_DataAccess.Controllers
         public User GetUserById(int id)
         {
             string query = $"SELECT * FROM {tableName} WHERE id = @id";
+            User user = null;
 
             // Open the connection
             connection.Open();
@@ -39,7 +41,7 @@ namespace MovieNight_DataAccess.Controllers
                 using SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    return new User((int)reader.GetValue(0),(string)reader.GetValue(1),
+                    user = new User((int)reader.GetValue(0),(string)reader.GetValue(1),
                         (string)reader.GetValue(2), (DateTime)reader.GetValue(3), 
                         (string)reader.GetValue(4), (string)reader.GetValue(5), 
                         (string)reader.GetValue(6), (string)reader.GetValue(7), 
@@ -53,7 +55,7 @@ namespace MovieNight_DataAccess.Controllers
             {
                 connection.Close();
             }
-            return new User();
+            return user;
         }
 
         /**
@@ -122,6 +124,7 @@ namespace MovieNight_DataAccess.Controllers
                         (string)reader.GetValue(6), (string)reader.GetValue(7),
                         (string)reader.GetValue(8)));
                 }
+                reader.Close();
                 return user;
             } catch (SqlException e) {
                 // Handle any errors that may have occurred.
@@ -138,9 +141,9 @@ namespace MovieNight_DataAccess.Controllers
         {
             string query =
                 $"UPDATE {tableName} " +
-                $"SET firstName = @firstName, lastName = @lastName, email = @email " +
-                $"birthday = @birthdate, passwordHash = @passwordHash, passwordSalt = @passwordSalt, role = @role" +
-                $"WHERE userId = @id";
+                $"SET firstName = @firstName, lastName = @lastName, email = @email, " +
+                $"birthday = @birthdate, passwordHash = @passwordHash, passwordSalt = @passwordSalt, role = @role " +
+                $"WHERE id = @id";
 
             // Open the connection
             connection.Open();
@@ -169,9 +172,13 @@ namespace MovieNight_DataAccess.Controllers
             catch (SqlException e)
             {
                 // Handle any errors that may have occurred.
-                Console.WriteLine(e.Message);
+                System.Diagnostics.Debug.WriteLine(e.Message);
                 connection.Close();
                 return false;
+            }
+            finally
+            {
+                connection.Close();
             }
         }
 
@@ -205,6 +212,7 @@ namespace MovieNight_DataAccess.Controllers
             {
                 connection.Close();
             }
+
         }
 
         /**
@@ -239,7 +247,6 @@ namespace MovieNight_DataAccess.Controllers
 
                 connection.Close();
                 return true;
-                ;
             }
             catch (SqlException e)
             {
@@ -248,36 +255,168 @@ namespace MovieNight_DataAccess.Controllers
                 connection.Close();
                 return false;
             }
-
+            finally
+            {
+                connection.Close();
+            }
         }
- 
-        public bool IsPasswordCorrect(string username, string password)
+
+        public void BanUser(User banUser, string reason)
         {
-            /// <summary>
-            /// This function returns true, if the password is correct for the given username.
-            /// </summary>
+            string query = $"INSERT INTO Banned " +
+                           $"(reason, userId) " +
+                           $"VALUES (@reason, @userId)";
 
-            // Get user by username property, 
-            User user = GetUserByUsername(username);
+            connection.Open();
 
-            // If there is no user with the given username address, return false.
-            if (user == null)
+            SqlCommand command = new SqlCommand(query, Connection.connection);
+
+            try
             {
-                // No user found with given username.
-                return false;
-            }
+                command.Parameters.AddWithValue("@userId", banUser.Id);
+                command.Parameters.AddWithValue("@reason", reason);
 
-            PasswordHashing passwordHashing = new PasswordHashing();
-            string hashedPasswordToCheck = passwordHashing.GenerateSHA256Hash(password, user.PasswordSalt);
+                using SqlDataReader reader = command.ExecuteReader();
+            }
+            catch(SqlException e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                connection.Close();
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
 
-            if (user.PasswordHash == hashedPasswordToCheck)
+        public void UnbanUser(User bannedUser)
+        {
+            // Set up the query
+            string query = $"DELETE FROM Banned WHERE userId = @userId";
+
+            // Open the connection
+            connection.Open();
+
+            // Creating Command string to combine the query and the connection String
+            SqlCommand command = new SqlCommand(query, Connection.connection);
+
+            // Add the parameters
+            command.Parameters.AddWithValue("@userId", bannedUser.Id);
+
+            try
             {
-                return true;
+                // Execute the query and get the data
+                using SqlDataReader reader = command.ExecuteReader();
+                reader.Close();
             }
-            else
+            catch (SqlException e)
             {
-                return false;
+                // Handle any errors that may have occurred.
+                System.Diagnostics.Debug.WriteLine(e.Message);
             }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public bool IsUserBanned(User bannedUser)
+        {
+            string query = $"SELECT reason, userId FROM Banned JOIN Users ON Banned.userId = Users.id WHERE Users.id = @id";
+
+            // Open the connection
+            connection.Open();
+
+            SqlCommand command = new SqlCommand(query, Connection.connection);
+
+            try
+            {
+                // Add the parameters
+                command.Parameters.AddWithValue("@id", bannedUser.Id);
+
+                
+                // Execute the query and get the data
+                using SqlDataReader reader = command.ExecuteReader();
+                while (!reader.Read())
+                {
+                    return false;
+                }
+            }
+            catch (SqlException e)
+            {
+                // Handle any errors that may have occurred.
+                Debug.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return true;
+        }
+
+        public bool ExistingUsername(string username)
+        {
+            string query = $"SELECT * FROM {tableName} WHERE username = @username";
+
+            // Open the connection
+            connection.Open();
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                // Add the parameters
+                command.Parameters.AddWithValue("@username", username);
+
+                // Execute the query and get the data
+                using SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    return true;
+                }
+            }
+            catch (SqlException e)
+            {
+                // Handle any errors that may have occurred.
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+        public bool ExistingEmail(string email)
+        {
+            string query = $"SELECT * FROM {tableName} WHERE email = @email";
+
+            // Open the connection
+            connection.Open();
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                // Add the parameters
+                command.Parameters.AddWithValue("@email", email);
+
+                // Execute the query and get the data
+                using SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    return true;
+                }
+            }
+            catch (SqlException e)
+            {
+                // Handle any errors that may have occurred.
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
         }
     }
 }

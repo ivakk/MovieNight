@@ -5946,11 +5946,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-BusinessLogic\\MovieNight-BusinessLogic.csproj",
+      "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-BusinessLogic\\MovieNight-BusinessLogic.csproj",
       "projectName": "MovieNight-BusinessLogic",
-      "projectPath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-BusinessLogic\\MovieNight-BusinessLogic.csproj",
+      "projectPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-BusinessLogic\\MovieNight-BusinessLogic.csproj",
       "packagesPath": "C:\\Users\\ivoml\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-BusinessLogic\\obj\\",
+      "outputPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-BusinessLogic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5971,11 +5971,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj": {
-              "projectPath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj"
+            "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj": {
+              "projectPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj"
             },
-            "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-InterfacesLL\\MovieNight-InterfacesLL.csproj": {
-              "projectPath": "C:\\Users\\ivoml\\Desktop\\newest\\movienight\\MovieNight-InterfacesLL\\MovieNight-InterfacesLL.csproj"
+            "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-InterfacesLL\\MovieNight-InterfacesLL.csproj": {
+              "projectPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-InterfacesLL\\MovieNight-InterfacesLL.csproj"
             }
           }
         }
@@ -6005,7 +6005,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
