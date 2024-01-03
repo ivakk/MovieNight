@@ -20,7 +20,6 @@ namespace MovieNightOOD
 {
     public partial class Menu : Form
     {
-        public IServiceProvider ServiceProvider { get; private set; }
 
         Login loginForm;
         public User loggedInUser;

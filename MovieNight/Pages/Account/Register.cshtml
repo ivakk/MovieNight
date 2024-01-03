@@ -1,0 +1,77 @@
+﻿@page
+@model MovieNight.Pages.Account.RegisterModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Login/Sign Up";
+}
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login/Sign Up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/LoginPage.css">
+</head>
+
+
+<body>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+
+    <div class="form-wrap">
+        <div class="tabs">
+            <h3 class="login-tab"><a href="/Account/Login" style="border-top-right-radius: 7px;">Login</a></h3>
+            <h3 class="signup-tab"><a href="#signup-tab-content" class="active" style="border-top-left-radius: 7px;">Sign Up</a></h3>
+            <div><h6 class="error-message">@ViewData["Error"]</h6></div>
+        </div>
+        <div class="tabs-content">
+            <div id="signup-tab-content" class="tab-content active">
+                <form class="signup-form" method="post">
+                    <input type="text" class="input" autocomplete="off" asp-for="FirstName" placeholder="First name *" required>
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+
+                    <input type="text" class="input" autocomplete="off" asp-for="LastName" placeholder="Last name *" required>
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+
+                    <input type="email" class="input" autocomplete="off" asp-for="Email" placeholder="Email *" required>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                    <input type="text" class="input" autocomplete="off" asp-for="Username" placeholder="Username *" required>
+                    <p class="input-description">Username should be 3-16 letters and numbers</p>
+                    <span asp-validation-for="Username" class="text-danger"></span>
+
+                    <input type="password" class="input" autocomplete="off" asp-for="Password" placeholder="Password *" required>
+                    <p class="input-description">Password should be 8-32 symbols</p>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+                    <input type="text" class="input" asp-for="Birthdate" onfocus="this.type='date';" placeholder="Birthdate *" required>
+                    <p class="input-description">dd/mm/yyyy format</p>
+                    <span asp-validation-for="Birthdate" class="text-danger"></span>
+
+                    <input type="submit" class="button" value="Sign Up">
+                </form>
+                <div class="help">
+                    <p>By signing up, you agree to our</p>
+                    <p><a href="/ToS">Terms of service</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('birthdate').addEventListener('blur', function () {
+            if (!this.value) {
+                this.type = 'text';
+            }
+        });
+    </script>
+
+@*     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/LoginPage.js"></script> *@
+</body>

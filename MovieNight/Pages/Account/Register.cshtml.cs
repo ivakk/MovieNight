@@ -16,11 +16,11 @@ using Amazon.Runtime.Internal.Util;
 
 namespace MovieNight.Pages.Account
 {
-    public class LoginModel : PageModel
+    public class RegisterModel : PageModel
     {
         [BindProperty]
         [StringLength(16, MinimumLength = 3, ErrorMessage = "Username should be between 3 and 16 letters and numbers!")]
-        [RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "Invalid username!")] 
+        [RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "Invalid username!")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Username is required!")]
         public string? Username { get; set; }
 
@@ -45,26 +45,20 @@ namespace MovieNight.Pages.Account
         public string? LastName { get; set; }
 
         [BindProperty]
+        [DataType(DataType.Date)]
+        [RegularExpression(@"^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\d{4}$", ErrorMessage = "Please use dd/mm/yyyy format!")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Birthdate is required!")]
-        public DateTime Birthdate { get; set; }
-
-        [BindProperty]
-        public string Action { get; set; }
+        public DateTime? Birthdate { get; set; }
 
         private readonly IUserManager userManager;
+        private readonly IPasswordHashingManager hashing;
+        string passwordSalt;
+        string passwordHash;
 
-        public LoginModel()
+        public RegisterModel()
         {
             userManager = new UserManager(new UserDALManager());
-        }
-
-        public void OnGet()
-        {
-            if (User.Identity != null && User.Identity.IsAuthenticated)
-            {
-                Response.Redirect("/Account/YourAccount");
-                return;
-            }
+            hashing = new PasswordHashingManager();
         }
 
         public void OnPost()
@@ -75,34 +69,32 @@ namespace MovieNight.Pages.Account
                 Page();
             }
 
-
-            try
+            if (Username != null && userManager.UsernameExists(Username) == true)
             {
-                if (Username != null && userManager.BannedUser(userManager.GetByUsername(Username)))
-                {
-                    ViewData["Error"] = "You are currently banned!";
-                    Page();
-                }
-                else 
-                {
-                    User user = userManager.CheckUser(Username, Password);
-
-                    var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, user.Username.ToLower()),
-                        new Claim("id", user.Id.ToString()),
-                    };
-
-                    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                    HttpContext.SignInAsync(new ClaimsPrincipal(identity));
-
-                    Response.Redirect("/Index");
-                }
-            }
-            catch (Exception)
-            {
-                ViewData["Error"] = "Check your login details!";
+                ViewData["Error"] = "The username \"" + Username + "\" is already in use by another user!";
                 Page();
+            }
+            else if (Email != null && userManager.EmailExists(Email) == true)
+            {
+                ViewData["Error"] = "The email \"" + Email + "\" is already in use by another user!";
+                Page();
+            }
+            else
+            {
+                DateTime birthdate = Birthdate.Value;
+                passwordSalt = hashing.PassSalt(10);
+                passwordHash = hashing.PassHash(Password, passwordSalt);
+                User regUser = new User(0,
+                                        FirstName,
+                                        LastName,
+                                        birthdate,
+                                        Username,
+                                        Email,
+                                        passwordHash,
+                                        passwordSalt,
+                                        "default");
+                userManager.CreateUser(regUser);
+                Response.Redirect("/Account/Login");
             }
         }
     }
