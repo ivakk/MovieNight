@@ -62,6 +62,7 @@ namespace MovieNightOOD.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            addSeriesForm.SetSeriesId(0);
             menu.pnlMainForm.Controls.Clear();
             this.menu.pnlMainForm.Controls.Add(addSeriesForm);
             addSeriesForm.Show();

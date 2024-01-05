@@ -15,7 +15,7 @@ namespace MovieNight_Classes
         {
         }
 
-        public Movie(int id, int length, string title, string description, string imageLink, string trailerLink, Category category, string country,
+        public Movie(int length, int id, string title, string description, string imageLink, string trailerLink, Category category, string country,
                         int rating, int year) : base(id, title, description, imageLink, trailerLink, category, country, rating, year)
         {
             Length = length;

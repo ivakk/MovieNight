@@ -22,7 +22,9 @@ namespace MovieNight_DataAccess.Controllers
 
         public Series GetSeriesById(int id)
         {
-            string query = $"SELECT * FROM ObjectToWatch JOIN Series ON ObjectToWatch.id = Series.id JOIN Categories ON ObjectToWatch.categoryId = Categories.id";
+            string query = $"SELECT * FROM ObjectToWatch JOIN Series ON ObjectToWatch.id = Series.id " +
+                $"JOIN Categories ON ObjectToWatch.categoryId = Categories.id " +
+                $"WHERE ObjectToWatch.id = @id";
 
             // Open the connection
             connection.Open();
