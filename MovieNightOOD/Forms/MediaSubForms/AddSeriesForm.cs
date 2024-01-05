@@ -20,7 +20,7 @@ namespace MovieNightOOD.Forms.MediaSubForms
         ICategoryManager categoryManager;
         SeriesForm seriesForm;
 
-        private int seriesId = 0;
+        private int seriesId;
         private int season;
         private int episode;
         private int rating;
@@ -34,22 +34,37 @@ namespace MovieNightOOD.Forms.MediaSubForms
             cbCategory.Items.AddRange(categoryManager.GetAll().ToArray());
         }
 
-        public void SetSeriesId(int seriesId = 0)
+        public void SetSeriesId(int seriesid)
         {
-            rating = Convert.ToInt32(cbRating.Text);
-            this.seriesId = seriesId;
-            Series series = seriesManager.GetById(seriesId);
-            numSeason.Value = series.Season;
-            numEpisode.Value = series.Episode;
-            tbTitle.Text = series.Title;
-            tbDescription.Text = series.Description;
-            tbImageLink.Text = series.ImageLink;
-            tbTrailerLink.Text = series.TrailerLink;
-            cbCategory.Text = series.Category.Name;
-            cbCountry.Text = series.Country;
-            rating = series.Rating;
-            numYear.Value = series.Year;
-
+            if (seriesid == 0)
+            {
+                seriesId = 0;
+                tbTitle.Text = "";
+                tbDescription.Text = "";
+                tbImageLink.Text = "";
+                tbTrailerLink.Text = "";
+                cbCategory.Text = "";
+                cbCountry.Text = "";
+                cbRating.Text = "";
+                numYear.Text = "";
+                numSeason.Text = "";
+                numEpisode.Text = "";
+            }
+            else
+            {
+                Series curSeries = seriesManager.GetById(seriesid);
+                seriesId = curSeries.Id;
+                tbTitle.Text = curSeries.Title;
+                tbDescription.Text = curSeries.Description;
+                tbImageLink.Text = curSeries.ImageLink;
+                tbTrailerLink.Text = curSeries.TrailerLink;
+                cbCategory.Text = curSeries.Category.Name;
+                cbCountry.Text = curSeries.Country;
+                cbRating.Text = curSeries.Rating.ToString();
+                numYear.Text = curSeries.Year.ToString();
+                numSeason.Text = curSeries.Season.ToString();
+                numEpisode.Text = curSeries.Episode.ToString();
+            }
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -60,12 +75,12 @@ namespace MovieNightOOD.Forms.MediaSubForms
             Category category = categoryManager.GetByName(cbCategory.Text);
             Series series = new Series(seriesId, season, episode, tbTitle.Text, tbDescription.Text, tbImageLink.Text,
                 tbTrailerLink.Text, category, cbCountry.Text, rating, year);
-            if (tbTitle.Text == null || tbDescription.Text == null || tbImageLink.Text == null || tbTrailerLink.Text == null || cbCategory.Text == null ||
-                cbCountry.Text == null || numYear.Text == null || numEpisode.Text == null || numSeason.Text == null)
+            if (tbTitle.Text == "" || tbDescription.Text == "" || tbImageLink.Text == "" || tbTrailerLink.Text == "" || cbCategory.Text == "" ||
+                cbCountry.Text == "" || numYear.Text == "" || numEpisode.Text == "" || numSeason.Text == "")
             {
                 MessageBox.Show("All fields marked with * are required!");
             }
-            if (series.Id == 0)
+            if (seriesId == 0)
                 seriesManager.Create(series);
             else
                 seriesManager.Update(series);

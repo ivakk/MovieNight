@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WutKkomq+pX7bACO39yuJCo9TTRZug7i6bswSfYbvTE=",
+  "Hash": "DFzYvDQWdnF4oxr6QGAgt+00NN++wl1zQQGh472A6OI=",
   "Source": "MovieNight",
   "BasePath": "_content/MovieNight",
   "Mode": "Default",
@@ -66,6 +66,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\LoginPage.css"
+    },
+    {
+      "Identity": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\css\\MoviePage - Copy.css",
+      "SourceId": "MovieNight",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\",
+      "BasePath": "_content/MovieNight",
+      "RelativePath": "css/MoviePage - Copy.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\MoviePage - Copy.css"
+    },
+    {
+      "Identity": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\css\\MoviePage.css",
+      "SourceId": "MovieNight",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\",
+      "BasePath": "_content/MovieNight",
+      "RelativePath": "css/MoviePage.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\MoviePage.css"
     },
     {
       "Identity": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\css\\site.css",
@@ -134,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\LoginPage.js"
+    },
+    {
+      "Identity": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\js\\MoviePage.js",
+      "SourceId": "MovieNight",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\",
+      "BasePath": "_content/MovieNight",
+      "RelativePath": "js/MoviePage.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\MoviePage.js"
     },
     {
       "Identity": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\js\\site.js",

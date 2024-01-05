@@ -21,7 +21,7 @@ namespace MovieNightOOD.Forms.MediaSubForms
         ICategoryManager categoryManager;
         MovieForm movieForm;
 
-        private int movieId = 0;
+        private int movieId;
         private int length;
         private int rating;
         private int year;
@@ -32,25 +32,38 @@ namespace MovieNightOOD.Forms.MediaSubForms
             movieManager = new MovieManager(new MovieDALManager());
             categoryManager = new CategoryManager(new CategoryDALManager());
             cbCategory.Items.AddRange(categoryManager.GetAll().ToArray());
-            this.movieForm = movieForm;
         }
 
-        public void SetMovieId(int movieId = 0)
+        
+        public void SetMovieId(int movieid)
         {
-            rating = Convert.ToInt32(cbRating.Text);
-            length = Convert.ToInt32(numLength.Text);
-            year = Convert.ToInt32(numYear.Value);
-            this.movieId = movieId;
-            Movie movie = movieManager.GetById(movieId);
-            tbTitle.Text = movie.Title;
-            tbDescription.Text = movie.Description;
-            tbImageLink.Text = movie.ImageLink;
-            tbTrailerLink.Text = movie.TrailerLink;
-            cbCategory.Text = movie.Category.Name;
-            cbCountry.Text = movie.Country;
-            rating = movie.Rating;
-            year = movie.Year;
-            length = movie.Length;
+            if (movieid == 0)
+            {
+                movieId = 0;
+                tbTitle.Text = "";
+                tbDescription.Text = "";
+                tbImageLink.Text = "";
+                tbTrailerLink.Text = "";
+                cbCategory.Text = "";
+                cbCountry.Text = "";
+                cbRating.Text = "";
+                numYear.Text = "";
+                numLength.Text = "";
+            }
+            else
+            {   
+                Movie curMovie = movieManager.GetById(movieid);
+                movieId = curMovie.Id;
+                tbTitle.Text = curMovie.Title;
+                tbDescription.Text = curMovie.Description;
+                tbImageLink.Text = curMovie.ImageLink;
+                tbTrailerLink.Text = curMovie.TrailerLink;
+                cbCategory.Text = curMovie.Category.Name;
+                cbCountry.Text = curMovie.Country;
+                cbRating.Text = curMovie.Rating.ToString();
+                numYear.Text = curMovie.Year.ToString();
+                numLength.Text = curMovie.Length.ToString();
+            }  
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -59,17 +72,18 @@ namespace MovieNightOOD.Forms.MediaSubForms
                 rating = Convert.ToInt32(cbRating.Text);
             }
 
-            if (tbTitle.Text == null || tbDescription.Text == null || tbImageLink.Text == null || tbTrailerLink.Text == null || cbCategory.Text == null ||
-                cbCountry.Text == null || numYear.Text == null || numLength.Text== null)
+            if (tbTitle.Text == "" || tbDescription.Text == "" || tbImageLink.Text == "" || tbTrailerLink.Text == "" || cbCategory.Text == "" ||
+                cbCountry.Text == "" || numYear.Text == "" || numLength.Text== "")
             {
                 MessageBox.Show("All fields marked with * are required!");
             }
             else
             {
-                length = Convert.ToInt32(numLength.Value);
+                length = Convert.ToInt32(numLength.Text);
                 year = Convert.ToInt32(numYear.Value);
                 Category category = categoryManager.GetByName(cbCategory.Text);
-                Movie movie = new Movie(movieId, length, tbTitle.Text, tbDescription.Text, tbImageLink.Text, tbTrailerLink.Text, category, cbCountry.Text,
+                Movie movie = new Movie(Convert.ToInt32(numLength.Text), movieId, tbTitle.Text, tbDescription.Text, 
+                    tbImageLink.Text, tbTrailerLink.Text, category, cbCountry.Text,
                     rating, year);
                 if (movieId == 0)
                     movieManager.Create(movie);

@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MovieNight_InterfacesLL.IServices;
 using MovieNight_DataAccess.Controllers;
+using Microsoft.VisualBasic.Devices;
 
 namespace MovieNightOOD.Forms
 {
@@ -22,6 +23,7 @@ namespace MovieNightOOD.Forms
 
         IMovieManager movieManager;
         ICategoryManager categoryManager;
+
 
         public MovieForm(Menu menu)
         {
@@ -62,6 +64,7 @@ namespace MovieNightOOD.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            addMovieForm.SetMovieId(0);
             menu.pnlMainForm.Controls.Clear();
             this.menu.pnlMainForm.Controls.Add(addMovieForm);
             addMovieForm.Show();

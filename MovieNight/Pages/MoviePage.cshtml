@@ -1,0 +1,77 @@
+﻿@page
+@model MovieNight.Pages.MoviePageModel
+@{
+}
+
+@* <a asp-page="/MoviePage" asp-route-id="@Model.Movie.Id"></a> *@
+
+<head>
+    <meta charset="UTF-8">
+    <title>@Model.Movie.Title</title>
+    <link rel="stylesheet" href="/css/MoviePage.css">
+</head>
+<body>
+    <div class="movie-page">
+        <header class="movie-header">
+            <div class="header-content">
+                <h1 class="movie-title">@Model.Movie.Title</h1>
+                <div class="movie-subtitle">
+                    <span class="original-title">Original title: @Model.Movie.Title</span>
+                    <span class="bubble">@Model.Movie.Year</span>
+                    <span class="bubble">PG-13</span>
+                    <span class="bubble">@Model.Movie.Length min</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="movie-main">
+            <div class="media-container">
+                <div class="poster-container">
+                    <img src="@Model.Movie.ImageLink" alt="@Model.Movie.Title" class="movie-poster">
+                </div>
+                <div class="trailer-container">
+                    <iframe class="movie-trailer" src="@Model.Movie.TrailerLink" title="@Model.Movie.Title"
+                             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </main>
+
+        <aside class="movie-sidebar">
+            <div class="movie-content">
+                <div class="movie-description-and-actions">
+                    <div class="movie-description">
+                        <p>A mysterious Hollywood action film stuntman gets in trouble with gangsters when he tries to help his neighbor's husband rob a pawn shop while serving as his getaway driver.</p>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="button rate-button">Rate</button>
+                        <button class="button watchlist-button">+ Add to Watchlist</button>
+                    </div>
+                </div>
+                <div class="movie-details">
+                    <div class="movie-detail">Director: Nicolas Winding Refn</div>
+                    <div class="movie-detail">Country: @Model.Movie.Country</div>
+                    <div class="movie-detail">Category: @Model.Movie.Category</div>
+                    <div class="movie-detail">Year: @Model.Movie.Year</div>
+                </div>
+            </div>
+            <div class="comment-section">
+                <h3>Comments</h3>
+                <form method="post" asp-page-handler="PostComment">
+                    <textarea name="commentText" placeholder="Leave a comment..."></textarea>
+                    <input type="submit" value="Post Comment" />
+                </form>
+
+                <!-- Display comments -->
+                @foreach (var comment in Model.Movie.Country)
+                {
+                    <div class="comment"></div>
+                }
+            </div>
+            <!-- Additional sidebar sections like awards, box office, etc. -->
+        </aside>
+    </div>
+    <script src="/js/MoviePage.js"></script>
+</body>
+
+

@@ -154,7 +154,7 @@ namespace MovieNight_DataAccess.Controllers
                 $"country = @country, " +
                 $"rating = @rating, " +
                 $"year = @year " +
-                $"WHERE Id = @id";
+                $"WHERE id = @id";
 
             // Open the connection
             connection.Open();
@@ -257,6 +257,10 @@ namespace MovieNight_DataAccess.Controllers
             try
             {
                 // Execute the query and get the data
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
                 using SqlDataReader reader = command.ExecuteReader();
             }
             catch (SqlException e)

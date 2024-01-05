@@ -17,7 +17,9 @@ namespace MovieNight_DataAccess.Controllers
 
         public Movie GetMovieById(int id)
         {
-            string query = $"SELECT * FROM ObjectToWatch JOIN Movies ON ObjectToWatch.id = Movies.id JOIN Categories ON ObjectToWatch.categoryId = Categories.id";
+            string query = $"SELECT * FROM ObjectToWatch JOIN Movies ON ObjectToWatch.id = Movies.id " +
+                $"JOIN Categories ON ObjectToWatch.categoryId = Categories.id " +
+                $"WHERE ObjectToWatch.id = @id";
 
             // Open the connection
             connection.Open();
@@ -34,7 +36,7 @@ namespace MovieNight_DataAccess.Controllers
                 while (reader.Read())
                 {
                     Category category = new Category((int)reader.GetValue(11), (string)reader.GetValue(12));
-                    movie = new Movie((int)reader.GetValue(0), (int)reader.GetValue(9), (string)reader.GetValue(1), (string)reader.GetValue(2), (string)reader.GetValue(3),
+                    movie = new Movie((int)reader.GetValue(10), (int)reader.GetValue(0), (string)reader.GetValue(1), (string)reader.GetValue(2), (string)reader.GetValue(3),
                         (string)reader.GetValue(4), category, (string)reader.GetValue(6), (int)reader.GetValue(7), (int)reader.GetValue(8));
                 }
                 reader.Close();
@@ -71,7 +73,7 @@ namespace MovieNight_DataAccess.Controllers
                 while (reader.Read())
                 {
                     Category category = new Category((int)reader.GetValue(11), (string)reader.GetValue(12));
-                    movie.Add(new Movie((int)reader.GetValue(0), (int)reader.GetValue(9), (string)reader.GetValue(1), (string)reader.GetValue(2), (string)reader.GetValue(3),
+                    movie.Add(new Movie((int)reader.GetValue(10), (int)reader.GetValue(0), (string)reader.GetValue(1), (string)reader.GetValue(2), (string)reader.GetValue(3),
                         (string)reader.GetValue(4), category, (string)reader.GetValue(6), (int)reader.GetValue(7), (int)reader.GetValue(8)));
                 }
                 reader.Close();
@@ -106,8 +108,9 @@ namespace MovieNight_DataAccess.Controllers
             // Creating Command string to combine the query and the connection String
             SqlCommand command = new SqlCommand(query, Connection.connection);
 
+            command.Parameters.AddWithValue("@id", newMovie.Id);
             command.Parameters.AddWithValue("@length", newMovie.Length);
-
+            Debug.WriteLine(newMovie.Length);
             try
             {
                 // Execute the query and get the data
@@ -175,7 +178,7 @@ namespace MovieNight_DataAccess.Controllers
             // Creating Command string to combine the query and the connection String
             SqlCommand command = new SqlCommand(query, Connection.connection);
             command.Parameters.AddWithValue("@id", GetNextId());
-            command.Parameters.AddWithValue("@length", GetNextId());
+            command.Parameters.AddWithValue("@length", newMovie.Length);
             try
             {
                 // Execute the query and get the data
