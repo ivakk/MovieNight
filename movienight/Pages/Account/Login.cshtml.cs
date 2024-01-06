@@ -19,37 +19,13 @@ namespace MovieNight.Pages.Account
     public class LoginModel : PageModel
     {
         [BindProperty]
-        [StringLength(16, MinimumLength = 3, ErrorMessage = "Username should be between 3 and 16 letters and numbers!")]
-        [RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "Invalid username!")] 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Username is required!")]
         public string? Username { get; set; }
 
         [BindProperty]
-        [StringLength(32, MinimumLength = 8, ErrorMessage = "Password should be between 8 and 32 symbols!")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Password is required!")]
         public string? Password { get; set; }
-
-        [BindProperty]
-        [EmailAddress(ErrorMessage = "Enter a valid email address!")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "First name is required!")]
-        public string? Email { get; set; }
-
-        [BindProperty]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Please enter a valid first name!")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "First name is required!")]
-        public string? FirstName { get; set; }
-
-        [BindProperty]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Please enter a valid last name!")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Last name is required!")]
-        public string? LastName { get; set; }
-
-        [BindProperty]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Birthdate is required!")]
-        public DateTime Birthdate { get; set; }
-
-        [BindProperty]
-        public string Action { get; set; }
+     
 
         private readonly IUserManager userManager;
 
@@ -67,12 +43,12 @@ namespace MovieNight.Pages.Account
             }
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
                 ViewData["Error"] = "Something went wrong!";
-                Page();
+                return Page();
             }
 
 
@@ -81,7 +57,7 @@ namespace MovieNight.Pages.Account
                 if (Username != null && userManager.BannedUser(userManager.GetByUsername(Username)))
                 {
                     ViewData["Error"] = "You are currently banned!";
-                    Page();
+                    return Page();
                 }
                 else 
                 {
@@ -96,13 +72,13 @@ namespace MovieNight.Pages.Account
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     HttpContext.SignInAsync(new ClaimsPrincipal(identity));
 
-                    Response.Redirect("/Index");
+                    return RedirectToPage("/Index");
                 }
             }
             catch (Exception)
             {
                 ViewData["Error"] = "Check your login details!";
-                Page();
+                return Page();
             }
         }
     }

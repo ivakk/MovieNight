@@ -243,11 +243,63 @@ body, html {
     }
 
 .comment {
+    position: relative;
     background-color: #222; /* Darker background for individual comments */
     color: #fff; /* White text color */
+    border: 1px solid #444; /* Border for definition */
+    margin-top: 10px; /* Spacing between comments */
     padding: 10px;
     border-radius: 4px;
-    margin-top: 10px; /* Spacing between comments */
-    border: 1px solid #444; /* Border for definition */
 }
 
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* Adjusted spacing */
+}
+
+.comment-user {
+    font-size: 0.85em; /* Smaller font size */
+    color: rgb(117, 54, 112); /* Distinct color */
+    text-decoration: none; /* Remove underline from links */
+    margin-right: 10px; /* Space between username and date */
+}
+
+    .comment-user:hover {
+        text-decoration: underline; /* Underline on hover for link */
+    }
+
+.comment-date {
+    font-size: 0.75em; /* Even smaller font size */
+    color: #aaa; /* Lighter color for date */
+}
+
+.comment-body {
+    font-size: 1em; /* Adjusted font size for readability */
+    color: #ddd; /* Slightly lighter text color for the comment body */
+    /* Other styles remain unchanged */
+}
+
+.delete-comment-button {
+    position: absolute; /* Absolute positioning within the comment */
+    bottom: 10px; /* Position from the bottom of the comment */
+    right: 10px; /* Position from the right of the comment */
+    background: transparent;
+    border: 1px solid #bbb; /* Subtle border color */
+    color: #bbb; /* Subtle icon color */
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 4px; /* Rounded edges */
+    width: 30px; /* Square shape */
+    height: 30px; /* Square shape */
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+    .delete-comment-button:hover {
+        color: #666; /* Darker shade on hover */
+        border-color: #666; /* Border color on hover */
+        background-color: transparent; /* No change in background on hover */
+    }

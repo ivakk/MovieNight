@@ -49,7 +49,7 @@ namespace MovieNight_DataAccess.Controllers
                 }
             } catch (SqlException e) {
                 // Handle any errors that may have occurred.
-                Console.WriteLine(e.Message);
+                System.Diagnostics.Debug.WriteLine(e.Message);
             }
             finally
             {
@@ -212,7 +212,6 @@ namespace MovieNight_DataAccess.Controllers
             {
                 connection.Close();
             }
-
         }
 
         /**
