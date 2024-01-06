@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id:int}"
 @model MovieNight.Pages.MoviePageModel
 @{
 }
@@ -16,7 +16,7 @@
             <div class="header-content">
                 <h1 class="movie-title">@Model.Movie.Title</h1>
                 <div class="movie-subtitle">
-                    <span class="original-title">Original title: @Model.Movie.Title</span>
+                    <span class="original-title">Original title: @Model.Movie.Title |</span>
                     <span class="bubble">@Model.Movie.Year</span>
                     <span class="bubble">PG-13</span>
                     <span class="bubble">@Model.Movie.Length min</span>
@@ -41,7 +41,7 @@
             <div class="movie-content">
                 <div class="movie-description-and-actions">
                     <div class="movie-description">
-                        <p>A mysterious Hollywood action film stuntman gets in trouble with gangsters when he tries to help his neighbor's husband rob a pawn shop while serving as his getaway driver.</p>
+                        <p>@Model.Movie.Description</p>
                     </div>
                     <div class="movie-actions">
                         <button class="button rate-button">Rate</button>
@@ -57,15 +57,29 @@
             </div>
             <div class="comment-section">
                 <h3>Comments</h3>
-                <form method="post" asp-page-handler="PostComment">
-                    <textarea name="commentText" placeholder="Leave a comment..."></textarea>
-                    <input type="submit" value="Post Comment" />
+                <form method="post" asp-page-handler="Comment">
+                    <textarea asp-for="CommentLeft" placeholder="Leave a comment... "></textarea>
+                    <input type="submit" value="Post Comment"/>
                 </form>
 
                 <!-- Display comments -->
-                @foreach (var comment in Model.Movie.Country)
+                @foreach (var comment in Model.Comments)
                 {
-                    <div class="comment"></div>
+                    <div class="comment">
+                        <div class="comment-header">
+                            <a href="" class="comment-user">@comment.Username</a>
+                            <span class="comment-date">@comment.CommentDate.ToString("dd/MM/yyyy")</span>
+                        </div>
+                        <div class="comment-body">@comment.Information</div>
+                        @if (Model.CanDeleteComment(comment.UserId))
+                        {
+                            <form method="post" asp-page-handler="DeleteComment" asp-route-id="@Model.Movie.Id" asp-route-commentId="@comment.Id">
+                                <button type="submit" class="delete-comment-button" title="Delete">
+                                    &#x1F5D1; <!-- Unicode for trash bin -->
+                                </button>
+                            </form>
+                        }
+                    </div>
                 }
             </div>
             <!-- Additional sidebar sections like awards, box office, etc. -->

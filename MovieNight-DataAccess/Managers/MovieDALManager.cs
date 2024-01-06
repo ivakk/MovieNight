@@ -28,6 +28,10 @@ namespace MovieNight_DataAccess.Controllers
 
             try
             {
+                if(connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
                 // Add the parameters
                 command.Parameters.AddWithValue("@id", id);
 

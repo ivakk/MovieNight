@@ -46,7 +46,6 @@ namespace MovieNight.Pages.Account
 
         [BindProperty]
         [DataType(DataType.Date)]
-        [RegularExpression(@"^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\d{4}$", ErrorMessage = "Please use dd/mm/yyyy format!")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Birthdate is required!")]
         public DateTime? Birthdate { get; set; }
 
@@ -61,23 +60,23 @@ namespace MovieNight.Pages.Account
             hashing = new PasswordHashingManager();
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
                 ViewData["Error"] = "Something went wrong!";
-                Page();
+                return Page();
             }
 
             if (Username != null && userManager.UsernameExists(Username) == true)
             {
                 ViewData["Error"] = "The username \"" + Username + "\" is already in use by another user!";
-                Page();
+                return Page();
             }
             else if (Email != null && userManager.EmailExists(Email) == true)
             {
                 ViewData["Error"] = "The email \"" + Email + "\" is already in use by another user!";
-                Page();
+                return Page();
             }
             else
             {
@@ -94,7 +93,7 @@ namespace MovieNight.Pages.Account
                                         passwordSalt,
                                         "default");
                 userManager.CreateUser(regUser);
-                Response.Redirect("/Account/Login");
+                return RedirectToPage("/Account/Login");
             }
         }
     }

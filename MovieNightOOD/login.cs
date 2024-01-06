@@ -13,18 +13,22 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using MovieNight_InterfacesLL.IServices;
 using Microsoft.Extensions.DependencyInjection;
-
+using MovieNight_DataAccess.Controllers;
+using System.CodeDom;
+using System.Diagnostics;
 
 namespace MovieNightOOD
 {
     public partial class Login : Form
     {
         private readonly IUserManager userManager;
+        private readonly ICommentManager commentManager;
 
 
         public Login(IUserManager userManager)
         {
             InitializeComponent();
+            commentManager = new CommentManager(new CommentDALManager());
             this.userManager = userManager;
         }
 
@@ -52,7 +56,7 @@ namespace MovieNightOOD
             }
             else if (usernameEntry.Text == "")
             {
-                MessageBox.Show("Enter your username", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Enter your username", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);               
             }
             else
             {
