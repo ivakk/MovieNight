@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DFzYvDQWdnF4oxr6QGAgt+00NN++wl1zQQGh472A6OI=",
+  "Hash": "KtLIsrlPGsdJA9/s/D9ObpStA6rs7Wc9sOLVdLFoc04=",
   "Source": "MovieNight",
   "BasePath": "_content/MovieNight",
   "Mode": "Default",
@@ -66,23 +66,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\LoginPage.css"
-    },
-    {
-      "Identity": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\css\\MoviePage - Copy.css",
-      "SourceId": "MovieNight",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\",
-      "BasePath": "_content/MovieNight",
-      "RelativePath": "css/MoviePage - Copy.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\MoviePage - Copy.css"
     },
     {
       "Identity": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\css\\MoviePage.css",

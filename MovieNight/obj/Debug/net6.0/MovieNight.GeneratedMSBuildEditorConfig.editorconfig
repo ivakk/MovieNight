@@ -48,8 +48,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/MoviePage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVQYWdlLmNzaHRtbA==
+[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Movies.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Privacy.cshtml]
@@ -66,6 +66,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/ToS.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVG9TLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Users.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/_ViewImports.cshtml]
