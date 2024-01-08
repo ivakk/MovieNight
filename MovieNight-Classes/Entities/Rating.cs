@@ -13,7 +13,6 @@ namespace MovieNight_Classes
         public int UserId { get; set; }
         public int Rate { get; set; }
         public DateTime RateDate { get; set; }
-        public string Username { get; set; }
 
         public Rating(int id, int mediaId, int userId, int rate, DateTime rateDate)
         {

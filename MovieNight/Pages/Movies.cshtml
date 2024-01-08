@@ -3,8 +3,6 @@
 @{
 }
 
-@* <a asp-page="/MoviePage" asp-route-id="@Model.Movie.Id"></a> *@
-
 <head>
     <meta charset="UTF-8">
     <title>@Model.Movie.Title</title>
@@ -18,7 +16,7 @@
                 <div class="movie-subtitle">
                     <span class="original-title">Original title: @Model.Movie.Title |</span>
                     <span class="bubble">@Model.Movie.Year</span>
-                    <span class="bubble">PG-13</span>
+                    <span class="bubble">Movie</span>
                     <span class="bubble">@Model.Movie.Length min</span>
                 </div>
             </div>
@@ -42,24 +40,61 @@
                 <div class="movie-description-and-actions">
                     <div class="movie-description">
                         <p>@Model.Movie.Description</p>
+                        <div class="movie-details">
+                            <div class="movie-detail">Director: Nicolas Winding Refn</div>
+                            <div class="movie-detail">Country: @Model.Movie.Country</div>
+                            <div class="movie-detail">Category: @Model.Movie.Category</div>
+                            <div class="movie-detail">Year: @Model.Movie.Year</div>
+                        </div>
                     </div>
                     <div class="movie-actions">
-                        <button class="button rate-button">Rate</button>
-                        <button class="button watchlist-button">+ Add to Watchlist</button>
+                        <!-- Star Rating System -->
+                        <div class="rate-label">Your Rating:</div>
+                        <div class="rating">
+                            <input type='radio' hidden name='rate' id='rating_5' data-idx='0'>
+                            <label for='rating_5'></label>
+
+                            <input type='radio' hidden name='rate' id='rating_4' data-idx='1'>
+                            <label for='rating_4'></label>
+
+                            <input type='radio' hidden name='rate' id='rating_3' data-idx='2'>
+                            <label for='rating_3'></label>
+
+                            <input type='radio' hidden name='rate' id='rating_2' data-idx='3'>
+                            <label for='rating_2'></label>
+
+                            <input type='radio' hidden name='rate' id='rating_1' data-idx='4'>
+                            <label for='rating_1'></label>
+                        </div>
+
+
+                        <!-- Watchlist Button -->
+                        <form method="post" asp-page-handler="ToggleWatchLater" asp-route-movieId="@Model.Movie.Id">
+                            <input type="hidden" name="movieId" value="@Model.Movie.Id" />
+                            <button type="submit" class="button watchlist-button">
+                                @Model.WatchLaterButtonText
+                            </button>
+                        </form>
+                        <form method="post" asp-page-handler="ToggleWatching" asp-route-movieId="@Model.Movie.Id">
+                            <input type="hidden" name="movieId" value="@Model.Movie.Id" />
+                            <button type="submit" class="button currently-watching-button">
+                                @Model.WatchingButtonText
+                            </button>
+                        </form>
+                        <form method="post" asp-page-handler="ToggleFinished" asp-route-movieId="@Model.Movie.Id">
+                            <input type="hidden" name="movieId" value="@Model.Movie.Id" />
+                            <button type="submit" class="button finished-button">
+                                @Model.FinishedButtonText
+                            </button>
+                        </form>
                     </div>
-                </div>
-                <div class="movie-details">
-                    <div class="movie-detail">Director: Nicolas Winding Refn</div>
-                    <div class="movie-detail">Country: @Model.Movie.Country</div>
-                    <div class="movie-detail">Category: @Model.Movie.Category</div>
-                    <div class="movie-detail">Year: @Model.Movie.Year</div>
                 </div>
             </div>
             <div class="comment-section">
                 <h3>Comments</h3>
-                <form method="post" asp-page-handler="Comment">
+                <form method="post" asp-page-handler="Comment" asp-route-movieId="@Model.Movie.Id">
                     <textarea asp-for="CommentLeft" placeholder="Leave a comment... "></textarea>
-                    <input type="submit" value="Post Comment"/>
+                    <input type="submit" value="Post Comment" class="button comment-button" style="background-color: rgb(117, 54, 112); color: white;"/>
                 </form>
 
                 <!-- Display comments -->
@@ -82,10 +117,8 @@
                     </div>
                 }
             </div>
-            <!-- Additional sidebar sections like awards, box office, etc. -->
         </aside>
     </div>
-    <script src="/js/MoviePage.js"></script>
 </body>
 
 

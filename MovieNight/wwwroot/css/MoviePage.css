@@ -62,16 +62,6 @@ body, html {
     border-radius: 5px;
 }
 
-.rate-button{
-    background-color: #ffcc00;
-    border: none;
-    padding: 10px 20px;
-    margin-right: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
 .movie-main {
     display: flex;
     margin-top: 20px;
@@ -177,19 +167,58 @@ body, html {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-}
-
-/* Specific styling for the rate button */
-.rate-button {
-    background-color: #444; /* Dark background */
-    color: white; /* White text */
+    border-radius: 4px; /* Rounded corners */
 }
 
 /* Specific styling for the watchlist button */
 .watchlist-button {
-    background-color: #ffcc00; /* Yellow background */
-    color: black; /* Black text */
+    background-color: rgb(117, 54, 112); /* Theme color */
+    color: white; /* White text */
+    border: 1px solid transparent; /* Transparent border */
+    padding: 10px 15px;
+    text-transform: uppercase; /* All-caps for text */
+    font-weight: bold;
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
+
+    .watchlist-button:hover {
+        background-color: rgba(117, 54, 112, 0.8); /* Slightly transparent on hover */
+        border-color: white; /* White border for emphasis */
+    }
+
+    .watchlist-button:active {
+        background-color: rgba(117, 54, 112, 0.6); /* More transparent for active state */
+    }
+
+.currently-watching-button {
+    background-color: rgba(117, 54, 112, 0.8); /* Slightly darker */
+    color: white;
+}
+
+    .currently-watching-button:hover {
+        background-color: rgba(117, 54, 112, 0.6); /* Slightly transparent on hover */
+        border-color: white; /* White border for emphasis */
+    }
+
+    .currently-watching-button:active {
+        background-color: rgba(117, 54, 112, 0.4); /* More transparent for active state */
+    }
+
+.finished-button {
+    background-color: rgba(117, 54, 112, 0.6); /* Even darker */
+    color: white;
+}
+
+    .finished-button:hover {
+        background-color: rgba(117, 54, 112, 0.4); /* Slightly transparent on hover */
+        border-color: white; /* White border for emphasis */
+    }
+
+    .finished-button:active {
+        background-color: rgba(117, 54, 112, 0.2); /* More transparent for active state */
+    }
 
 /* Button hover effects */
 .button:hover {
@@ -303,3 +332,38 @@ body, html {
         border-color: #666; /* Border color on hover */
         background-color: transparent; /* No change in background on hover */
     }
+
+.rate-label {
+    font-size: 1em;
+    color: #fff; /* Adjust color to fit your theme */
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.rating {
+    display: flex;
+    justify-content: center; /* Center align the stars */
+    flex-direction: row-reverse; /* Reverse the order of elements */
+}
+
+    .rating label {
+        cursor: pointer;
+        font-size: 30px; /* Adjust size as needed */
+        color: gray;
+    }
+
+        .rating label::before {
+            content: "\2606"; /* Unicode for an empty star */
+            transition: color 0.2s ease;
+        }
+
+        .rating label:hover::before,
+        .rating label:hover ~ label::before {
+            color: orange; /* Color for hovered and previous stars */
+        }
+
+    .rating input:checked ~ label::before {
+        content: "\2605"; /* Unicode for a filled star */
+        color: orange; /* Color for filled stars */
+    }
+

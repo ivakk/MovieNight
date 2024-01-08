@@ -20,7 +20,7 @@ namespace MovieNight_DataAccess.Controllers
 
 
         /**
-        * Query that gets a specific category using id
+        * Query that gets a specific comment using id
         */
         public Comments GetCommentById(int id)
         {
@@ -59,7 +59,7 @@ namespace MovieNight_DataAccess.Controllers
         }
 
         /**
-        * Query that gets all categories
+        * Query that gets all comments
         */
         public List<Comments> GetAllComments(int mediaId)
         {

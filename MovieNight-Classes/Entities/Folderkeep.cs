@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace MovieNight_Classes
 {
-    public class Watching
+    public class Folderkeep
     {
-        public int Id { get; }
+        public int MediaId { get; set; }
         public int UserId { get; set; }
 
-        public Watching(int id, int userId)
+        public Folderkeep(int mediaId, int userId)
         {
-            Id = id;
+            MediaId = mediaId;
             UserId = userId;
         }
 
-        public Watching()
+        public Folderkeep()
         {
         }
     }
