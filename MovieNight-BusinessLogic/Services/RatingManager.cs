@@ -39,5 +39,17 @@ namespace MovieNight_BusinessLogic.Services
         {
             return controller.CheckUserRating(mediaId, userId);
         }
+        public int GetCount(int mediaId)
+        {
+            return controller.TotalRatings(mediaId);
+        }
+        public int GetWeek()
+        {
+            return controller.WeekRatings();
+        }
+        public int GetAvgRate(int mediaId)
+        {
+            return controller.AvgRating(mediaId);
+        }
     }
 }

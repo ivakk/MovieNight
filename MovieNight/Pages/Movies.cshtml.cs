@@ -23,7 +23,9 @@ namespace MovieNight.Pages
         public bool IsInWatching { get; private set; }
         public string FinishedButtonText => IsInFinished ? "Remove from Finished" : "Add to Finished";
         public bool IsInFinished { get; private set; }
-        public bool IsRated {  get; private set; }
+        public bool IsRated { get; private set; }
+        public int MovieRates { get; set; }
+        public int MovieRating { get; set; }
 
 
         private readonly IMovieManager movieManager;
@@ -55,6 +57,15 @@ namespace MovieNight.Pages
                 IsInWatching = watchingManager.CheckFolder(Movie.Id, UserId);
                 IsInFinished = finishedManager.CheckFolder(Movie.Id, UserId);
                 IsRated = ratingManager.CheckRate(Movie.Id, UserId);
+                MovieRates = ratingManager.GetCount(Movie.Id);
+                MovieRating = ratingManager.GetAvgRate(Movie.Id);
+
+                if (IsRated)
+                {
+                    Rating currentRating = ratingManager.GetRate(Movie.Id, UserId);
+                    ViewData["UserRating"] = currentRating.Rate;
+                    Debug.WriteLine("Current User Rating: " + ViewData["UserRating"]);
+                }
             }
             foreach (var comment in Comments)
             {
@@ -147,14 +158,14 @@ namespace MovieNight.Pages
                 Debug.WriteLine(ex.Message);
                 Movie = movieManager.GetById(id);
                 Comments = commentManager.GetAll(id);
-                return RedirectToPage(new {id = id});
+                return RedirectToPage(new { id = id });
             }
         }
         public IActionResult OnPostToggleWatchLater(int movieId)
         {
             try
             {
-                
+
                 if (User.FindFirst("id") != null)
                 {
                     UserId = int.Parse(User.FindFirst("id").Value);
@@ -258,6 +269,52 @@ namespace MovieNight.Pages
             }
         }
 
-        //public IActionResult Rate(int movieId) { }
+        public IActionResult OnPostRate(int movieId, int rating)
+        {
+            try
+            {
+                if (User.FindFirst("id") != null)
+                {
+                    UserId = int.Parse(User.FindFirst("id").Value);
+                    IsRated = ratingManager.CheckRate(movieId, UserId);
+                    if (IsRated)
+                    {
+                        Rating curRate = ratingManager.GetRate(movieId, UserId);
+                        ratingManager.ChangeRate(new Rating(curRate.Id, movieId, UserId, rating, DateTime.Now));
+                    }
+                    else
+                    {
+                        ratingManager.PostRate(new Rating(0, movieId, UserId, rating, DateTime.Now));
+                    }
+                    // Re-fetch movie data and other necessary data
+                    Movie = movieManager.GetById(movieId);
+                    Comments = commentManager.GetAll(movieId);
+                    return RedirectToPage(new { id = movieId });
+                }
+                else
+                {
+                    return RedirectToPage("/Account/Login");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                Movie = movieManager.GetById(movieId);
+                Comments = commentManager.GetAll(movieId);
+                return RedirectToPage(new { id = movieId });
+            }
+        }
+
+        public IActionResult OnPostDeleteRate(int movieId)
+        {
+            if (User.FindFirst("id") != null)
+            {
+                UserId = int.Parse(User.FindFirst("id").Value);
+                Rating currentRating = ratingManager.GetRate(movieId, UserId);
+                // Delete the user's rating from the database
+                ratingManager.RemoveRate(currentRating.Id);
+            }
+            return RedirectToPage(new { id = movieId });
+        }
     }
 }

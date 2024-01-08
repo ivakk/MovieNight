@@ -15,5 +15,8 @@ namespace MovieNight_InterfacesDAL.IManagers
         void DeleteRate(int id);
         bool CheckUserRating(int mediaId, int userId);
         void UpdateRate(Rating rating);
+        int TotalRatings(int mediaId);
+        int WeekRatings();
+        int AvgRating(int mediaId);
     }
 }

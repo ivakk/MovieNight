@@ -1,12 +1,17 @@
 ﻿@page "{id:int}"
 @model MovieNight.Pages.MoviePageModel
 @{
+    @if (Model.UserId != null)
+    {
+        Layout = "_LayoutLoggedIn";
+    }
+    ViewData["Title"] = Model.Movie.Title;
 }
 
 <head>
     <meta charset="UTF-8">
-    <title>@Model.Movie.Title</title>
     <link rel="stylesheet" href="/css/MoviePage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 <body>
     <div class="movie-page">
@@ -42,6 +47,23 @@
                         <p>@Model.Movie.Description</p>
                         <div class="movie-details">
                             <div class="movie-detail">Director: Nicolas Winding Refn</div>
+                            <div class="movie-detail">
+                                Rating: @if (Model.MovieRating == 0)
+                                {
+                                    @:@Model.Movie.Rating/5
+                                }
+                                else
+                                {
+                                    @:@Model.MovieRating/5
+                                }@if (Model.MovieRates == 1)
+                                {
+                                    @:(@Model.MovieRates vote)
+                                }
+                                else if(Model.MovieRates != 0)
+                                {
+                                    @:(@Model.MovieRates votes)
+                                }
+                            </div>
                             <div class="movie-detail">Country: @Model.Movie.Country</div>
                             <div class="movie-detail">Category: @Model.Movie.Category</div>
                             <div class="movie-detail">Year: @Model.Movie.Year</div>
@@ -50,22 +72,25 @@
                     <div class="movie-actions">
                         <!-- Star Rating System -->
                         <div class="rate-label">Your Rating:</div>
-                        <div class="rating">
-                            <input type='radio' hidden name='rate' id='rating_5' data-idx='0'>
-                            <label for='rating_5'></label>
-
-                            <input type='radio' hidden name='rate' id='rating_4' data-idx='1'>
-                            <label for='rating_4'></label>
-
-                            <input type='radio' hidden name='rate' id='rating_3' data-idx='2'>
-                            <label for='rating_3'></label>
-
-                            <input type='radio' hidden name='rate' id='rating_2' data-idx='3'>
-                            <label for='rating_2'></label>
-
-                            <input type='radio' hidden name='rate' id='rating_1' data-idx='4'>
-                            <label for='rating_1'></label>
-                        </div>
+                        <form method="post" asp-page-handler="Rate" asp-route-movieId="@Model.Movie.Id" id="ratingForm">
+                            <div class="rating">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <input type='radio' hidden name='rating' id='rating_@i' value="@i"
+                                    @(ViewData["UserRating"] as int? == i ? "checked" : "")
+                                           onclick="document.getElementById('ratingForm').submit();">
+                                    <label for='rating_@i'></label>
+                                }
+                            </div>
+                        </form>
+                        @if (Model.IsRated)
+                        {
+                            <form method="post" asp-page-handler="DeleteRate" asp-route-movieId="@Model.Movie.Id">
+                                <button type="submit" title="Delete" class="delete-rating-button">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                        }
 
 
                         <!-- Watchlist Button -->
