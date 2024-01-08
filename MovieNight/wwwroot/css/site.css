@@ -1,54 +1,110 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  min-height: 100%;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
-/* wwwroot/css/styles.css */
-
-.login-box {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+/* Navbar adjustments */
+.navbar {
+    border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+    padding: 0.6rem 1rem;
 }
 
-    .login-box h1 {
-        text-align: center;
-        color: #333;
-    }
-
-.input-group {
-    margin-bottom: 15px;
-}
-
-    .input-group input {
-        width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-
-button {
-    background-color: #4CAF50;
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.4rem;
     color: #fff;
+    transition: color 0.3s ease;
+}
+
+    .navbar-brand:hover {
+        color: #ddd;
+    }
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    color: #f8f9fa;
+}
+
+    .navbar-nav .nav-link:hover {
+        color: #ddd;
+    }
+
+.navbar-toggler {
+    border: none;
+}
+
+    .navbar-toggler:focus, .navbar-toggler:active, .navbar-toggler-icon:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+/* Ensure responsiveness */
+@media (max-width: 992px) {
+    .navbar-nav {
+        margin-top: 10px;
+    }
+
+        .navbar-nav .nav-link {
+            padding-left: 0;
+            padding-right: 0;
+        }
+}
+
+/* Adjustments for larger screens */
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 1.2rem;
+        padding-left: 1.2rem;
+    }
+}
+
+/* Navbar adjustments for larger screens */
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav {
+        justify-content: flex-end; /* Align nav items to the end */
+    }
+
+        .navbar-expand-lg .navbar-nav .nav-item {
+            margin-left: 1rem; /* Spacing between nav items */
+        }
+
+    /* Specifically target Account and Logout nav items */
+    .navbar-nav .account-link, .navbar-nav .logout-link {
+        margin-right: auto; /* Pushes these items towards right */
+    }
+}
+
+/* Adjustments for all screens */
+.navbar-nav .account-link, .navbar-nav .logout-link {
+    padding-right: 0; /* Adjust padding for these specific links */
+}
+
+/* Footer adjustments */
+footer.footer {
+    padding: 10px 0;
+    font-size: 0.85rem;
+}
+
+/* Buttons */
+button {
+    background-color: rgb(117, 54, 112);
+    color: white;
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
@@ -56,9 +112,19 @@ button {
 }
 
     button:hover {
-        background-color: #45a049;
+        background-color: rgba(117, 54, 112, 0.9);
     }
 
+/* Form input */
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Alert box */
 .alert {
     margin-top: 15px;
     padding: 10px;
@@ -66,5 +132,18 @@ button {
     border-radius: 4px;
     color: #f44336;
     background-color: #f2dede;
-    display: inline-block;
+}
+
+/* Main content */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        margin-top: 10px;
+    }
+}
+
+/* Ensure global font is consistent and easy to read */
+body {
+    font-family: 'Arial', sans-serif;
 }

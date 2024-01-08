@@ -348,7 +348,7 @@ body, html {
 
     .rating label {
         cursor: pointer;
-        font-size: 30px; /* Adjust size as needed */
+        font-size: 30px;
         color: gray;
     }
 
@@ -366,4 +366,24 @@ body, html {
         content: "\2605"; /* Unicode for a filled star */
         color: orange; /* Color for filled stars */
     }
+
+.delete-rating-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: block; /* Ensures the button is on a new line */
+    margin: 0 auto; /* Center the button */
+    color: #bbb; /* Initial color of the icon */
+    font-size: 20px;
+    border: 1px solid #bbb; /* Subtle border color */
+    border-radius: 4px; /* Rounded edges */
+    text-align: center;
+}
+
+    .delete-rating-button:hover {
+        color: #666; /* Darker shade on hover */
+        border-color: #666; /* Border color on hover */
+        background-color: transparent; /* No change in background on hover */
+    }
+
 

@@ -14,5 +14,8 @@ namespace MovieNight_InterfacesLL.IServices
         void RemoveRate(int id);
         void ChangeRate(Rating rate);
         bool CheckRate(int mediaId, int userId);
+        int GetCount(int mediaId);
+        int GetAvgRate(int mediaId);
+        int GetWeek();
     }
 }

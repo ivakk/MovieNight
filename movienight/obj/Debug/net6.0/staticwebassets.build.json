@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KtLIsrlPGsdJA9/s/D9ObpStA6rs7Wc9sOLVdLFoc04=",
+  "Hash": "YbxGYR3K9cY/37gnF2gX/eUbFnxd/TWsOV5QaxZMAk8=",
   "Source": "MovieNight",
   "BasePath": "_content/MovieNight",
   "Mode": "Default",
@@ -119,12 +119,12 @@
       "OriginalItemSpec": "wwwroot\\css\\ToS.css"
     },
     {
-      "Identity": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\icon.ico",
       "SourceId": "MovieNight",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\",
       "BasePath": "_content/MovieNight",
-      "RelativePath": "favicon.ico",
+      "RelativePath": "icon.ico",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -133,7 +133,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\favicon.ico"
+      "OriginalItemSpec": "wwwroot\\icon.ico"
     },
     {
       "Identity": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\js\\LoginPage.js",

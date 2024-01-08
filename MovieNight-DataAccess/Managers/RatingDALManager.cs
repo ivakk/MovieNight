@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,7 @@ namespace MovieNight_DataAccess.Controllers
 
                 while (reader.Read())
                 {
-                    rating = new Rating((int)reader.GetValue(0), mediaId, (int)reader.GetValue(2), userId, (DateTime)reader.GetValue(4));
+                    rating = new Rating((int)reader.GetValue(0), mediaId, userId, (int)reader.GetValue(2), (DateTime)reader.GetValue(4));
                 }
                 return rating;
             }
@@ -62,8 +63,8 @@ namespace MovieNight_DataAccess.Controllers
         {
             // Set up the query
             string query = $"INSERT INTO {tableName} " +
-                           $"(id, mediaId, rate, userId, rateDate) " +
-                           $"VALUES (@id, @mediaId, @rate, @userId, @rateDate)";
+                           $"(mediaId, rate, userId, rateDate) " +
+                           $"VALUES (@mediaId, @rate, @userId, @rateDate)";
 
             // Open the connection
             connection.Open();
@@ -72,7 +73,6 @@ namespace MovieNight_DataAccess.Controllers
 
             try
             {
-                command.Parameters.AddWithValue("@id", rating.Id);
                 command.Parameters.AddWithValue("@mediaId", rating.MediaId);
                 command.Parameters.AddWithValue("@rate", rating.Rate);;
                 command.Parameters.AddWithValue("@userId", rating.UserId);
@@ -161,9 +161,8 @@ namespace MovieNight_DataAccess.Controllers
         public void UpdateRate(Rating rating)
         {
             // Set up the query
-            string query = $"INSERT INTO {tableName} " +
-                           $"(id, mediaId, rate, userId, rateDate) " +
-                           $"VALUES (@id, @mediaId, @rate, @userId, @rateDate) " +
+            string query = $"UPDATE {tableName} " +
+                           $"SET mediaId = @mediaId, rate = @rate, userId = @userId, rateDate = @rateDate " +
                            $"WHERE id = @id";
 
             // Open the connection
@@ -194,6 +193,124 @@ namespace MovieNight_DataAccess.Controllers
             {
                 connection.Close();
             }
+        }
+
+        public int TotalRatings(int mediaId)
+        {
+            string query = $"SELECT COUNT(id) FROM {tableName} WHERE mediaId = @mediaId";
+
+            // Open the connection
+            connection.Open();
+
+            // Creating Command string to combine the query and the connection String
+            SqlCommand command = new SqlCommand(query, Connection.connection);
+
+            int count = 0;
+
+            try
+            {
+                command.Parameters.AddWithValue("@mediaId", mediaId);
+                // Execute the query and get the data
+                using SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if ((int)reader.GetValue(0) != 0)
+                    {
+                        count = (int)reader.GetValue(0);
+                    }
+                }
+                return count;
+            }
+            catch (SqlException e)
+            {
+                // Handle any errors that may have occurred.
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return count;
+        }
+
+        public int WeekRatings()
+        {
+            string query = $"SELECT COUNT(id) FROM {tableName} WHERE BETWEEN @week @now";
+
+            // Open the connection
+            connection.Open();
+
+            // Creating Command string to combine the query and the connection String
+            SqlCommand command = new SqlCommand(query, Connection.connection);
+
+            int count = 0;
+
+            try
+            {
+                command.Parameters.AddWithValue("@now", DateTime.Now);
+                command.Parameters.AddWithValue("@week", DateTime.Now.AddDays(-7));
+                // Execute the query and get the data
+                using SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if ((int)reader.GetValue(0) != 0)
+                    {
+                        count = (int)reader.GetValue(0);
+                    }
+                }
+                return count;
+            }
+            catch (SqlException e)
+            {
+                // Handle any errors that may have occurred.
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return count;
+        }
+
+        public int AvgRating(int mediaId)
+        {
+            string query = $"SELECT AVG(rate) FROM {tableName} WHERE mediaId = @mediaId";
+
+            // Open the connection
+            connection.Open();
+
+            // Creating Command string to combine the query and the connection String
+            SqlCommand command = new SqlCommand(query, Connection.connection);
+
+            int count = 0;
+
+            try
+            {
+                command.Parameters.AddWithValue("@mediaId", mediaId);
+                // Execute the query and get the data
+                using SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if ((object)reader.GetValue(0) is int)
+                    {
+                        Debug.WriteLine((object?)reader.GetValue(0));
+                        count = (int)reader.GetValue(0);
+                    }
+                }
+                return count;
+            }
+            catch (SqlException e)
+            {
+                // Handle any errors that may have occurred.
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return count;
         }
     }
 }
