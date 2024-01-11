@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,28 +20,26 @@ namespace MovieNight_DataAccess.Controllers
         }
 
         /**
-* Query that gets all user's media
-*/
+        * Query that gets all user's media
+        */
         public List<Folderkeep> GetUserFolders(int userId)
         {
-            string query = $"SELECT * FROM {tableName} WHERE userId = @userId";
+            string query = $"SELECT * FROM {tableName} WHERE userId = @userId ORDER BY time DESC";
 
             // Open the connection
             connection.Open();
 
             // Creating Command string to combine the query and the connection String
             SqlCommand command = new SqlCommand(query, Connection.connection);
-
             try
             {
                 command.Parameters.AddWithValue("@userId", userId);
                 // Execute the query and get the data
                 using SqlDataReader reader = command.ExecuteReader();
                 List<Folderkeep> folders = new List<Folderkeep>();
-
                 while (reader.Read())
                 {
-                    folders.Add(new Folderkeep((int)reader.GetValue(0), userId));
+                    folders.Add(new Folderkeep((int)reader.GetValue(1), (int)reader.GetValue(0), (int)reader.GetValue(2), (DateTime)reader.GetValue(3)));
                 }
                 return folders;
             }
@@ -60,8 +59,8 @@ namespace MovieNight_DataAccess.Controllers
         {
             // Set up the query
             string query = $"INSERT INTO {tableName} " +
-                           $"(mediaId, userId) " +
-                           $"VALUES (@mediaId, @userId)";
+                           $"(mediaId, userId, type, time) " +
+                           $"VALUES (@mediaId, @userId, @type, @time)";
 
             // Open the connection
             connection.Open();
@@ -72,6 +71,8 @@ namespace MovieNight_DataAccess.Controllers
             {
                 command.Parameters.AddWithValue("@mediaId", folders.MediaId);
                 command.Parameters.AddWithValue("@userId", folders.UserId);
+                command.Parameters.AddWithValue("@type", folders.Type);
+                command.Parameters.AddWithValue("@time", folders.Time);
 
                 // Execute the query and get the data
                 using SqlDataReader reader = command.ExecuteReader();

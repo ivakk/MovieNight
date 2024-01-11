@@ -107,7 +107,7 @@
             // 
             lbLastName.AutoSize = true;
             lbLastName.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            lbLastName.Location = new Point(159, 99);
+            lbLastName.Location = new Point(147, 91);
             lbLastName.Name = "lbLastName";
             lbLastName.Size = new Size(77, 32);
             lbLastName.TabIndex = 2;
@@ -117,7 +117,7 @@
             // 
             lbFirstName.AutoSize = true;
             lbFirstName.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            lbFirstName.Location = new Point(159, 67);
+            lbFirstName.Location = new Point(147, 67);
             lbFirstName.Name = "lbFirstName";
             lbFirstName.Size = new Size(82, 32);
             lbFirstName.TabIndex = 1;
@@ -148,7 +148,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1904, 1041);
+            BackColor = Color.FromArgb(51, 51, 51);
+            ClientSize = new Size(1924, 1061);
             Controls.Add(pnlMainForm);
             Controls.Add(btnCloseApp);
             Controls.Add(panel1);

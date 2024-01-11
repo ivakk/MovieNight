@@ -10,11 +10,15 @@ namespace MovieNight_Classes
     {
         public int MediaId { get; set; }
         public int UserId { get; set; }
+        public int Type { get; set; }
+        public DateTime Time { get; set; }
 
-        public Folderkeep(int mediaId, int userId)
+        public Folderkeep(int mediaId, int userId, int type, DateTime time)
         {
             MediaId = mediaId;
             UserId = userId;
+            Type = type;
+            Time = time;
         }
 
         public Folderkeep()

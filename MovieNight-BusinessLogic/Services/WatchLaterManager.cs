@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MovieNight_Classes;
 using MovieNight_InterfacesDAL.IManagers;
 using MovieNight_InterfacesLL.IServices;
+using System.Diagnostics;
 
 namespace MovieNight_BusinessLogic.Services
 {

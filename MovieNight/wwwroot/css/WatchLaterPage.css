@@ -1,0 +1,35 @@
+.movie-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .movie-item:hover {
+        transform: scale(1.03);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+
+    .movie-item img {
+        transition: filter 0.3s ease;
+    }
+
+    .movie-item:hover img {
+        filter: brightness(0.8);
+    }
+
+/* Ensuring the background matches your theme */
+body {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Removing the underline from links */
+.text-decoration-none {
+    text-decoration: none !important;
+}
+
+.movie-section {
+    border-right: 2px solid #fff; /* Adjust color and width as needed */
+}
+
+.textborderstyle {
+    border-bottom: 1px solid #808080
+}

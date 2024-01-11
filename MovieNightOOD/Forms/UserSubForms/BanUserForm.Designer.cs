@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            label1 = new Label();
+            tbReason = new TextBox();
             label11 = new Label();
             tbUsername = new TextBox();
             label10 = new Label();
@@ -36,8 +38,6 @@
             label8 = new Label();
             label3 = new Label();
             btnUnban = new Button();
-            label1 = new Label();
-            tbReason = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -60,6 +60,26 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "BAN USER";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(51, 143);
+            label1.Name = "label1";
+            label1.Size = new Size(72, 25);
+            label1.TabIndex = 36;
+            label1.Text = "Reason";
+            label1.Click += label1_Click;
+            // 
+            // tbReason
+            // 
+            tbReason.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            tbReason.Location = new Point(53, 171);
+            tbReason.Name = "tbReason";
+            tbReason.Size = new Size(400, 32);
+            tbReason.TabIndex = 35;
+            tbReason.TextChanged += textBox1_TextChanged_1;
             // 
             // label11
             // 
@@ -130,30 +150,11 @@
             btnUnban.UseVisualStyleBackColor = false;
             btnUnban.Click += btnUnban_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(51, 143);
-            label1.Name = "label1";
-            label1.Size = new Size(72, 25);
-            label1.TabIndex = 36;
-            label1.Text = "Reason";
-            label1.Click += label1_Click;
-            // 
-            // tbReason
-            // 
-            tbReason.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            tbReason.Location = new Point(53, 171);
-            tbReason.Name = "tbReason";
-            tbReason.Size = new Size(400, 32);
-            tbReason.TabIndex = 35;
-            tbReason.TextChanged += textBox1_TextChanged_1;
-            // 
             // BanUserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(51, 51, 51);
             ClientSize = new Size(1450, 1000);
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.None;

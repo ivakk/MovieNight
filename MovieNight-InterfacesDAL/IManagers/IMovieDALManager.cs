@@ -14,5 +14,7 @@ namespace MovieNight_InterfacesDAL.IManagers
         void UpdateMovies(Movie newMovie);
         void DeleteMovies(int Id);
         void CreateMovies(Movie newMovie);
+        List<Movie> Get7Movies();
+        List<Movie> GetSearch(string search);
     }
 }

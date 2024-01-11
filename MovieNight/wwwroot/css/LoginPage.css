@@ -1,42 +1,46 @@
-/* Base Styling */
-html, body {
-    height: 100%; /* Full height */
-    margin: 0; /* Reset default margin */
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,300);
+
+/* Responsive Base Font Size */
+html {
+    font-size: 14px;
 }
 
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Body Styling */
 body {
-    display: flex; /* Use flex layout */
-    flex-direction: column; /* Stack children vertically */
-    background-color: #333; /* Set the background color to match the movie page */
+    color: #666;
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    font: 16px/26px "Raleway", sans-serif;
 }
 
-main {
-    flex: 1; /* Flex grow to take available space */
-    padding-top: 20px; /* Add padding to push content down */
+/* Link Styling */
+a {
+    color: #666;
+    text-decoration: none;
 }
 
-footer {
-    flex-shrink: 0; /* Prevent footer from shrinking */
-}
+    a:hover {
+        color: #313151;
+    }
 
-/* Main Content */
-main {
-    flex-grow: 1; /* Allow main content to grow and take available space */
-    display: flex;
-    justify-content: center; /* Center main content horizontally */
-    align-items: center; /* Center main content vertically */
-    padding: 20px;
+/* Input Styling */
+input {
+    font: 16px/26px "Raleway", sans-serif;
 }
 
 /* Form Wrapper */
 .form-wrap {
-    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
-    padding: 20px;
-    margin: 20px auto; /* Center form with margin */
+    background-color: #fff;
+    width: 100%;
+    max-width: 400px;
+    margin: 3em auto;
     border-radius: 7px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Box shadow for form */
-    position: relative; /* Position relative for stacking context */
-    z-index: 2; /* Higher z-index to be above background */
+    box-sizing: border-box; /* Added for better box-sizing */
 }
 
     /* Tabs Styling */
@@ -115,7 +119,7 @@ main {
             font-size: 14px;
         }
 
-/* Modal Styling */
+/* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -129,6 +133,7 @@ main {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+/* Modal Content */
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
@@ -137,6 +142,7 @@ main {
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
+/* The Close Button */
 .close {
     color: #aaa;
     float: right;
@@ -162,10 +168,15 @@ main {
     border: 1px solid transparent;
 }
 
-/* Footer */
-footer {
-    background-color: #202020; /* Dark background for footer */
-    color: #fff; /* White text for footer */
-    padding: 10px 0;
-    text-align: center;
+    .error-message p {
+        margin: 0;
+        font-weight: bold;
+    }
+
+.tab-content {
+    display: none; /* Hide all tab content by default */
 }
+
+    .tab-content.active {
+        display: block; /* Show active tab content */
+    }

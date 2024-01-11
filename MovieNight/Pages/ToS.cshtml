@@ -1,12 +1,18 @@
 ﻿@page
 @model MovieNight.Pages.ToSModel
 @{
+    @if (Model.LoggedInUser != null)
+    {
+        Layout = "_LayoutLoggedIn";
+    }
+    ViewData["Title"] = "Terms of Service";
 }
 
 <head>
     <meta charset="UTF-8">
     <title>Terms of Service - MovieNight</title>
     <link rel="stylesheet" href="/css/ToS.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <main>

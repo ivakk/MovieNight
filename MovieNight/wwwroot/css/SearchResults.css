@@ -1,0 +1,118 @@
+body {
+    background-color: #333;
+    color: #fff;
+}
+
+.tashak {
+    padding-top: 20px;
+}
+
+.scrolling-wrapper {
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.card-wrapper, .user-card-wrapper {
+    flex: 0 0 auto;
+    margin-right: 10px;
+    position: relative;
+}
+
+.card {
+    width: 200px;
+    background-color: #444;
+    color: #fff;
+}
+
+    .card img {
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .card .card-body {
+        padding: 10px;
+    }
+
+.card-link, .user-card-link {
+    text-decoration: none;
+}
+
+.card-title {
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.user-card-wrapper {
+    flex: 0 0 auto;
+    margin: 10px;
+}
+
+.user-card {
+    width: 200px;
+    background-color: #202020; /* Dark theme background */
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px; /* Rounded corners for the card */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column; /* Stack icon and text vertically */
+}
+
+.user-card-link {
+    text-decoration: none;
+}
+
+.user-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.5); /* Increased shadow on hover */
+}
+
+.user-icon {
+    background-color: rgba(117, 54, 112, 0.8); /* Brand color for the icon background */
+    padding: 10px;
+    border-radius: 50%; /* Circular background */
+    margin-bottom: 10px;
+    font-size: 3rem; /* Larger icon size */
+    margin-top: 30px; /* Add space for the banned indicator */
+}
+
+.user-details {
+}
+
+.user-name {
+    font-size: 1rem;
+    color: #fff;
+    margin: 0;
+}
+
+.textborderstyle {
+    border-bottom: 1px solid #808080
+}
+
+
+.banned-indicator {
+    color: #D32F2F; /* Adjust the color to match your site's red theme */
+    background-color: rgba(211, 47, 47, 0.1); /* Slightly transparent background */
+    border: 1px solid #D32F2F; /* Red border */
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    position: relative;
+    top: 3px; /* Adjust as necessary */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+

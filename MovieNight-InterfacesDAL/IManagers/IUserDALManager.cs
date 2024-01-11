@@ -20,5 +20,7 @@ namespace MovieNight_InterfacesDAL.IManagers
         bool IsUserBanned(User bannedUser);
         bool ExistingUsername(string username);
         bool ExistingEmail(string email);
+        List<User> GetSearch(string search);
+        public string GetBanReason(User banUser);
     }
 }

@@ -1,0 +1,63 @@
+﻿@page "{userId:int}"
+@model MovieNight.Pages.Account.ProfileModel
+@{
+    @if (Model.LoggedInUser != null)
+    {
+        Layout = "_LayoutLoggedIn";
+    }
+    ViewData["Title"] = Model.CurrentUser.Username + "'s Profile";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/UserPage.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid user-profile text-white py-5">
+        <div class="user-header py-5 text-center">
+            @if (Model.IsBanned(Model.CurrentUser))
+            {
+                <h1 class="text-danger">BANNED</h1>
+                <h3 class="text-danger">Reason: @Model.Reason(Model.CurrentUser)</h3>
+            }
+            <i class="fas fa-user-circle fa-5x"></i>
+            <h2>@Model.CurrentUser.FirstName @Model.CurrentUser.LastName</h2>
+            <h3>@Model.CurrentUser.Username</h3>
+        </div>
+        <div class="cards row">
+            <div class="col-md-4 mb-3">
+                <a href="/Folders/WatchLater/@Model.CurrentUser.Id" class="text-decoration-none">
+                    <div class="card text-white">
+                        <img src="~/images/watchlater.png" class="card-img-top" alt="Watch Later">
+                        <div class="card-body">
+                            <h5 class="card-title">Watch Later</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-3">
+                <a href="/Folders/Watching/@Model.CurrentUser.Id" class="text-decoration-none">
+                    <div class="card text-white">
+                        <img src="~/images/watching.png" class="card-img-top" alt="Currently Watching">
+                        <div class="card-body">
+                            <h5 class="card-title">Currently Watching</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-3">
+                <a href="/Folders/Finished/@Model.CurrentUser.Id" class="text-decoration-none">
+                    <div class="card text-white">
+                        <img src="~/images/finished.png" class="card-img-top" alt="Finished">
+                        <div class="card-body">
+                            <h5 class="card-title">Finished</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>

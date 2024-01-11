@@ -34,7 +34,7 @@ namespace MovieNightOOD.Forms.MediaSubForms
             cbCategory.Items.AddRange(categoryManager.GetAll().ToArray());
         }
 
-        
+
         public void SetMovieId(int movieid)
         {
             if (movieid == 0)
@@ -49,9 +49,10 @@ namespace MovieNightOOD.Forms.MediaSubForms
                 cbRating.Text = "";
                 numYear.Text = "";
                 numLength.Text = "";
+                tbDirector.Text = "";
             }
             else
-            {   
+            {
                 Movie curMovie = movieManager.GetById(movieid);
                 movieId = curMovie.Id;
                 tbTitle.Text = curMovie.Title;
@@ -63,26 +64,28 @@ namespace MovieNightOOD.Forms.MediaSubForms
                 cbRating.Text = curMovie.Rating.ToString();
                 numYear.Text = curMovie.Year.ToString();
                 numLength.Text = curMovie.Length.ToString();
-            }  
+                tbDirector.Text = curMovie.Director;
+            }
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (cbRating.Text != "")
             {
-                rating = Convert.ToInt32(cbRating.Text);
+
             }
 
             if (tbTitle.Text == "" || tbDescription.Text == "" || tbImageLink.Text == "" || tbTrailerLink.Text == "" || cbCategory.Text == "" ||
-                cbCountry.Text == "" || numYear.Text == "" || numLength.Text== "")
+                cbCountry.Text == "" || numYear.Text == "" || numLength.Text == "" || cbRating.Text == "" || tbDirector.Text == "")
             {
-                MessageBox.Show("All fields marked with * are required!");
+                MessageBox.Show("All fields are required!");
             }
             else
             {
+                rating = Convert.ToInt32(cbRating.Text);
                 length = Convert.ToInt32(numLength.Text);
                 year = Convert.ToInt32(numYear.Value);
                 Category category = categoryManager.GetByName(cbCategory.Text);
-                Movie movie = new Movie(Convert.ToInt32(numLength.Text), movieId, tbTitle.Text, tbDescription.Text, 
+                Movie movie = new Movie(movieId, Convert.ToInt32(numLength.Text), tbDirector.Text, tbTitle.Text, tbDescription.Text,
                     tbImageLink.Text, tbTrailerLink.Text, category, cbCountry.Text,
                     rating, year);
                 if (movieId == 0)

@@ -417,5 +417,73 @@ namespace MovieNight_DataAccess.Controllers
             }
             return false;
         }
+        public List<User> GetSearch(string search)
+        {
+            string query = $"SELECT * FROM {tableName} WHERE Users.username LIKE @search";
+
+            // Open the connection
+            connection.Open();
+
+            // Creating Command string to combine the query and the connection String
+            SqlCommand command = new SqlCommand(query, Connection.connection);
+            command.Parameters.AddWithValue("@search", "%" + search + "%");
+
+            try
+            {
+                // Execute the query and get the data
+                using SqlDataReader reader = command.ExecuteReader();
+                List<User> user = new List<User>();
+
+                while (reader.Read())
+                {
+                    user.Add(new User((int)reader.GetValue(0), (string)reader.GetValue(1),
+                        (string)reader.GetValue(2), (DateTime)reader.GetValue(3),
+                        (string)reader.GetValue(4), (string)reader.GetValue(5),
+                        (string)reader.GetValue(6), (string)reader.GetValue(7),
+                        (string)reader.GetValue(8)));
+                }
+                reader.Close();
+                return user;
+            }
+            catch (SqlException e)
+            {
+                // Handle any errors that may have occurred.
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return new List<User>();
+        }
+        public string GetBanReason(User banUser)
+        {
+            string query = $"SELECT reason FROM Banned WHERE userId = @userId";
+
+            connection.Open();
+            string reason = null;
+            SqlCommand command = new SqlCommand(query, Connection.connection);
+            Debug.WriteLine(banUser.Id);
+            try
+            {
+                command.Parameters.AddWithValue("@userId", banUser.Id);
+                using SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    reason = (string)reader.GetValue(0);
+                }
+                return reason;
+            }
+            catch (SqlException e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                connection.Close();
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return reason;
+        }
     }
 }
