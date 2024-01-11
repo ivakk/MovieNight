@@ -10,6 +10,7 @@ using MovieNight_Classes;
 using System.Data;
 using MovieNight_InterfacesDAL.IManagers;
 using System.Diagnostics;
+using Microsoft.VisualStudio.Services.Aad;
 
 namespace MovieNight_DataAccess.Controllers
 {
@@ -463,7 +464,6 @@ namespace MovieNight_DataAccess.Controllers
             connection.Open();
             string reason = null;
             SqlCommand command = new SqlCommand(query, Connection.connection);
-            Debug.WriteLine(banUser.Id);
             try
             {
                 command.Parameters.AddWithValue("@userId", banUser.Id);

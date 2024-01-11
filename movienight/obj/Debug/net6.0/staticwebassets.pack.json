@@ -41,6 +41,10 @@
       "PackagePath": "staticwebassets\\icon.ico"
     },
     {
+      "Id": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\images\\favourites.png",
+      "PackagePath": "staticwebassets\\images\\favourites.png"
+    },
+    {
       "Id": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\images\\finished.png",
       "PackagePath": "staticwebassets\\images\\finished.png"
     },

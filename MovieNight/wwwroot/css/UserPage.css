@@ -21,7 +21,7 @@ body {
     }
 
 .card-img-top {
-    height: 320px; /* Set a fixed height for the images */
+    height: 245px; /* Set a fixed height for the images */
     border-bottom: 1px solid #444; /* A subtle border from your theme */
     padding:25px;
 }

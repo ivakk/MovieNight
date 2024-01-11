@@ -30,6 +30,11 @@ namespace MovieNight.Pages.Account
         public string? Password { get; set; }
 
         [BindProperty]
+        [StringLength(32, MinimumLength = 8, ErrorMessage = "Password should be between 8 and 32 symbols!")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Password is required!")]
+        public string? RepeatPassword { get; set; }
+
+        [BindProperty]
         [EmailAddress(ErrorMessage = "Enter a valid email address!")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "First name is required!")]
         public string? Email { get; set; }
@@ -76,6 +81,11 @@ namespace MovieNight.Pages.Account
             else if (Email != null && userManager.EmailExists(Email) == true)
             {
                 ViewData["Error"] = "The email \"" + Email + "\" is already in use by another user!";
+                return Page();
+            }
+            else if (Password != RepeatPassword)
+            {
+                ViewData["Error"] = "Passwords don't match!";
                 return Page();
             }
             else

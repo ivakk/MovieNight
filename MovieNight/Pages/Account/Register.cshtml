@@ -52,6 +52,10 @@
                     <p class="input-description">Password should be 8-32 symbols</p>
                     <span asp-validation-for="Password" class="text-danger"></span>
 
+                    <input type="password" class="input" autocomplete="off" asp-for="RepeatPassword" placeholder="Repeat Password *" required>
+                    <p class="input-description">Password should be 8-32 symbols</p>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
                     <input type="text" class="input" asp-for="Birthdate" onfocus="this.type='date';" placeholder="Birthdate *" required>
                     <p class="input-description">dd/mm/yyyy format</p>
                     <span asp-validation-for="Birthdate" class="text-danger"></span>

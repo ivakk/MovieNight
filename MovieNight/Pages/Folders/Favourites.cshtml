@@ -1,0 +1,73 @@
+﻿@page "{id:int}"
+@model FavouritesModel
+@{
+    @if (Model.LoggedInUser != null)
+    {
+        Layout = "_LayoutLoggedIn";
+    }
+}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/WatchLaterPage.css">
+</head>
+<body>
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <h1 class="textborderstyle text-white mb-3">@Model.CurrentUser.Username's Favourites</h1>
+            <div class="col-md-6 movie-section">
+                <h2 class="text-white mb-3">Movies</h2>
+                @if (Model.AddedMovies != null && Model.AddedMovies.Any())
+                {
+                    <div class="row">
+                        @foreach (var movies in Model.AddedMovies)
+                        {
+                            <div class="col-sm-12 col-md-6 mb-4">
+                                <a href="/Movies/@movies.Id" class="text-decoration-none">
+                                    <div class="card bg-dark text-white movie-item h-100">
+                                        <img src="@movies.ImageLink" class="card-img-top img-fluid" alt="@movies.Title" style="height: 300px; object-fit: cover;">
+                                        <div class="card-body">
+                                            <p class="card-title text-truncate">@movies.Title</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p class="text-white">There is nothing to see here...</p>
+                }
+            </div>
+
+            <!-- Latest Added Series Column -->
+            <div class="col-md-6">
+                <h2 class="text-white mb-3">Series</h2>
+                @if (Model.AddedSeries != null && Model.AddedSeries.Any())
+                {
+                    <div class="row">
+                        @foreach (var series in Model.AddedSeries)
+                        {
+                            <div class="col-sm-12 col-md-6 mb-4">
+                                <a href="/Series/@series.Id" class="text-decoration-none">
+                                    <div class="card bg-dark text-white movie-item h-100">
+                                        <img src="@series.ImageLink" class="card-img-top img-fluid" alt="@series.Title" style="height: 300px; object-fit: cover;">
+                                        <div class="card-body">
+                                            <p class="card-title text-truncate">@series.Title</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p class="text-white">There is nothing to see here...</p>
+                }
+            </div>
+        </div>
+    </div>
+</body>

@@ -50,18 +50,20 @@
             panel1.Controls.Add(lbUserLetter);
             panel1.Controls.Add(lbLastName);
             panel1.Controls.Add(lbFirstName);
-            panel1.Location = new Point(61, 40);
+            panel1.Location = new Point(70, 53);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(325, 1000);
+            panel1.Size = new Size(371, 1333);
             panel1.TabIndex = 0;
             // 
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.Silver;
             pictureBox2.Image = Properties.Resources.logo_movienight;
-            pictureBox2.Location = new Point(85, 942);
+            pictureBox2.Location = new Point(97, 1256);
+            pictureBox2.Margin = new Padding(3, 4, 3, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(156, 47);
+            pictureBox2.Size = new Size(178, 63);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 5;
             pictureBox2.TabStop = false;
@@ -73,9 +75,10 @@
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnLogout.ForeColor = Color.WhiteSmoke;
-            btnLogout.Location = new Point(20, 876);
+            btnLogout.Location = new Point(23, 1168);
+            btnLogout.Margin = new Padding(3, 4, 3, 4);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(283, 60);
+            btnLogout.Size = new Size(323, 80);
             btnLogout.TabIndex = 0;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = false;
@@ -83,9 +86,10 @@
             // 
             // flpMenu
             // 
-            flpMenu.Location = new Point(20, 193);
+            flpMenu.Location = new Point(23, 257);
+            flpMenu.Margin = new Padding(3, 4, 3, 4);
             flpMenu.Name = "flpMenu";
-            flpMenu.Size = new Size(290, 677);
+            flpMenu.Size = new Size(331, 903);
             flpMenu.TabIndex = 4;
             flpMenu.Paint += flpMenu_Paint;
             // 
@@ -95,7 +99,7 @@
             lbUserLetter.BackColor = Color.FromArgb(117, 54, 112);
             lbUserLetter.Font = new Font("Segoe UI", 45F, FontStyle.Regular, GraphicsUnit.Point);
             lbUserLetter.ForeColor = SystemColors.ControlLightLight;
-            lbUserLetter.Location = new Point(62, 60);
+            lbUserLetter.Location = new Point(71, 80);
             lbUserLetter.Name = "lbUserLetter";
             lbUserLetter.Size = new Size(91, 81);
             lbUserLetter.TabIndex = 0;
@@ -107,7 +111,7 @@
             // 
             lbLastName.AutoSize = true;
             lbLastName.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            lbLastName.Location = new Point(147, 91);
+            lbLastName.Location = new Point(168, 121);
             lbLastName.Name = "lbLastName";
             lbLastName.Size = new Size(77, 32);
             lbLastName.TabIndex = 2;
@@ -117,7 +121,7 @@
             // 
             lbFirstName.AutoSize = true;
             lbFirstName.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            lbFirstName.Location = new Point(147, 67);
+            lbFirstName.Location = new Point(168, 89);
             lbFirstName.Name = "lbFirstName";
             lbFirstName.Size = new Size(82, 32);
             lbFirstName.TabIndex = 1;
@@ -129,9 +133,10 @@
             btnCloseApp.BackColor = Color.FromArgb(255, 128, 128);
             btnCloseApp.FlatStyle = FlatStyle.Popup;
             btnCloseApp.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCloseApp.Location = new Point(1885, 0);
+            btnCloseApp.Location = new Point(2154, 0);
+            btnCloseApp.Margin = new Padding(3, 4, 3, 4);
             btnCloseApp.Name = "btnCloseApp";
-            btnCloseApp.Size = new Size(45, 45);
+            btnCloseApp.Size = new Size(51, 60);
             btnCloseApp.TabIndex = 1;
             btnCloseApp.Text = "X";
             btnCloseApp.UseVisualStyleBackColor = false;
@@ -139,20 +144,22 @@
             // 
             // pnlMainForm
             // 
-            pnlMainForm.Location = new Point(415, 40);
+            pnlMainForm.Location = new Point(474, 53);
+            pnlMainForm.Margin = new Padding(3, 4, 3, 4);
             pnlMainForm.Name = "pnlMainForm";
-            pnlMainForm.Size = new Size(1450, 1000);
+            pnlMainForm.Size = new Size(1657, 1333);
             pnlMainForm.TabIndex = 2;
             // 
             // Menu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(51, 51, 51);
             ClientSize = new Size(1924, 1061);
             Controls.Add(pnlMainForm);
             Controls.Add(btnCloseApp);
             Controls.Add(panel1);
+            Margin = new Padding(3, 4, 3, 4);
             MinimizeBox = false;
             Name = "Menu";
             Text = "menu";

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MovieNight_BusinessLogic.Services;
@@ -12,9 +13,9 @@ namespace MovieNight.Pages
         public User LoggedInUser { get; set; }
 
         private readonly IUserManager userManager;
-        public ToSModel() 
+        public ToSModel(IUserManager _userManager) 
         {
-            userManager = new UserManager(new UserDALManager());
+            userManager = _userManager;
         }
         public void OnGet()
         {
@@ -25,7 +26,7 @@ namespace MovieNight.Pages
                     LoggedInUser = userManager.GetUserById(int.Parse(User.FindFirst("id").Value));
                     if (IsBanned(LoggedInUser))
                     {
-                        RedirectToPage("/Account/Logout");
+                        HttpContext.SignOutAsync();
                     }
                 }
                 catch (ArgumentException ex)

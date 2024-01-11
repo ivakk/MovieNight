@@ -24,12 +24,12 @@ namespace MovieNight.Pages.Folders
         private readonly ISeriesManager seriesManager;
         private readonly IWatchingManager watchingManager;
 
-        public WatchingModel()
+        public WatchingModel(IUserManager _userManager, IMovieManager _movieManager, ISeriesManager _seriesManager, IWatchingManager _watchingManager)
         {
-            userManager = new UserManager(new UserDALManager());
-            movieManager = new MovieManager(new MovieDALManager());
-            seriesManager = new SeriesManager(new SeriesDALManager());
-            watchingManager = new WatchingManager(new WatchingDALManager());
+            userManager = _userManager;
+            movieManager = _movieManager;
+            seriesManager = _seriesManager;
+            watchingManager = _watchingManager;
             AddedMovies = new List<Movie>();
             AddedSeries = new List<Series>();
         }

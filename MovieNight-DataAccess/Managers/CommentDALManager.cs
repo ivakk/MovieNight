@@ -43,7 +43,7 @@ namespace MovieNight_DataAccess.Controllers
                 // Execute the query and get the data
                 while (reader.Read())
                 {
-                    comment = new Comments((int)reader.GetValue(0), (int)reader.GetValue(1), (int)reader.GetValue(2), (DateTime)reader.GetValue(4), (string)reader.GetValue(3));
+                    comment = new Comments((int)reader.GetValue(0), (int)reader.GetValue(2), (int)reader.GetValue(1), (DateTime)reader.GetValue(4), (string)reader.GetValue(3));
                 }
             }
             catch (SqlException e)

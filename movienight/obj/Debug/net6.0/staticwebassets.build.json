@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oyefjg1+inG/HC12P+iBKC0Py/ELBU/A5JEGc/tsJxE=",
+  "Hash": "gY/N6AmhT+1RB8DdKfxbvlOFBfaaxYpSOP0Xy1MntcA=",
   "Source": "MovieNight",
   "BasePath": "_content/MovieNight",
   "Mode": "Default",
@@ -202,6 +202,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\images\\favourites.png",
+      "SourceId": "MovieNight",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\",
+      "BasePath": "_content/MovieNight",
+      "RelativePath": "images/favourites.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\favourites.png"
     },
     {
       "Identity": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\images\\finished.png",

@@ -66,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -131,7 +131,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -211,7 +211,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -274,7 +274,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -337,7 +337,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -374,6 +374,15 @@
               },
               "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj": {
                 "projectPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj"
+              },
+              "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj": {
+                "projectPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj"
+              },
+              "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj": {
+                "projectPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj"
+              },
+              "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-InterfacesLL\\MovieNight-InterfacesLL.csproj": {
+                "projectPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-InterfacesLL\\MovieNight-InterfacesLL.csproj"
               }
             }
           }
@@ -412,7 +421,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
