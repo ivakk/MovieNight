@@ -16,6 +16,7 @@ namespace MovieNight.Pages
         public List<Comments> Comments { get; set; }
         [BindProperty]
         public string CommentLeft { get; set; }
+        public User LoggedInUser { get; set; }
         public int UserId { get; set; }
         public string WatchLaterButtonText => IsInWatchLater ? "Remove from Watch Later" : "Add to Watch Later";
         public bool IsInWatchLater { get; private set; }
@@ -52,7 +53,8 @@ namespace MovieNight.Pages
             Comments = commentManager.GetAll(Movie.Id);
             if (User.FindFirst("id") != null)
             {
-                UserId = int.Parse(User.FindFirst("id").Value);
+                LoggedInUser = userManager.GetUserById(int.Parse(User.FindFirst("id").Value));
+                UserId = LoggedInUser.Id;
                 IsInWatchLater = watchLaterManager.CheckFolder(Movie.Id, UserId);
                 IsInWatching = watchingManager.CheckFolder(Movie.Id, UserId);
                 IsInFinished = finishedManager.CheckFolder(Movie.Id, UserId);
@@ -63,14 +65,29 @@ namespace MovieNight.Pages
                 if (IsRated)
                 {
                     Rating currentRating = ratingManager.GetRate(Movie.Id, UserId);
+                    if (currentRating.Rate == 1) { currentRating.Rate = 5; }
+                    else if (currentRating.Rate == 2) { currentRating.Rate = 4; }
+                    else if (currentRating.Rate == 4) { currentRating.Rate = 2; }
+                    else if (currentRating.Rate == 5) { currentRating.Rate = 1; }
                     ViewData["UserRating"] = currentRating.Rate;
-                    Debug.WriteLine("Current User Rating: " + ViewData["UserRating"]);
+                }
+                if (IsBanned(LoggedInUser))
+                {
+                    RedirectToPage("/Account/Logout");
                 }
             }
             foreach (var comment in Comments)
             {
                 comment.Username = userManager.GetUserById(comment.UserId).Username;
             }
+        }
+        public bool IsBanned(User user)
+        {
+            if (userManager.BannedUser(user) == true)
+            {
+                return true;
+            }
+            return false;
         }
         public IActionResult OnPostComment(int id)
         {
@@ -165,18 +182,17 @@ namespace MovieNight.Pages
         {
             try
             {
-
                 if (User.FindFirst("id") != null)
                 {
                     UserId = int.Parse(User.FindFirst("id").Value);
                     IsInWatchLater = watchLaterManager.CheckFolder(movieId, UserId);
                     if (IsInWatchLater)
                     {
-                        watchLaterManager.RemoveFrom(new Folderkeep(movieId, UserId));
+                        watchLaterManager.RemoveFrom(new Folderkeep(movieId, UserId, 0, DateTime.Now));
                     }
                     else
                     {
-                        watchLaterManager.AddTo(new Folderkeep(movieId, UserId));
+                        watchLaterManager.AddTo(new Folderkeep(movieId, UserId, 0, DateTime.Now));
                     }
                     IsInWatchLater = !IsInWatchLater;
                     // Re-fetch movie data and other necessary data
@@ -208,11 +224,11 @@ namespace MovieNight.Pages
                     IsInWatching = watchingManager.CheckFolder(movieId, UserId);
                     if (IsInWatching)
                     {
-                        watchingManager.RemoveFrom(new Folderkeep(movieId, UserId));
+                        watchingManager.RemoveFrom(new Folderkeep(movieId, UserId, 0, DateTime.Now));
                     }
                     else
                     {
-                        watchingManager.AddTo(new Folderkeep(movieId, UserId));
+                        watchingManager.AddTo(new Folderkeep(movieId, UserId, 0, DateTime.Now));
                     }
                     IsInWatching = !IsInWatching;
                     // Re-fetch movie data and other necessary data
@@ -243,11 +259,11 @@ namespace MovieNight.Pages
                     IsInFinished = finishedManager.CheckFolder(movieId, UserId);
                     if (IsInFinished)
                     {
-                        finishedManager.RemoveFrom(new Folderkeep(movieId, UserId));
+                        finishedManager.RemoveFrom(new Folderkeep(movieId, UserId, 0, DateTime.Now));
                     }
                     else
                     {
-                        finishedManager.AddTo(new Folderkeep(movieId, UserId));
+                        finishedManager.AddTo(new Folderkeep(movieId, UserId, 0, DateTime.Now));
                     }
                     IsInFinished = !IsInFinished;
                     // Re-fetch movie data and other necessary data
@@ -271,6 +287,11 @@ namespace MovieNight.Pages
 
         public IActionResult OnPostRate(int movieId, int rating)
         {
+            if (rating == 1) { rating = 5; }
+            else if (rating == 2) { rating = 4; }
+            else if (rating == 4) { rating = 2; }
+            else if (rating == 5) {  rating = 1; }
+
             try
             {
                 if (User.FindFirst("id") != null)

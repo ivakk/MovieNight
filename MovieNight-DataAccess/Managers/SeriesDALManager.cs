@@ -206,5 +206,85 @@ namespace MovieNight_DataAccess.Controllers
                 connection.Close();
             }
         }
+        public List<Series> Get7Series()
+        {
+            string query = $"SELECT TOP 8 * FROM ObjectToWatch " +
+                $"JOIN Series ON ObjectToWatch.id = Series.id JOIN Categories ON ObjectToWatch.categoryId = Categories.id " +
+                $"ORDER BY Series.id DESC";
+
+            // Open the connection
+            connection.Open();
+
+            // Creating Command string to combine the query and the connection String
+            SqlCommand command = new SqlCommand(query, Connection.connection);
+
+            try
+            {
+                // Execute the query and get the data
+                using SqlDataReader reader = command.ExecuteReader();
+                List<Series> series = new List<Series>();
+                while (reader.Read())
+                {
+                    Category category = new Category((int)reader.GetValue(12), (string)reader.GetValue(13));
+                    series.Add(new Series((int)reader.GetValue(0), (int)reader.GetValue(10), (int)reader.GetValue(11), (string)reader.GetValue(1), (string)reader.GetValue(2), (string)reader.GetValue(3),
+                        (string)reader.GetValue(4), category, (string)reader.GetValue(6), (int)reader.GetValue(7), (int)reader.GetValue(8)));
+                }
+                reader.Close();
+                return series;
+            }
+            catch (SqlException e)
+            {
+                // Handle any errors that may have occurred.
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                // Close the connection
+                connection.Close();
+            }
+
+            return new List<Series>();
+        }
+        public List<Series> GetSearch(string search)
+        {
+            string query = $"SELECT * " +
+                $"FROM ObjectToWatch JOIN Series on ObjectToWatch.id = Series.id " +
+                $"JOIN Categories ON ObjectToWatch.categoryId = Categories.id " +
+                $"WHERE ObjectToWatch.title LIKE @search";
+
+            // Open the connection
+            connection.Open();
+
+            // Creating Command string to combine the query and the connection String
+            SqlCommand command = new SqlCommand(query, Connection.connection);
+            command.Parameters.AddWithValue("@search", "%" + search + "%");
+
+            try
+            {
+                // Execute the query and get the data
+                using SqlDataReader reader = command.ExecuteReader();
+                List<Series> series = new List<Series>();
+                while (reader.Read())
+                {
+                    Category category = new Category((int)reader.GetValue(12), (string)reader.GetValue(13));
+                    series.Add(new Series((int)reader.GetValue(0), (int)reader.GetValue(10), (int)reader.GetValue(11), (string)reader.GetValue(1), (string)reader.GetValue(2), (string)reader.GetValue(3),
+                        (string)reader.GetValue(4), category, (string)reader.GetValue(6), (int)reader.GetValue(7), (int)reader.GetValue(8)));
+                }
+                reader.Close();
+                return series;
+            }
+            catch (SqlException e)
+            {
+                // Handle any errors that may have occurred.
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                // Close the connection
+                connection.Close();
+            }
+
+            return new List<Series>();
+        }
     }
 }

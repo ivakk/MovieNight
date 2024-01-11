@@ -10,15 +10,17 @@ namespace MovieNight_Classes
     public class Movie : ObjectToWatch
     {
         public int Length{ get; set; }
+        public string Director { get; set; }
 
         public Movie()
         {
         }
 
-        public Movie(int length, int id, string title, string description, string imageLink, string trailerLink, Category category, string country,
+        public Movie(int id, int length, string director, string title, string description, string imageLink, string trailerLink, Category category, string country,
                         int rating, int year) : base(id, title, description, imageLink, trailerLink, category, country, rating, year)
         {
             Length = length;
+            Director = director;
         }
 
     }

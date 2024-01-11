@@ -147,3 +147,24 @@ button {
 body {
     font-family: 'Arial', sans-serif;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1; /* Flex container for main content */
+}
+
+.footer {
+    background: #333; /* Footer background */
+    color: white;
+    width: 100%;
+    padding: 10px 0;
+}

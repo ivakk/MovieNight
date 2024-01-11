@@ -50,5 +50,13 @@ namespace MovieNight_BusinessLogic.Services
         {
             manager.DeleteMovies(id);
         }
+        public List<Movie> Get7()
+        {
+            return (List<Movie>)manager.Get7Movies();
+        }
+        public List<Movie> Search(string search)
+        {
+            return (List<Movie>)manager.GetSearch(search);
+        }
     }
 }

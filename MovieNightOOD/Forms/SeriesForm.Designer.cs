@@ -91,13 +91,13 @@
             // 
             // cbCategory
             // 
+            cbCategory.DropDownStyle = ComboBoxStyle.DropDownList;
             cbCategory.FormattingEnabled = true;
+            cbCategory.Items.AddRange(new object[] { "" });
             cbCategory.Location = new Point(299, 130);
             cbCategory.Name = "cbCategory";
             cbCategory.Size = new Size(203, 33);
             cbCategory.TabIndex = 6;
-            cbCategory.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbCategory.Items.Add("");
             // 
             // label1
             // 
@@ -191,6 +191,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(51, 51, 51);
             ClientSize = new Size(1450, 1000);
             Controls.Add(btnEdit);
             Controls.Add(btnDelete);

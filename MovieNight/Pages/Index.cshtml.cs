@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MovieNight_BusinessLogic.Services;
+using MovieNight_InterfacesLL.IServices;
 using MovieNight_Classes;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -13,14 +14,20 @@ namespace MovieNight.Pages
 {
     public class IndexModel : PageModel
     {
-        UserManager userManager = new UserManager(new UserDALManager());
+        public List<Movie> LatestMovies { get; set; }
+        public List<Series> LatestSeries { get; set; }
+        public User LoggedInUser { get; set; }
 
-        private readonly ILogger<IndexModel> _logger;
 
-        public User? UserLogic;
-        public IndexModel(ILogger<IndexModel> logger)
+        private readonly IUserManager userManager;
+        private readonly IMovieManager movieManager;
+        private readonly ISeriesManager seriesManager;
+
+        public IndexModel()
         {
-            _logger = logger;
+            userManager = new UserManager(new UserDALManager());
+            movieManager = new MovieManager(new MovieDALManager());
+            seriesManager = new SeriesManager(new SeriesDALManager());
         }
 
         public void OnGet()
@@ -30,14 +37,28 @@ namespace MovieNight.Pages
             {
                 try
                 {
-                    UserLogic = userManager.GetUserById(int.Parse(User.FindFirst("id").Value));
-                    ViewData["Username"] = UserLogic.Username;
+                    LoggedInUser = userManager.GetUserById(int.Parse(User.FindFirst("id").Value));
+                    if (IsBanned(LoggedInUser))
+                    {
+                        RedirectToPage("/Account/Logout");
+                    }
                 }
                 catch (ArgumentException ex)
                 {
                     ViewData["Error"] = ex.Message;
                 }
-            } 
+            }
+
+            LatestMovies = movieManager.Get7();
+            LatestSeries = seriesManager.Get7();
+        }
+        public bool IsBanned(User user)
+        {
+            if (userManager.BannedUser(user) == true)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

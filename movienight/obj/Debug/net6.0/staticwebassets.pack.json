@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\MovieNight.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\css\\IndexPage.css",
+      "PackagePath": "staticwebassets\\css\\IndexPage.css"
+    },
+    {
       "Id": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\css\\LoginPage.css",
       "PackagePath": "staticwebassets\\css\\LoginPage.css"
     },
@@ -13,8 +17,20 @@
       "PackagePath": "staticwebassets\\css\\MoviePage.css"
     },
     {
+      "Id": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\css\\SearchResults.css",
+      "PackagePath": "staticwebassets\\css\\SearchResults.css"
+    },
+    {
       "Id": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\css\\ToS.css",
       "PackagePath": "staticwebassets\\css\\ToS.css"
+    },
+    {
+      "Id": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\css\\UserPage.css",
+      "PackagePath": "staticwebassets\\css\\UserPage.css"
+    },
+    {
+      "Id": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\css\\WatchLaterPage.css",
+      "PackagePath": "staticwebassets\\css\\WatchLaterPage.css"
     },
     {
       "Id": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\css\\site.css",
@@ -23,6 +39,18 @@
     {
       "Id": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\icon.ico",
       "PackagePath": "staticwebassets\\icon.ico"
+    },
+    {
+      "Id": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\images\\finished.png",
+      "PackagePath": "staticwebassets\\images\\finished.png"
+    },
+    {
+      "Id": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\images\\watching.png",
+      "PackagePath": "staticwebassets\\images\\watching.png"
+    },
+    {
+      "Id": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\images\\watchlater.png",
+      "PackagePath": "staticwebassets\\images\\watchlater.png"
     },
     {
       "Id": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight\\wwwroot\\js\\LoginPage.js",

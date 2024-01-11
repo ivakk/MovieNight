@@ -56,7 +56,7 @@ namespace MovieNightOOD
             }
             else if (usernameEntry.Text == "")
             {
-                MessageBox.Show("Enter your username", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);               
+                MessageBox.Show("Enter your username", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

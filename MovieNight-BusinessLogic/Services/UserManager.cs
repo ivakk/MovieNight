@@ -132,5 +132,13 @@ namespace MovieNight_BusinessLogic.Services
             if (controller.ExistingEmail(email) == true) { return true; }
             return false;
         }
+        public List<User> Search(string search)
+        {
+            return (List<User>)controller.GetSearch(search);
+        }
+        public string GetReason(User banUser)
+        {
+            return controller.GetBanReason(banUser);
+        }
     }
 }

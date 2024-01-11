@@ -15,5 +15,7 @@ namespace MovieNight_InterfacesDAL.IManagers
         void UpdateSeries(Series newSeries);
         void DeleteSeries(int id);
         void CreateSeries(Series newSeries);
+        List<Series> Get7Series();
+        List<Series> GetSearch(string search);
     }
 }

@@ -23,5 +23,7 @@ namespace MovieNight_InterfacesLL.IServices
         bool EmailCheck(string email);
         bool UsernameExists(string username);
         bool EmailExists(string email);
+        List<User> Search(string search);
+        string GetReason(User banUser);
     }
 }

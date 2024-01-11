@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            tbDirector = new TextBox();
+            label10 = new Label();
+            label8 = new Label();
+            numLength = new NumericUpDown();
             cbRating = new ComboBox();
             cbCountry = new ComboBox();
             tbImageLink = new TextBox();
@@ -46,16 +50,16 @@
             tbDescription = new TextBox();
             cbCategory = new ComboBox();
             label3 = new Label();
-            numLength = new NumericUpDown();
-            label8 = new Label();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numYear).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numLength).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numYear).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
             groupBox1.BackColor = Color.LightGray;
+            groupBox1.Controls.Add(tbDirector);
+            groupBox1.Controls.Add(label10);
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(numLength);
             groupBox1.Controls.Add(cbRating);
@@ -78,10 +82,49 @@
             groupBox1.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox1.Location = new Point(504, 236);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(520, 506);
+            groupBox1.Size = new Size(520, 549);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "ADD A MOVIE";
+            // 
+            // tbDirector
+            // 
+            tbDirector.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            tbDirector.Location = new Point(150, 457);
+            tbDirector.Multiline = true;
+            tbDirector.Name = "tbDirector";
+            tbDirector.Size = new Size(301, 34);
+            tbDirector.TabIndex = 50;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(51, 460);
+            label10.Name = "label10";
+            label10.Size = new Size(93, 25);
+            label10.TabIndex = 49;
+            label10.Text = "Director *";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(51, 504);
+            label8.Name = "label8";
+            label8.Size = new Size(137, 25);
+            label8.TabIndex = 48;
+            label8.Text = "Length (min)  *";
+            // 
+            // numLength
+            // 
+            numLength.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            numLength.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            numLength.Location = new Point(194, 502);
+            numLength.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
+            numLength.Name = "numLength";
+            numLength.Size = new Size(79, 32);
+            numLength.TabIndex = 47;
             // 
             // cbRating
             // 
@@ -99,7 +142,7 @@
             cbCountry.DropDownStyle = ComboBoxStyle.DropDownList;
             cbCountry.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             cbCountry.FormattingEnabled = true;
-            cbCountry.Items.AddRange(new object[] { "", "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua &amp; Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia &amp; Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cruise Ship", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Kyrgyz Republic", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre &amp; Miquelon", "Samoa", "San Marino", "Satellite", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "St Kitts &amp; Nevis", "St Lucia", "St Vincent", "St. Lucia", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad &amp; Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks &amp; Caicos", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe" });
+            cbCountry.Items.AddRange(new object[] { "", "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua & Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia & Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cruise Ship", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Kyrgyz Republic", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre & Miquelon", "Samoa", "San Marino", "Satellite", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "St Kitts & Nevis", "St Lucia", "St Vincent", "St. Lucia", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad & Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks & Caicos", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe" });
             cbCountry.Location = new Point(250, 167);
             cbCountry.Name = "cbCountry";
             cbCountry.Size = new Size(201, 33);
@@ -120,9 +163,9 @@
             label2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(250, 203);
             label2.Name = "label2";
-            label2.Size = new Size(66, 25);
+            label2.Size = new Size(79, 25);
             label2.TabIndex = 43;
-            label2.Text = "Rating";
+            label2.Text = "Rating *";
             // 
             // tbTitle
             // 
@@ -208,7 +251,7 @@
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnAdd.ForeColor = Color.WhiteSmoke;
-            btnAdd.Location = new Point(314, 457);
+            btnAdd.Location = new Point(314, 497);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(137, 43);
             btnAdd.TabIndex = 13;
@@ -256,39 +299,20 @@
             label3.TabIndex = 5;
             label3.Text = "Category *";
             // 
-            // numLength
-            // 
-            numLength.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            numLength.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
-            numLength.Location = new Point(140, 462);
-            numLength.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
-            numLength.Name = "numLength";
-            numLength.Size = new Size(79, 32);
-            numLength.TabIndex = 47;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(51, 464);
-            label8.Name = "label8";
-            label8.Size = new Size(83, 25);
-            label8.TabIndex = 48;
-            label8.Text = "Length *";
-            // 
             // AddMovieForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(51, 51, 51);
             ClientSize = new Size(1450, 1000);
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "AddMovieForm";
-            Text = "AddProductForm";
+            Text = "AddMovieForm";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numYear).EndInit();
             ((System.ComponentModel.ISupportInitialize)numLength).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numYear).EndInit();
             ResumeLayout(false);
         }
 
@@ -314,5 +338,7 @@
         private ComboBox cbRating;
         private Label label8;
         private NumericUpDown numLength;
+        private TextBox tbDirector;
+        private Label label10;
     }
 }

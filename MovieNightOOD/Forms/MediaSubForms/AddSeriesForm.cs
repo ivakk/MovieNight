@@ -68,25 +68,28 @@ namespace MovieNightOOD.Forms.MediaSubForms
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            season = Convert.ToInt32(numSeason.Value);
-            episode = Convert.ToInt32(numEpisode.Value);
-            rating = Convert.ToInt32(cbRating.Text);
-            year = Convert.ToInt32(numYear.Value);
-            Category category = categoryManager.GetByName(cbCategory.Text);
-            Series series = new Series(seriesId, season, episode, tbTitle.Text, tbDescription.Text, tbImageLink.Text,
-                tbTrailerLink.Text, category, cbCountry.Text, rating, year);
             if (tbTitle.Text == "" || tbDescription.Text == "" || tbImageLink.Text == "" || tbTrailerLink.Text == "" || cbCategory.Text == "" ||
-                cbCountry.Text == "" || numYear.Text == "" || numEpisode.Text == "" || numSeason.Text == "")
+                cbCountry.Text == "" || numYear.Text == "" || numEpisode.Text == "" || numSeason.Text == "" || cbRating.Text == "")
             {
-                MessageBox.Show("All fields marked with * are required!");
+                MessageBox.Show("All fields are required!");
             }
-            if (seriesId == 0)
-                seriesManager.Create(series);
             else
-                seriesManager.Update(series);
-            this.Hide();
-            seriesForm.menu.ChangeShownForm(seriesForm);
-            seriesForm.dgvSeries.DataSource = seriesManager.GetBySearch("");
+            {
+                season = Convert.ToInt32(numSeason.Value);
+                episode = Convert.ToInt32(numEpisode.Value);
+                rating = Convert.ToInt32(cbRating.Text);
+                year = Convert.ToInt32(numYear.Value);
+                Category category = categoryManager.GetByName(cbCategory.Text);
+                Series series = new Series(seriesId, season, episode, tbTitle.Text, tbDescription.Text, tbImageLink.Text,
+                    tbTrailerLink.Text, category, cbCountry.Text, rating, year);
+                if (seriesId == 0)
+                    seriesManager.Create(series);
+                else
+                    seriesManager.Update(series);
+                this.Hide();
+                seriesForm.menu.ChangeShownForm(seriesForm);
+                seriesForm.dgvSeries.DataSource = seriesManager.GetBySearch("");
+            }
         }
     }
 }

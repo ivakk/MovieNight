@@ -1,7 +1,7 @@
 ﻿@page "{id:int}"
 @model MovieNight.Pages.MoviePageModel
 @{
-    @if (Model.UserId != null)
+    @if (Model.LoggedInUser != null)
     {
         Layout = "_LayoutLoggedIn";
     }
@@ -10,32 +10,39 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/MoviePage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="movie-page">
-        <header class="movie-header">
+        <div class="movie-header">
             <div class="header-content">
                 <h1 class="movie-title">@Model.Movie.Title</h1>
                 <div class="movie-subtitle">
-                    <span class="original-title">Original title: @Model.Movie.Title |</span>
+                    <span class="original-title">Original title: @Model.Movie.Title   |</span>
                     <span class="bubble">@Model.Movie.Year</span>
                     <span class="bubble">Movie</span>
                     <span class="bubble">@Model.Movie.Length min</span>
                 </div>
             </div>
-        </header>
+        </div>
 
         <main class="movie-main">
-            <div class="media-container">
-                <div class="poster-container">
-                    <img src="@Model.Movie.ImageLink" alt="@Model.Movie.Title" class="movie-poster">
-                </div>
-                <div class="trailer-container">
-                    <iframe class="movie-trailer" src="@Model.Movie.TrailerLink" title="@Model.Movie.Title"
-                             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                    </iframe>
+            <div class="container-fluid p-0">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <div class="poster-container">
+                            <img src="@Model.Movie.ImageLink" alt="@Model.Movie.Title" class="movie-poster">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="trailer-container">
+                            <iframe class="movie-trailer" src="@Model.Movie.TrailerLink" title="@Model.Movie.Title"
+                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -46,7 +53,7 @@
                     <div class="movie-description">
                         <p>@Model.Movie.Description</p>
                         <div class="movie-details">
-                            <div class="movie-detail">Director: Nicolas Winding Refn</div>
+                            <div class="movie-detail">Director: @Model.Movie.Director</div>
                             <div class="movie-detail">
                                 Rating: @if (Model.MovieRating == 0)
                                 {

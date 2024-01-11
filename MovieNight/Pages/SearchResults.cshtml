@@ -1,0 +1,98 @@
+﻿@page
+@model MovieNight.Pages.SearchResultsModel
+@{
+    @if (Model.LoggedInUser != null)
+    {
+        Layout = "_LayoutLoggedIn";
+    }
+    ViewData["Title"] = "Results";
+}
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/SearchResults.css">
+</head>
+<body>
+    <div class="tashak container mt-4">
+        <h2 class="textborderstyle text-white mb-3">Movie Results</h2>
+        @if (Model.MovieResults != null && Model.MovieResults.Any())
+        {
+            <div class="scrolling-wrapper">
+                @foreach (var movie in Model.MovieResults)
+                {
+                    <div class="card-wrapper">
+                        <a href="/Movies/@movie.Id" class="card-link">
+                            <div class="card">
+                                <img src="@movie.ImageLink" class="card-img-top" alt="@movie.Title">
+                                <div class="card-body">
+                                    <h5 class="card-title">@movie.Title</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-white">Nothing found...</p>
+        }
+
+        <h2 class="textborderstyle text-white mb-3">Series Results</h2>
+        @if (Model.SeriesResults != null && Model.SeriesResults.Any())
+        {
+            <div class="scrolling-wrapper">
+                @foreach (var series in Model.SeriesResults)
+                {
+                    <div class="card-wrapper">
+                        <a href="/Series/@series.Id" class="card-link">
+                            <div class="card">
+                                <img src="@series.ImageLink" class="card-img-top" alt="@series.Title">
+                                <div class="card-body">
+                                    <h5 class="card-title">@series.Title</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-white">Nothing found...</p>
+        }
+
+        <h2 class="textborderstyle text-white mb-3">User Results</h2>
+        @if (Model.UserResults != null && Model.UserResults.Any())
+        {
+            <div class="scrolling-wrapper">
+                @foreach (var user in Model.UserResults)
+                {
+                    <div class="user-card-wrapper">
+                        <a href="/Account/Profile/@user.Id" class="user-card-link">
+                            <div class="user-card">
+                                @if (@Model.IsBanned(user))
+                                {
+                                    <div class="banned-indicator">BANNED</div>
+                                }
+                                <div class="user-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="user-details">
+                                    <h5 class="user-name">@user.FirstName @user.LastName</h5>
+                                    <h6 class="user-name">@user.Username</h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-white">Nothing found...</p>
+        }
+
+    </div>
+</body>

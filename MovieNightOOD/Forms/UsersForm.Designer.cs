@@ -140,6 +140,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(51, 51, 51);
             ClientSize = new Size(1450, 1000);
             Controls.Add(flpUsers);
             Controls.Add(groupBox1);

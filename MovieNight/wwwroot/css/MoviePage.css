@@ -18,8 +18,7 @@ body, html {
 }
 
 .movie-header {
-    background: rgb(117, 54, 112); /* Updated with your RGB color */
-    /* If you want a gradient, you can use something like this: */
+    background: rgb(117, 54, 112);
     background: linear-gradient(90deg, rgba(117, 54, 112, 1) 0%, rgba(0, 0 , 0, 0) 100%);
     color: #fff;
     padding: 20px;
@@ -115,23 +114,23 @@ body, html {
     margin-bottom: 10px;
 }
 
-.movie-poster {
-    width: 50%;
-    height: 450px; /* Maintain aspect ratio */
-    max-width:100%;
+/*.movie-poster {
+    width: 100%;
+    height: 450px;*/ /* Maintain aspect ratio */
+    /*max-width:100%;
     width: 300px;
     margin-right: 20px;
 }
 
 .movie-trailer {
-    width: 50%; /* Adjust width as necessary */
-    max-width:100%;
-    height: 450px; /* Adjust height as necessary, maintaining aspect ratio */
-    width: 840px;
+    width: 100%;*/ /* Adjust width as necessary */
+    /*max-width:100%;
+    height: 450px;*/ /* Adjust height as necessary, maintaining aspect ratio */
+    /*width: 840px;*/
     /* Ensure there's no border and the display is block */
-    border: none;
+    /*border: none;
     display: block;
-}
+}*/
 
 .movie-info {
     color: #000;
@@ -386,4 +385,51 @@ body, html {
         background-color: transparent; /* No change in background on hover */
     }
 
+/* Footer adjustments */
+footer.footer {
+    padding: 10px 0;
+    font-size: 0.85rem;
+}
 
+.container-fluid.p-0, .row.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+}
+
+.trailer-container {
+    margin: 0;
+    padding: 0;
+}
+
+.poster-container {
+    margin: 0;
+    padding: 0;
+}
+
+.movie-poster {
+    display: block; /* Remove any default inline spacing */
+    width: 95%; /* Full width of their respective containers */
+    height: 450px; /* Maintain aspect ratio */
+    border: 2px solid #333
+}
+
+.movie-trailer {
+    display: block; /* Remove any default inline spacing */
+    width: 100%; /* Full width of their respective containers */
+    height: 450px; /* Maintain aspect ratio */
+    border: 2px solid #333
+}
+
+/* Ensure the row and columns have no padding or margins */
+.row.no-gutters, .row.no-gutters > [class*="col-"] {
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom : 10px;
+}
+
+.textborderstyle {
+    border-bottom: 1px solid #808080
+}

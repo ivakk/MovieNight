@@ -1,0 +1,157 @@
+﻿@page "{id:int}"
+@model MovieNight.Pages.SeriesPageModel
+@{
+    @if (Model.LoggedInUser != null)
+    {
+        Layout = "_LayoutLoggedIn";
+    }
+    ViewData["Title"] = Model.Series.Title;
+}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/MoviePage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body>
+    <div class="movie-page">
+        <div class="movie-header">
+            <div class="header-content">
+                <h1 class="movie-title">@Model.Series.Title</h1>
+                <div class="movie-subtitle">
+                    <span class="original-title">Original title: @Model.Series.Title   |</span>
+                    <span class="bubble">@Model.Series.Year</span>
+                    <span class="bubble">Series</span>
+                    <span class="bubble">@Model.Series.Episode episodes</span>
+                </div>
+            </div>
+        </div>
+
+        <main class="movie-main">
+            <div class="container-fluid p-0">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <div class="poster-container">
+                            <img src="@Model.Series.ImageLink" alt="@Model.Series.Title" class="movie-poster">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="trailer-container">
+                            <iframe class="movie-trailer" src="@Model.Series.TrailerLink" title="@Model.Series.Title"
+                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="movie-sidebar">
+            <div class="movie-content">
+                <div class="movie-description-and-actions">
+                    <div class="movie-description">
+                        <p>@Model.Series.Description</p>
+                        <div class="movie-details">
+                            <div class="movie-detail">Seasons: @Model.Series.Season</div>
+                            <div class="movie-detail">Total episodes: @Model.Series.Episode</div>
+                            <div class="movie-detail">
+                                Rating: @if (Model.SeriesRating == 0)
+                                {
+                                    @:@Model.Series.Rating/5
+                                }
+                                else
+                                {
+                                    @:@Model.SeriesRating/5
+                                }@if (Model.SeriesRates == 1)
+                                {
+                                    @:(@Model.SeriesRates vote)
+                                }
+                                else if (Model.SeriesRates != 0)
+                                {
+                                    @:(@Model.SeriesRates votes)
+                                }
+                            </div>
+                            <div class="movie-detail">Country: @Model.Series.Country</div>
+                            <div class="movie-detail">Category: @Model.Series.Category</div>
+                            <div class="movie-detail">Year: @Model.Series.Year</div>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <!-- Star Rating System -->
+                        <div class="rate-label">Your Rating:</div>
+                        <form method="post" asp-page-handler="Rate" asp-route-seriesId="@Model.Series.Id" id="ratingForm">
+                            <div class="rating">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <input type='radio' hidden name='rating' id='rating_@i' value="@i"
+                                    @(ViewData["UserRating"] as int? == i ? "checked" : "")
+                                           onclick="document.getElementById('ratingForm').submit();">
+                                    <label for='rating_@i'></label>
+                                }
+                            </div>
+                        </form>
+                        @if (Model.IsRated)
+                        {
+                            <form method="post" asp-page-handler="DeleteRate" asp-route-seriesId="@Model.Series.Id">
+                                <button type="submit" title="Delete" class="delete-rating-button">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                        }
+
+
+                        <!-- Watchlist Button -->
+                        <form method="post" asp-page-handler="ToggleWatchLater" asp-route-seriesId="@Model.Series.Id">
+                            <input type="hidden" name="seriesId" value="@Model.Series.Id" />
+                            <button type="submit" class="button watchlist-button">
+                                @Model.WatchLaterButtonText
+                            </button>
+                        </form>
+                        <form method="post" asp-page-handler="ToggleWatching" asp-route-seriesId="@Model.Series.Id">
+                            <input type="hidden" name="seriesId" value="@Model.Series.Id" />
+                            <button type="submit" class="button currently-watching-button">
+                                @Model.WatchingButtonText
+                            </button>
+                        </form>
+                        <form method="post" asp-page-handler="ToggleFinished" asp-route-seriesId="@Model.Series.Id">
+                            <input type="hidden" name="seriesId" value="@Model.Series.Id" />
+                            <button type="submit" class="button finished-button">
+                                @Model.FinishedButtonText
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="comment-section">
+                <h3>Comments</h3>
+                <form method="post" asp-page-handler="Comment" asp-route-seriesId="@Model.Series.Id">
+                    <textarea asp-for="CommentLeft" placeholder="Leave a comment... "></textarea>
+                    <input type="submit" value="Post Comment" class="button comment-button" style="background-color: rgb(117, 54, 112); color: white;" />
+                </form>
+
+                <!-- Display comments -->
+                @foreach (var comment in Model.Comments)
+                {
+                    <div class="comment">
+                        <div class="comment-header">
+                            <a href="" class="comment-user">@comment.Username</a>
+                            <span class="comment-date">@comment.CommentDate.ToString("dd/MM/yyyy")</span>
+                        </div>
+                        <div class="comment-body">@comment.Information</div>
+                        @if (Model.CanDeleteComment(comment.UserId))
+                        {
+                            <form method="post" asp-page-handler="DeleteComment" asp-route-id="@Model.Series.Id" asp-route-commentId="@comment.Id">
+                                <button type="submit" class="delete-comment-button" title="Delete">
+                                    &#x1F5D1; <!-- Unicode for trash bin -->
+                                </button>
+                            </form>
+                        }
+                    </div>
+                }
+            </div>
+        </aside>
+    </div>
+</body>
+
+

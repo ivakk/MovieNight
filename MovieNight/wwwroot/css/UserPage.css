@@ -1,0 +1,48 @@
+body {
+    background-color: #333;
+    color: #fff;
+}
+
+.user-profile {
+    margin: 20px auto;
+    background-color: #2b2b2b;
+    padding: 20px;
+}
+
+.card {
+    background-color: #333; /* Dark theme card background */
+    transition: transform 0.3s ease;
+    border: none; /* Remove default card border */
+}
+
+    .card:hover {
+        transform: translateY(-10px); /* Slight lift on hover */
+        box-shadow: 0 6px 12px rgba(0,0,0,0.5); /* Increased shadow on hover */
+    }
+
+.card-img-top {
+    height: 320px; /* Set a fixed height for the images */
+    border-bottom: 1px solid #444; /* A subtle border from your theme */
+    padding:25px;
+}
+
+.card-body {
+    padding: 15px; /* Space inside the card */
+}
+
+.cards {
+    padding-top: 80px;
+}
+
+.text-danger {
+    font-size: 2rem; /* Larger font size for 'BANNED' */
+    font-weight: bold; /* Bold font weight for 'BANNED' */
+    color: #D32F2F; /* Adjust the color to match your site's red theme */
+    background-color: rgba(211, 47, 47, 0.1); /* Slightly transparent background */
+    border: 1px solid #D32F2F; /* Red border */
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    top: -35px;
+}
