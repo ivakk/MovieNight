@@ -1,3 +1,4 @@
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -18,12 +19,14 @@ namespace MovieNight.Pages
         public string CommentLeft { get; set; }
         public User LoggedInUser { get; set; }
         public int UserId { get; set; }
-        public string WatchLaterButtonText => IsInWatchLater ? "Remove from Watch Later" : "Add to Watch Later";
+        public string WatchLaterButtonText => IsInWatchLater ? "Added to Watch Later" : "Add to Watch Later";
         public bool IsInWatchLater { get; private set; }
-        public string WatchingButtonText => IsInWatching ? "Remove from Currently Watching" : "Add to Currently Watching";
+        public string WatchingButtonText => IsInWatching ? "Added to Currently Watching" : "Add to Currently Watching";
         public bool IsInWatching { get; private set; }
-        public string FinishedButtonText => IsInFinished ? "Remove from Finished" : "Add to Finished";
+        public string FinishedButtonText => IsInFinished ? "Added to Finished" : "Add to Finished";
         public bool IsInFinished { get; private set; }
+        public string FavouritesButtonText => IsInFavourites ? "Liked ❤" : "Like ❤";
+        public bool IsInFavourites { get; private set; }
         public bool IsRated { get; private set; }
         public int SeriesRates { get; set; }
         public int SeriesRating { get; set; }
@@ -35,17 +38,19 @@ namespace MovieNight.Pages
         private readonly IWatchLaterManager watchLaterManager;
         private readonly IWatchingManager watchingManager;
         private readonly IFinishedManager finishedManager;
+        private readonly IFavouritesManager favouritesManager;
         private readonly IRatingManager ratingManager;
 
-        public SeriesPageModel()
+        public SeriesPageModel(ISeriesManager _seriesManager, ICommentManager _commentManager, IUserManager _userManager, IWatchLaterManager _watchLaterManager, IWatchingManager _watchingManager, IFinishedManager _finishedManager, IFavouritesManager _favouritesManager, IRatingManager _ratingManager)
         {
-            seriesManager = new SeriesManager(new SeriesDALManager());
-            commentManager = new CommentManager(new CommentDALManager());
-            userManager = new UserManager(new UserDALManager());
-            watchLaterManager = new WatchLaterManager(new WatchLaterDALManager());
-            watchingManager = new WatchingManager(new WatchingDALManager());
-            finishedManager = new FinishedManager(new FinishedDALManager());
-            ratingManager = new RatingManager(new RatingDALManager());
+            seriesManager = _seriesManager;
+            commentManager = _commentManager;
+            userManager = _userManager;
+            watchLaterManager = _watchLaterManager;
+            watchingManager = _watchingManager;
+            finishedManager = _finishedManager;
+            favouritesManager = _favouritesManager;
+            ratingManager = _ratingManager;
         }
         public void OnGet(int id)
         {
@@ -65,11 +70,15 @@ namespace MovieNight.Pages
                 if (IsRated)
                 {
                     Rating currentRating = ratingManager.GetRate(Series.Id, UserId);
+                    if (currentRating.Rate == 1) { currentRating.Rate = 5; }
+                    else if (currentRating.Rate == 2) { currentRating.Rate = 4; }
+                    else if (currentRating.Rate == 4) { currentRating.Rate = 2; }
+                    else if (currentRating.Rate == 5) { currentRating.Rate = 1; }
                     ViewData["UserRating"] = currentRating.Rate;
                 }
                 if (IsBanned(LoggedInUser))
                 {
-                    RedirectToPage("/Account/Logout");
+                    HttpContext.SignOutAsync();
                 }
             }
             foreach (var comment in Comments)
@@ -284,6 +293,11 @@ namespace MovieNight.Pages
 
         public IActionResult OnPostRate(int seriesId, int rating)
         {
+            if (rating == 1) { rating = 5; }
+            else if (rating == 2) { rating = 4; }
+            else if (rating == 4) { rating = 2; }
+            else if (rating == 5) { rating = 1; }
+
             try
             {
                 if (User.FindFirst("id") != null)
@@ -328,6 +342,41 @@ namespace MovieNight.Pages
                 ratingManager.RemoveRate(currentRating.Id);
             }
             return RedirectToPage(new { id = seriesId });
+        }
+        public IActionResult OnPostToggleFavourites(int seriesId)
+        {
+            try
+            {
+                if (User.FindFirst("id") != null)
+                {
+                    UserId = int.Parse(User.FindFirst("id").Value);
+                    IsInFavourites = favouritesManager.CheckFolder(seriesId, UserId);
+                    if (IsInFavourites)
+                    {
+                        favouritesManager.RemoveFrom(new Folderkeep(seriesId, UserId, 1, DateTime.Now));
+                    }
+                    else
+                    {
+                        favouritesManager.AddTo(new Folderkeep(seriesId, UserId, 1, DateTime.Now));
+                    }
+                    IsInFavourites = !IsInFavourites;
+                    // Re-fetch movie data and other necessary data
+                    Series = seriesManager.GetById(seriesId);
+                    Comments = commentManager.GetAll(seriesId);
+                    return RedirectToPage(new { id = seriesId });
+                }
+                else
+                {
+                    return RedirectToPage("/Account/Login");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                Series = seriesManager.GetById(seriesId);
+                Comments = commentManager.GetAll(seriesId);
+                return RedirectToPage(new { id = seriesId });
+            }
         }
     }
 }

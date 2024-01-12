@@ -15,9 +15,9 @@ namespace MovieNight.Pages.Account
 
         private readonly IUserManager userManager;
 
-        public ProfileModel()
+        public ProfileModel(IUserManager _userManager)
         {
-            userManager = new UserManager(new UserDALManager());
+            userManager = _userManager;
             CurrentUser = new User();
             LoggedInUser = new User();
         }

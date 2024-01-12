@@ -50,7 +50,7 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(btnUnban);
             groupBox1.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox1.Location = new Point(465, 305);
+            groupBox1.Location = new Point(249, 150);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(520, 231);
             groupBox1.TabIndex = 1;

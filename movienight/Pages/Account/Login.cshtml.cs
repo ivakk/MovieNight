@@ -29,9 +29,9 @@ namespace MovieNight.Pages.Account
 
         private readonly IUserManager userManager;
 
-        public LoginModel()
+        public LoginModel(IUserManager _userManager)
         {
-            userManager = new UserManager(new UserDALManager());
+            userManager = _userManager;
         }
 
         public void OnGet()

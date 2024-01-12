@@ -23,8 +23,19 @@ body {
     width: 200px;
     background-color: #444;
     color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #222
 }
+    .card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        transition: filter 0.3s ease;
+    }
 
+    .card:hover img {
+        filter: brightness(0.8);
+    }
+    
     .card img {
         height: 300px;
         object-fit: cover;
@@ -33,6 +44,7 @@ body {
     .card .card-body {
         padding: 10px;
     }
+    
 
 .card-link, .user-card-link {
     text-decoration: none;

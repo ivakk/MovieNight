@@ -81,7 +81,7 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox1.Location = new Point(504, 236);
+            groupBox1.Location = new Point(186, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(520, 506);
             groupBox1.TabIndex = 0;

@@ -27,7 +27,17 @@
             <h3>@Model.CurrentUser.Username</h3>
         </div>
         <div class="cards row">
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
+                <a href="/Folders/Favourites/@Model.CurrentUser.Id" class="text-decoration-none">
+                    <div class="card text-white">
+                        <img src="~/images/favourites.png" class="card-img-top" alt="Favourites">
+                        <div class="card-body">
+                            <h5 class="card-title">Favourites</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 mb-3">
                 <a href="/Folders/WatchLater/@Model.CurrentUser.Id" class="text-decoration-none">
                     <div class="card text-white">
                         <img src="~/images/watchlater.png" class="card-img-top" alt="Watch Later">
@@ -37,7 +47,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <a href="/Folders/Watching/@Model.CurrentUser.Id" class="text-decoration-none">
                     <div class="card text-white">
                         <img src="~/images/watching.png" class="card-img-top" alt="Currently Watching">
@@ -47,7 +57,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <a href="/Folders/Finished/@Model.CurrentUser.Id" class="text-decoration-none">
                     <div class="card text-white">
                         <img src="~/images/finished.png" class="card-img-top" alt="Finished">

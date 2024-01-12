@@ -19,11 +19,11 @@ namespace MovieNight.Pages
         private readonly IMovieManager movieManager;
         private readonly ISeriesManager seriesManager;
         
-        public SearchResultsModel()
+        public SearchResultsModel(IUserManager _userManager, IMovieManager _movieManager, ISeriesManager _seriesManager)
         {
-            userManager = new UserManager(new UserDALManager());
-            movieManager = new MovieManager(new MovieDALManager());
-            seriesManager = new SeriesManager(new SeriesDALManager());
+            userManager = _userManager;
+            movieManager = _movieManager;
+            seriesManager = _seriesManager;
         }
         public void OnGet(string search)
         {

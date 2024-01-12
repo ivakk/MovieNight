@@ -58,7 +58,7 @@
                             <div class="movie-detail">
                                 Rating: @if (Model.SeriesRating == 0)
                                 {
-                                    @:@Model.Series.Rating/5
+                                    @:No rating yet
                                 }
                                 else
                                 {
@@ -78,29 +78,40 @@
                         </div>
                     </div>
                     <div class="movie-actions">
-                        <!-- Star Rating System -->
-                        <div class="rate-label">Your Rating:</div>
-                        <form method="post" asp-page-handler="Rate" asp-route-seriesId="@Model.Series.Id" id="ratingForm">
-                            <div class="rating">
-                                @for (int i = 1; i <= 5; i++)
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <!-- Star Rating System -->
+                                <div class="rate-label">Your Rating:</div>
+                                <form method="post" asp-page-handler="Rate" asp-route-seriesId="@Model.Series.Id" id="ratingForm">
+                                    <div class="rating">
+                                        @for (int i = 1; i <= 5; i++)
+                                        {
+                                            <input type='radio' hidden name='rating' id='rating_@i' value="@i"
+                                            @(ViewData["UserRating"] as int? == i ? "checked" : "")
+                                                   onclick="document.getElementById('ratingForm').submit();">
+                                            <label for='rating_@i'></label>
+                                        }
+                                    </div>
+                                </form>
+                                @if (Model.IsRated)
                                 {
-                                    <input type='radio' hidden name='rating' id='rating_@i' value="@i"
-                                    @(ViewData["UserRating"] as int? == i ? "checked" : "")
-                                           onclick="document.getElementById('ratingForm').submit();">
-                                    <label for='rating_@i'></label>
+                                    <form method="post" asp-page-handler="DeleteRate" asp-route-seriesId="@Model.Series.Id">
+                                        <button type="submit" title="Delete" class="delete-rating-button">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
                                 }
                             </div>
-                        </form>
-                        @if (Model.IsRated)
-                        {
-                            <form method="post" asp-page-handler="DeleteRate" asp-route-seriesId="@Model.Series.Id">
-                                <button type="submit" title="Delete" class="delete-rating-button">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </form>
-                        }
-
-
+                            <div class="col-sm-4">
+                                <!-- Favourites Button -->
+                                <form method="post" asp-page-handler="ToggleFavourites" asp-route-seriesId="@Model.Series.Id">
+                                    <input type="hidden" name="seriesId" value="@Model.Series.Id" />
+                                    <button type="submit" class="button watchlist-button">
+                                        @Model.FavouritesButtonText
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                         <!-- Watchlist Button -->
                         <form method="post" asp-page-handler="ToggleWatchLater" asp-route-seriesId="@Model.Series.Id">
                             <input type="hidden" name="seriesId" value="@Model.Series.Id" />

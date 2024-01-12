@@ -31,6 +31,10 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
+            cbSort = new ComboBox();
+            label3 = new Label();
+            cbYear = new ComboBox();
+            label2 = new Label();
             btnRefresh = new Button();
             btnAdd = new Button();
             cbCategory = new ComboBox();
@@ -47,6 +51,10 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.LightGray;
+            groupBox1.Controls.Add(cbSort);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(cbYear);
+            groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(btnRefresh);
             groupBox1.Controls.Add(btnAdd);
             groupBox1.Controls.Add(cbCategory);
@@ -56,10 +64,53 @@
             groupBox1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1410, 195);
+            groupBox1.Size = new Size(1072, 195);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "SEARCH";
+            // 
+            // cbSort
+            // 
+            cbSort.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbSort.FormattingEnabled = true;
+            cbSort.Items.AddRange(new object[] { "", "Rate ASC", "Rate DESC" });
+            cbSort.Location = new Point(770, 130);
+            cbSort.Name = "cbSort";
+            cbSort.Size = new Size(118, 33);
+            cbSort.TabIndex = 16;
+            cbSort.SelectedIndexChanged += cbSort_SelectedIndexChanged;
+            cbSort.Click += cbSort_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(664, 123);
+            label3.Name = "label3";
+            label3.Size = new Size(113, 37);
+            label3.TabIndex = 15;
+            label3.Text = "Sort by:";
+            // 
+            // cbYear
+            // 
+            cbYear.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbYear.FormattingEnabled = true;
+            cbYear.Items.AddRange(new object[] { "" });
+            cbYear.Location = new Point(535, 130);
+            cbYear.Name = "cbYear";
+            cbYear.Size = new Size(99, 33);
+            cbYear.TabIndex = 14;
+            cbYear.SelectedIndexChanged += button1_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(463, 123);
+            label2.Name = "label2";
+            label2.Size = new Size(77, 37);
+            label2.TabIndex = 13;
+            label2.Text = "Year:";
             // 
             // btnRefresh
             // 
@@ -67,7 +118,7 @@
             btnRefresh.FlatStyle = FlatStyle.Flat;
             btnRefresh.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnRefresh.ForeColor = Color.WhiteSmoke;
-            btnRefresh.Location = new Point(1258, 122);
+            btnRefresh.Location = new Point(909, 122);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(137, 43);
             btnRefresh.TabIndex = 12;
@@ -96,8 +147,9 @@
             cbCategory.Items.AddRange(new object[] { "" });
             cbCategory.Location = new Point(303, 130);
             cbCategory.Name = "cbCategory";
-            cbCategory.Size = new Size(203, 33);
+            cbCategory.Size = new Size(143, 33);
             cbCategory.TabIndex = 6;
+            cbCategory.SelectedIndexChanged += button1_Click;
             // 
             // label1
             // 
@@ -115,7 +167,7 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnSearch.ForeColor = Color.WhiteSmoke;
-            btnSearch.Location = new Point(1258, 55);
+            btnSearch.Location = new Point(909, 55);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(137, 43);
             btnSearch.TabIndex = 2;
@@ -128,7 +180,7 @@
             tbSearch.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold, GraphicsUnit.Point);
             tbSearch.Location = new Point(26, 55);
             tbSearch.Name = "tbSearch";
-            tbSearch.Size = new Size(1226, 43);
+            tbSearch.Size = new Size(877, 43);
             tbSearch.TabIndex = 1;
             // 
             // dgvMovies
@@ -155,7 +207,7 @@
             dgvMovies.RowTemplate.Height = 35;
             dgvMovies.RowTemplate.ReadOnly = true;
             dgvMovies.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMovies.Size = new Size(1358, 722);
+            dgvMovies.Size = new Size(1011, 412);
             dgvMovies.TabIndex = 1;
             // 
             // btnDelete
@@ -164,7 +216,7 @@
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnDelete.ForeColor = Color.WhiteSmoke;
-            btnDelete.Location = new Point(1259, 955);
+            btnDelete.Location = new Point(906, 645);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(137, 43);
             btnDelete.TabIndex = 9;
@@ -178,7 +230,7 @@
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnEdit.ForeColor = Color.WhiteSmoke;
-            btnEdit.Location = new Point(1116, 955);
+            btnEdit.Location = new Point(763, 645);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(137, 43);
             btnEdit.TabIndex = 10;
@@ -191,7 +243,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(51, 51, 51);
-            ClientSize = new Size(1450, 1000);
+            ClientSize = new Size(1096, 700);
             Controls.Add(btnEdit);
             Controls.Add(btnDelete);
             Controls.Add(dgvMovies);
@@ -218,5 +270,9 @@
         private Button btnDelete;
         private Button btnEdit;
         private Button btnRefresh;
+        private ComboBox cbYear;
+        private Label label2;
+        private ComboBox cbSort;
+        private Label label3;
     }
 }

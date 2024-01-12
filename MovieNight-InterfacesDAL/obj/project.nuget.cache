@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mTlRz+1gUOdmDfZ6jO/s4NV4IIrU/787TSuqQ89yJw+VUfEBJwEW3Hq+LkHM0ReEZwngtAFAecAzhg0MSDYiSA==",
+  "dgSpecHash": "LjTJkP4gAHSIteLZjHgrDaAN+5dWMnyMo1GRlGpf3460lHzEMqtPQ9aSd4twukpAjzP7TKnGXZnuUo9S+x85uA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj",
+  "projectFilePath": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ivoml\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Users\\ivoml\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",

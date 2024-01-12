@@ -17,5 +17,7 @@ namespace MovieNight_InterfacesDAL.IManagers
         void CreateSeries(Series newSeries);
         List<Series> Get7Series();
         List<Series> GetSearch(string search);
+        List<Series> SortRateAsc();
+        List<Series> SortRateDesc();
     }
 }

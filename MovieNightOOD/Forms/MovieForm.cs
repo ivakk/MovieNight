@@ -43,7 +43,7 @@ namespace MovieNightOOD.Forms
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            dgvMovies.DataSource = movieManager.GetBySearch(tbSearch.Text + cbCategory.Text);
+            dgvMovies.DataSource = movieManager.Search(tbSearch.Text + cbCategory.Text);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -73,6 +73,27 @@ namespace MovieNightOOD.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             dgvMovies.DataSource = movieManager.GetBySearch("");
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbSort.Text == "Rate ASC")
+            {
+                dgvMovies.DataSource = movieManager.SortAsc();
+            }
+            else if (cbSort.Text == "Rate DESC")
+            {
+                dgvMovies.DataSource = movieManager.SortDesc();
+            }
+        }
+
+        private void cbSort_Click(object sender, EventArgs e)
+        {
         }
     }
 }

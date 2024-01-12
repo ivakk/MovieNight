@@ -24,12 +24,12 @@ namespace MovieNight.Pages.Folders
         private readonly ISeriesManager seriesManager;
         private readonly IFinishedManager finishedManager;
 
-        public FinishedModel()
+        public FinishedModel(IUserManager _userManager, IMovieManager _movieManager, ISeriesManager _seriesManager, IFinishedManager _finishedManager)
         {
-            userManager = new UserManager(new UserDALManager());
-            movieManager = new MovieManager(new MovieDALManager());
-            seriesManager = new SeriesManager(new SeriesDALManager());
-            finishedManager = new FinishedManager(new FinishedDALManager());
+            userManager = _userManager;
+            movieManager = _movieManager;
+            seriesManager = _seriesManager;
+            finishedManager = _finishedManager;
             AddedMovies = new List<Movie>();
             AddedSeries = new List<Series>();
         }

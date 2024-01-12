@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MovieNight_BusinessLogic.Services;
@@ -18,12 +18,14 @@ namespace MovieNight.Pages
         public string CommentLeft { get; set; }
         public User LoggedInUser { get; set; }
         public int UserId { get; set; }
-        public string WatchLaterButtonText => IsInWatchLater ? "Remove from Watch Later" : "Add to Watch Later";
+        public string WatchLaterButtonText => IsInWatchLater ? "Added to Watch Later" : "Add to Watch Later";
         public bool IsInWatchLater { get; private set; }
-        public string WatchingButtonText => IsInWatching ? "Remove from Currently Watching" : "Add to Currently Watching";
+        public string WatchingButtonText => IsInWatching ? "Added to Currently Watching" : "Add to Currently Watching";
         public bool IsInWatching { get; private set; }
-        public string FinishedButtonText => IsInFinished ? "Remove from Finished" : "Add to Finished";
+        public string FinishedButtonText => IsInFinished ? "Added to Finished" : "Add to Finished";
         public bool IsInFinished { get; private set; }
+        public string FavouritesButtonText => IsInFavourites ? "Liked ❤" : "Like ❤";
+        public bool IsInFavourites { get; private set; }
         public bool IsRated { get; private set; }
         public int MovieRates { get; set; }
         public int MovieRating { get; set; }
@@ -35,17 +37,19 @@ namespace MovieNight.Pages
         private readonly IWatchLaterManager watchLaterManager;
         private readonly IWatchingManager watchingManager;
         private readonly IFinishedManager finishedManager;
+        private readonly IFavouritesManager favouritesManager;
         private readonly IRatingManager ratingManager;
 
-        public MoviePageModel()
+        public MoviePageModel(IMovieManager _movieManager, ICommentManager _commentManager, IUserManager _userManager, IWatchLaterManager _watchLaterManager, IWatchingManager _watchingManager, IFinishedManager _finishedManager, IFavouritesManager _favouritesManager, IRatingManager _ratingManager)
         {
-            movieManager = new MovieManager(new MovieDALManager());
-            commentManager = new CommentManager(new CommentDALManager());
-            userManager = new UserManager(new UserDALManager());
-            watchLaterManager = new WatchLaterManager(new WatchLaterDALManager());
-            watchingManager = new WatchingManager(new WatchingDALManager());
-            finishedManager = new FinishedManager(new FinishedDALManager());
-            ratingManager = new RatingManager(new RatingDALManager());
+            movieManager = _movieManager;
+            commentManager = _commentManager;
+            userManager = _userManager;
+            watchLaterManager = _watchLaterManager;
+            watchingManager = _watchingManager;
+            finishedManager = _finishedManager;
+            favouritesManager = _favouritesManager;
+            ratingManager = _ratingManager;
         }
         public void OnGet(int id)
         {
@@ -58,6 +62,7 @@ namespace MovieNight.Pages
                 IsInWatchLater = watchLaterManager.CheckFolder(Movie.Id, UserId);
                 IsInWatching = watchingManager.CheckFolder(Movie.Id, UserId);
                 IsInFinished = finishedManager.CheckFolder(Movie.Id, UserId);
+                IsInFavourites = favouritesManager.CheckFolder(Movie.Id, UserId);
                 IsRated = ratingManager.CheckRate(Movie.Id, UserId);
                 MovieRates = ratingManager.GetCount(Movie.Id);
                 MovieRating = ratingManager.GetAvgRate(Movie.Id);
@@ -91,7 +96,7 @@ namespace MovieNight.Pages
         }
         public IActionResult OnPostComment(int id)
         {
-            //Checks whether anyone is logged in
+            //Checks whether anyone is logged inm
             if (User.FindFirst("id") != null)
             {
                 try
@@ -127,7 +132,7 @@ namespace MovieNight.Pages
                 try
                 {
                     UserId = int.Parse(User.FindFirst("id").Value);
-                    if (userManager.GetUserById(UserId).Role == "admin" || userManager.GetUserById(UserId).Id == id)
+                    if (userManager.GetUserById(UserId).Id == id || userManager.GetUserById(UserId).Role == "admin")
                     {
                         return true;
                     }
@@ -336,6 +341,41 @@ namespace MovieNight.Pages
                 ratingManager.RemoveRate(currentRating.Id);
             }
             return RedirectToPage(new { id = movieId });
+        }
+        public IActionResult OnPostToggleFavourites(int movieId)
+        {
+            try
+            {
+                if (User.FindFirst("id") != null)
+                {
+                    UserId = int.Parse(User.FindFirst("id").Value);
+                    IsInFavourites = favouritesManager.CheckFolder(movieId, UserId);
+                    if (IsInFavourites)
+                    {
+                        favouritesManager.RemoveFrom(new Folderkeep(movieId, UserId, 0, DateTime.Now));
+                    }
+                    else
+                    {
+                        favouritesManager.AddTo(new Folderkeep(movieId, UserId, 0, DateTime.Now));
+                    }
+                    IsInFavourites = !IsInFavourites;
+                    // Re-fetch movie data and other necessary data
+                    Movie = movieManager.GetById(movieId);
+                    Comments = commentManager.GetAll(movieId);
+                    return RedirectToPage(new { id = movieId });
+                }
+                else
+                {
+                    return RedirectToPage("/Account/Login");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                Movie = movieManager.GetById(movieId);
+                Comments = commentManager.GetAll(movieId);
+                return RedirectToPage(new { id = movieId });
+            }
         }
     }
 }

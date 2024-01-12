@@ -16,10 +16,10 @@ namespace MovieNight.Pages.Catalogues
         private readonly IUserManager userManager;
         private readonly IMovieManager movieManager;
 
-        public MoviesModel()
+        public MoviesModel(IUserManager _userManager, IMovieManager _movieManager)
         {
-            userManager = new UserManager(new UserDALManager());
-            movieManager = new MovieManager(new MovieDALManager());
+            userManager = _userManager;
+            movieManager = _movieManager;
         }
         public void OnGet()
         {

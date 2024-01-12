@@ -7708,11 +7708,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNightOOD\\MovieNightOOD.csproj",
+      "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNightOOD\\MovieNightOOD.csproj",
       "projectName": "MovieNightOOD",
-      "projectPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNightOOD\\MovieNightOOD.csproj",
+      "projectPath": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNightOOD\\MovieNightOOD.csproj",
       "packagesPath": "C:\\Users\\ivoml\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNightOOD\\obj\\",
+      "outputPath": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNightOOD\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -7733,8 +7733,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-BusinessLogic\\MovieNight-BusinessLogic.csproj": {
-              "projectPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-BusinessLogic\\MovieNight-BusinessLogic.csproj"
+            "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-BusinessLogic\\MovieNight-BusinessLogic.csproj": {
+              "projectPath": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-BusinessLogic\\MovieNight-BusinessLogic.csproj"
             }
           }
         }

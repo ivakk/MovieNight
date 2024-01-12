@@ -17,5 +17,7 @@ namespace MovieNight_InterfacesLL.IServices
         void Delete(int id);
         List<Movie> Get7();
         List<Movie> Search(string search);
+        List<Movie> SortAsc();
+        List<Movie> SortDesc();
     }
 }

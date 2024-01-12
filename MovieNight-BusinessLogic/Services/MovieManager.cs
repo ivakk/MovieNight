@@ -7,16 +7,19 @@ using System.Threading.Tasks;
 using MovieNight_Classes;
 using MovieNight_InterfacesLL.IServices;
 using MovieNight_InterfacesDAL.IManagers;
+using Microsoft.VisualStudio.Services.Common;
+using System.Diagnostics;
 
 namespace MovieNight_BusinessLogic.Services
 {
     public class MovieManager : IMovieManager
     {
         IMovieDALManager manager;
-        public MovieManager(IMovieDALManager manager) 
+
+        public MovieManager(IMovieDALManager _manager) 
         {
-            this.manager = manager;
-        }
+            manager = _manager;
+    }
         public List<Movie> GetAll()
         {
             return (List<Movie>)manager.GetAllMovies();
@@ -57,6 +60,14 @@ namespace MovieNight_BusinessLogic.Services
         public List<Movie> Search(string search)
         {
             return (List<Movie>)manager.GetSearch(search);
+        }
+        public List<Movie> SortAsc()
+        {
+            return (List<Movie>)manager.SortRateAsc();
+        }
+        public List<Movie> SortDesc()
+        {
+            return (List<Movie>)manager.SortRateDesc();
         }
     }
 }

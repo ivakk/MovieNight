@@ -59,5 +59,13 @@ namespace MovieNight_BusinessLogic.Services
         {
             return (List<Series>)manager.GetSearch(search);
         }
+        public List<Series> SortAsc()
+        {
+            return (List<Series>)manager.SortRateAsc();
+        }
+        public List<Series> SortDesc()
+        {
+            return (List<Series>)manager.SortRateDesc();
+        }
     }
 }

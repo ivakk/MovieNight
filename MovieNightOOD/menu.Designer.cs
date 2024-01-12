@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             panel1 = new Panel();
             pictureBox2 = new PictureBox();
             btnLogout = new Button();
@@ -50,16 +51,16 @@
             panel1.Controls.Add(lbUserLetter);
             panel1.Controls.Add(lbLastName);
             panel1.Controls.Add(lbFirstName);
-            panel1.Location = new Point(61, 40);
+            panel1.Location = new Point(61, 22);
             panel1.Name = "panel1";
-            panel1.Size = new Size(325, 1000);
+            panel1.Size = new Size(325, 718);
             panel1.TabIndex = 0;
             // 
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.Silver;
             pictureBox2.Image = Properties.Resources.logo_movienight;
-            pictureBox2.Location = new Point(85, 942);
+            pictureBox2.Location = new Point(87, 650);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(156, 47);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -73,9 +74,9 @@
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnLogout.ForeColor = Color.WhiteSmoke;
-            btnLogout.Location = new Point(20, 876);
+            btnLogout.Location = new Point(20, 584);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(283, 60);
+            btnLogout.Size = new Size(290, 60);
             btnLogout.TabIndex = 0;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = false;
@@ -83,9 +84,9 @@
             // 
             // flpMenu
             // 
-            flpMenu.Location = new Point(20, 193);
+            flpMenu.Location = new Point(20, 160);
             flpMenu.Name = "flpMenu";
-            flpMenu.Size = new Size(290, 677);
+            flpMenu.Size = new Size(290, 418);
             flpMenu.TabIndex = 4;
             flpMenu.Paint += flpMenu_Paint;
             // 
@@ -97,9 +98,9 @@
             lbUserLetter.ForeColor = SystemColors.ControlLightLight;
             lbUserLetter.Location = new Point(62, 60);
             lbUserLetter.Name = "lbUserLetter";
-            lbUserLetter.Size = new Size(91, 81);
+            lbUserLetter.Size = new Size(89, 81);
             lbUserLetter.TabIndex = 0;
-            lbUserLetter.Text = "W";
+            lbUserLetter.Text = "M";
             lbUserLetter.TextAlign = ContentAlignment.TopCenter;
             lbUserLetter.Click += lbUserLetter_Click;
             // 
@@ -107,21 +108,21 @@
             // 
             lbLastName.AutoSize = true;
             lbLastName.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            lbLastName.Location = new Point(147, 91);
+            lbLastName.Location = new Point(159, 92);
             lbLastName.Name = "lbLastName";
-            lbLastName.Size = new Size(77, 32);
+            lbLastName.Size = new Size(84, 32);
             lbLastName.TabIndex = 2;
-            lbLastName.Text = "White";
+            lbLastName.Text = "Admin";
             // 
             // lbFirstName
             // 
             lbFirstName.AutoSize = true;
             lbFirstName.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            lbFirstName.Location = new Point(147, 67);
+            lbFirstName.Location = new Point(159, 60);
             lbFirstName.Name = "lbFirstName";
-            lbFirstName.Size = new Size(82, 32);
+            lbFirstName.Size = new Size(141, 32);
             lbFirstName.TabIndex = 1;
-            lbFirstName.Text = "Walter";
+            lbFirstName.Text = "MovieNight";
             lbFirstName.Click += lbFirstName_Click;
             // 
             // btnCloseApp
@@ -139,9 +140,9 @@
             // 
             // pnlMainForm
             // 
-            pnlMainForm.Location = new Point(415, 40);
+            pnlMainForm.Location = new Point(415, 22);
             pnlMainForm.Name = "pnlMainForm";
-            pnlMainForm.Size = new Size(1450, 1000);
+            pnlMainForm.Size = new Size(1096, 718);
             pnlMainForm.TabIndex = 2;
             // 
             // Menu
@@ -149,14 +150,15 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(51, 51, 51);
-            ClientSize = new Size(1924, 1061);
+            ClientSize = new Size(1529, 761);
             Controls.Add(pnlMainForm);
             Controls.Add(btnCloseApp);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimizeBox = false;
             Name = "Menu";
-            Text = "menu";
-            WindowState = FormWindowState.Maximized;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "MovieNight";
             Load += menu_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
