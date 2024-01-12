@@ -8,21 +8,17 @@ using MovieNight_Classes;
 using MovieNight_InterfacesLL.IServices;
 using MovieNight_InterfacesDAL.IManagers;
 using Microsoft.VisualStudio.Services.Common;
+using System.Diagnostics;
 
 namespace MovieNight_BusinessLogic.Services
 {
     public class MovieManager : IMovieManager
     {
         IMovieDALManager manager;
-        IRatingDALManager ratingDALManager;
-        private UserManager userManager;
-        private RatingManager ratingManager;
 
         public MovieManager(IMovieDALManager _manager) 
         {
             manager = _manager;
-            userManager = new UserManager(new UserDALManager());
-            ratingManager = new RatingManager(new RatingDALManager());
     }
         public List<Movie> GetAll()
         {
@@ -65,29 +61,13 @@ namespace MovieNight_BusinessLogic.Services
         {
             return (List<Movie>)manager.GetSearch(search);
         }
-        //public List<Movie> Recommend(User user)
-        //{
-        //    List<Movie> movies = new List<Movie>();
-        //    List<User> users = new List<User>();
-        //    List<Rating> ratings = new List<Rating>();
-        //    foreach (Movie m in manager.GetAllMovies())
-        //    {
-        //        foreach (User i in userManager.GetAllUsers())
-        //        {
-        //            if ((i.Birthday - user.Birthday).Days >= -730 || (i.Birthday - user.Birthday).Days <= 730)
-        //            {
-        //                users.Add(i);
-        //            }
-        //        }
-        //        foreach (User j in users)
-        //        {
-        //            if (j.)
-        //        }
-
-        //    }
-
-
-        //    return movies;
-        //}
+        public List<Movie> SortAsc()
+        {
+            return (List<Movie>)manager.SortRateAsc();
+        }
+        public List<Movie> SortDesc()
+        {
+            return (List<Movie>)manager.SortRateDesc();
+        }
     }
 }

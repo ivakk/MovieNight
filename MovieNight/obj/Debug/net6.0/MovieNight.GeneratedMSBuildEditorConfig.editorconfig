@@ -9,105 +9,105 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MovieNight
 build_property.RootNamespace = MovieNight
-build_property.ProjectDir = C:\Users\ivoml\Desktop\1412mn\movienight\MovieNight\
+build_property.ProjectDir = C:\Users\ivoml\Desktop\tashkii\movienight\MovieNight\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\ivoml\Desktop\1412mn\movienight\MovieNight
+build_property.MSBuildProjectDirectory = C:\Users\ivoml\Desktop\tashkii\movienight\MovieNight
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Account/Login.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Account/Logout.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Account/Profile.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Account/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Account/Register.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Account/Settings.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Account/Settings.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxTZXR0aW5ncy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Catalogues/Movies.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Catalogues/Movies.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0YWxvZ3Vlc1xNb3ZpZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Catalogues/Series.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Catalogues/Series.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0YWxvZ3Vlc1xTZXJpZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Error.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Folders/Favourites.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Folders/Favourites.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9sZGVyc1xGYXZvdXJpdGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Folders/Finished.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Folders/Finished.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9sZGVyc1xGaW5pc2hlZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Folders/Watching.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Folders/Watching.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9sZGVyc1xXYXRjaGluZy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Folders/WatchLater.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Folders/WatchLater.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9sZGVyc1xXYXRjaExhdGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Folders/YouMayLike.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Folders/YouMayLike.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9sZGVyc1xZb3VNYXlMaWtlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Index.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Movies.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Movies.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Privacy.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/SearchResults.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/SearchResults.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoUmVzdWx0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Series.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Series.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VyaWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/ToS.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/ToS.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVG9TLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/_ViewImports.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/_ViewStart.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Shared/_Layout.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-l6ob92hiiy
 
-[C:/Users/ivoml/Desktop/1412mn/movienight/MovieNight/Pages/Shared/_LayoutLoggedIn.cshtml]
+[C:/Users/ivoml/Desktop/tashkii/movienight/MovieNight/Pages/Shared/_LayoutLoggedIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRMb2dnZWRJbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-z70kn1rp7m

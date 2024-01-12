@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using MovieNight_BusinessLogic;
 using MovieNight_BusinessLogic.Services;
 using MovieNight_DataAccess.Controllers;
 using MovieNight_InterfacesDAL.IManagers;
 using MovieNight_InterfacesLL.IServices;
+using MovieNight_InterfacesLL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,8 +29,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddTransient<IUserManager, UserManager>();
 builder.Services.AddTransient<IUserDALManager, UserDALManager>();
+builder.Services.AddTransient<IMovieAlgoManager, MovieAlgoManager>();
 builder.Services.AddTransient<IMovieManager, MovieManager>();
 builder.Services.AddTransient<IMovieDALManager, MovieDALManager>();
+builder.Services.AddTransient<ISeriesAlgoManager, SeriesAlgoManager>();
 builder.Services.AddTransient<ISeriesManager, SeriesManager>();
 builder.Services.AddTransient<ISeriesDALManager, SeriesDALManager>();
 builder.Services.AddTransient<ICategoryManager, CategoryManager>();
@@ -45,6 +49,7 @@ builder.Services.AddTransient<IRatingManager, RatingManager>();
 builder.Services.AddTransient<IRatingDALManager, RatingDALManager>();
 builder.Services.AddTransient<ICommentManager, CommentManager>();
 builder.Services.AddTransient<ICommentDALManager, CommentDALManager>();
+builder.Services.AddTransient<IPasswordHashingManager, PasswordHashingManager>();
 
 var app = builder.Build();
 

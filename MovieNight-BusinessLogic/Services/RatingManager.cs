@@ -51,5 +51,13 @@ namespace MovieNight_BusinessLogic.Services
         {
             return controller.AvgRating(mediaId);
         }
+        public List<Rating> TotalMovie()
+        {
+            return (List<Rating>)controller.TotalMovieRatings();
+        }
+        public List<Rating> TotalSeries()
+        {
+            return (List<Rating>)controller.TotalSeriesRatings();
+        }
     }
 }

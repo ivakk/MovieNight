@@ -54,9 +54,9 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(btnUnban);
             groupBox1.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox1.Location = new Point(465, 305);
+            groupBox1.Location = new Point(280, 111);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(520, 278);
+            groupBox1.Size = new Size(515, 296);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "BAN USER";

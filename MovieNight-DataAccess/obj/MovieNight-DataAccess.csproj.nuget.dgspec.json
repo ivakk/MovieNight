@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj": {}
+    "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj": {
+    "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj",
+        "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj",
         "projectName": "MovieNight-Classes",
-        "projectPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj",
+        "projectPath": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj",
         "packagesPath": "C:\\Users\\ivoml\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-Classes\\obj\\",
+        "outputPath": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-Classes\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -65,18 +65,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj": {
+    "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj",
         "projectName": "MovieNight-DataAccess",
-        "projectPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj",
+        "projectPath": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-DataAccess\\MovieNight-DataAccess.csproj",
         "packagesPath": "C:\\Users\\ivoml\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -97,11 +97,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj": {
-                "projectPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj"
+              "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj": {
+                "projectPath": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj"
               },
-              "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj": {
-                "projectPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj"
+              "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj": {
+                "projectPath": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj"
               }
             }
           }
@@ -145,18 +145,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj": {
+    "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj",
+        "projectUniqueName": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj",
         "projectName": "MovieNight-InterfacesDAL",
-        "projectPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj",
+        "projectPath": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-InterfacesDAL\\MovieNight-InterfacesDAL.csproj",
         "packagesPath": "C:\\Users\\ivoml\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-InterfacesDAL\\obj\\",
+        "outputPath": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-InterfacesDAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -177,8 +177,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj": {
-                "projectPath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj"
+              "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj": {
+                "projectPath": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-Classes\\MovieNight-Classes.csproj"
               }
             }
           }
@@ -208,7 +208,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

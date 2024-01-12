@@ -18,5 +18,7 @@ namespace MovieNight_InterfacesDAL.IManagers
         int TotalRatings(int mediaId);
         int WeekRatings();
         int AvgRating(int mediaId);
+        public List<Rating> TotalMovieRatings();
+        public List<Rating> TotalSeriesRatings();
     }
 }

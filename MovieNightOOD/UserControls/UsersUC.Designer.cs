@@ -40,7 +40,7 @@
             // 
             lbFirstName.AutoSize = true;
             lbFirstName.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            lbFirstName.Location = new Point(3, 0);
+            lbFirstName.Location = new Point(-2, 0);
             lbFirstName.Name = "lbFirstName";
             lbFirstName.Size = new Size(214, 54);
             lbFirstName.TabIndex = 0;
@@ -62,7 +62,7 @@
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnEdit.ForeColor = Color.WhiteSmoke;
-            btnEdit.Location = new Point(546, 91);
+            btnEdit.Location = new Point(218, 12);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(137, 43);
             btnEdit.TabIndex = 22;
@@ -76,7 +76,7 @@
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnDelete.ForeColor = Color.WhiteSmoke;
-            btnDelete.Location = new Point(546, 140);
+            btnDelete.Location = new Point(218, 61);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(137, 43);
             btnDelete.TabIndex = 21;
@@ -88,7 +88,7 @@
             // 
             lbEmail.AutoSize = true;
             lbEmail.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            lbEmail.Location = new Point(8, 146);
+            lbEmail.Location = new Point(3, 108);
             lbEmail.Name = "lbEmail";
             lbEmail.Size = new Size(326, 37);
             lbEmail.TabIndex = 23;
@@ -115,7 +115,7 @@
             Controls.Add(lbLastName);
             Controls.Add(lbFirstName);
             Name = "UsersUC";
-            Size = new Size(700, 200);
+            Size = new Size(372, 155);
             Load += UsersUC_Load;
             ResumeLayout(false);
             PerformLayout();

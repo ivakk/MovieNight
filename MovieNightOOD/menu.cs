@@ -56,8 +56,7 @@ namespace MovieNightOOD
 
         private void menu_Load(object sender, EventArgs e)
         {
-            Bounds = Screen.PrimaryScreen.Bounds;
-            FormBorderStyle = FormBorderStyle.None;
+            MaximizeBox = false;
         }
 
         private void btnCloseApp_Click(object sender, EventArgs e)

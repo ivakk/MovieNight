@@ -82,5 +82,10 @@ namespace MovieNightOOD.Forms
             this.menu.pnlMainForm.Controls.Add(unbanUserForm);
             unbanUserForm.Show();
         }
+
+        private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+            this.flpUsers.Top = -this.vScrollBar1.Value;
+        }
     }
 }

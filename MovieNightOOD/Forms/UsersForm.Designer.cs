@@ -51,7 +51,7 @@
             groupBox1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1410, 195);
+            groupBox1.Size = new Size(1072, 195);
             groupBox1.TabIndex = 11;
             groupBox1.TabStop = false;
             groupBox1.Text = "SEARCH";
@@ -113,7 +113,7 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnSearch.ForeColor = Color.WhiteSmoke;
-            btnSearch.Location = new Point(1258, 55);
+            btnSearch.Location = new Point(929, 55);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(137, 43);
             btnSearch.TabIndex = 2;
@@ -126,14 +126,14 @@
             tbSearch.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold, GraphicsUnit.Point);
             tbSearch.Location = new Point(26, 55);
             tbSearch.Name = "tbSearch";
-            tbSearch.Size = new Size(1226, 43);
+            tbSearch.Size = new Size(897, 43);
             tbSearch.TabIndex = 1;
             // 
             // flpUsers
             // 
-            flpUsers.Location = new Point(12, 227);
+            flpUsers.Location = new Point(137, 233);
             flpUsers.Name = "flpUsers";
-            flpUsers.Size = new Size(1450, 700);
+            flpUsers.Size = new Size(809, 455);
             flpUsers.TabIndex = 15;
             // 
             // UsersForm
@@ -141,7 +141,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(51, 51, 51);
-            ClientSize = new Size(1450, 1000);
+            ClientSize = new Size(1096, 700);
             Controls.Add(flpUsers);
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.None;
@@ -162,5 +162,6 @@
         private FlowLayoutPanel flpUsers;
         private Button btnUnbanLoad;
         private Button btnBanLoad;
+        private VScrollBar vScrollBar1;
     }
 }

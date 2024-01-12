@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
             btnRefresh = new Button();
             btnAdd = new Button();
@@ -56,7 +56,7 @@
             groupBox1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1410, 195);
+            groupBox1.Size = new Size(1072, 195);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "SEARCH";
@@ -67,7 +67,7 @@
             btnRefresh.FlatStyle = FlatStyle.Flat;
             btnRefresh.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnRefresh.ForeColor = Color.WhiteSmoke;
-            btnRefresh.Location = new Point(1258, 122);
+            btnRefresh.Location = new Point(912, 122);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(137, 43);
             btnRefresh.TabIndex = 16;
@@ -116,7 +116,7 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnSearch.ForeColor = Color.WhiteSmoke;
-            btnSearch.Location = new Point(1258, 55);
+            btnSearch.Location = new Point(912, 55);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(137, 43);
             btnSearch.TabIndex = 2;
@@ -129,34 +129,34 @@
             tbSearch.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold, GraphicsUnit.Point);
             tbSearch.Location = new Point(26, 55);
             tbSearch.Name = "tbSearch";
-            tbSearch.Size = new Size(1226, 43);
+            tbSearch.Size = new Size(880, 43);
             tbSearch.TabIndex = 1;
             // 
             // dgvSeries
             // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvSeries.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvSeries.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvSeries.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvSeries.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvSeries.DefaultCellStyle = dataGridViewCellStyle4;
             dgvSeries.Location = new Point(38, 227);
             dgvSeries.Name = "dgvSeries";
             dgvSeries.RowTemplate.Height = 35;
             dgvSeries.RowTemplate.ReadOnly = true;
             dgvSeries.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSeries.Size = new Size(1358, 722);
+            dgvSeries.Size = new Size(1023, 413);
             dgvSeries.TabIndex = 1;
             // 
             // btnDelete
@@ -165,7 +165,7 @@
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnDelete.ForeColor = Color.WhiteSmoke;
-            btnDelete.Location = new Point(1259, 955);
+            btnDelete.Location = new Point(915, 646);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(137, 43);
             btnDelete.TabIndex = 9;
@@ -179,7 +179,7 @@
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnEdit.ForeColor = Color.WhiteSmoke;
-            btnEdit.Location = new Point(1116, 955);
+            btnEdit.Location = new Point(772, 646);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(137, 43);
             btnEdit.TabIndex = 10;
@@ -192,7 +192,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(51, 51, 51);
-            ClientSize = new Size(1450, 1000);
+            ClientSize = new Size(1096, 700);
             Controls.Add(btnEdit);
             Controls.Add(btnDelete);
             Controls.Add(dgvSeries);

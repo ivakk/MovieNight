@@ -17,5 +17,7 @@ namespace MovieNight_InterfacesLL.IServices
         int GetCount(int mediaId);
         int GetAvgRate(int mediaId);
         int GetWeek();
+        List<Rating> TotalMovie();
+        List<Rating> TotalSeries();
     }
 }

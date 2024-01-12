@@ -1,73 +1,111 @@
-﻿@page "{id:int}"
+﻿@page 
 @model YouMayLikeModel
 @{
     @if (Model.LoggedInUser != null)
     {
         Layout = "_LayoutLoggedIn";
     }
+    ViewData["Title"] = "Results";
 }
 
 <head>
-    <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/WatchLaterPage.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/SearchResults.css">
 </head>
 <body>
-    <div class="container-fluid mt-4">
-        <div class="row">
-            <h1 class="textborderstyle text-white mb-3">@Model.CurrentUser.Username's Watch Later Folder</h1>
-            <div class="col-md-6 movie-section">
-                <h2 class="text-white mb-3">Movies</h2>
-                @if (Model.AddedMovies != null && Model.AddedMovies.Any())
+    <div class="tashak container mt-4">
+        <h2 class="textborderstyle text-white mb-3">Movies you may like</h2>
+        @if (Model.MovieResults != null && Model.MovieResults.Any())
+        {
+            <div class="scrolling-wrapper">
+                @foreach (var movie in Model.MovieResults)
                 {
-                    <div class="row">
-                        @foreach (var movies in Model.AddedMovies)
-                        {
-                            <div class="col-sm-12 col-md-6 mb-4">
-                                <a href="/Movies/@movies.Id" class="text-decoration-none">
-                                    <div class="card bg-dark text-white movie-item h-100">
-                                        <img src="@movies.ImageLink" class="card-img-top img-fluid" alt="@movies.Title" style="height: 300px; object-fit: cover;">
-                                        <div class="card-body">
-                                            <p class="card-title text-truncate">@movies.Title</p>
-                                        </div>
+                    @if(!Model.IsRated(movie.Id))
+                    {
+                        <div class="card-wrapper">
+                            <a href="/Movies/@movie.Id" class="card-link">
+                                <div class="card">
+                                    <img src="@movie.ImageLink" class="card-img-top" alt="@movie.Title">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@movie.Title</h5>
                                     </div>
-                                </a>
-                            </div>
-                        }
-                    </div>
-                }
-                else
-                {
-                    <p class="text-white">There is nothing to see here...</p>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                    
                 }
             </div>
+        }
+        else
+        {
+            <div class="scrolling-wrapper">
+                @foreach (var movie in Model.MovieAlt)
+                {
+                    @if (!Model.IsRated(movie.Id))
+                    {
+                        <div class="card-wrapper">
+                            <a href="/Movies/@movie.Id" class="card-link">
+                                <div class="card">
+                                    <img src="@movie.ImageLink" class="card-img-top" alt="@movie.Title">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@movie.Title</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
 
-            <!-- Latest Added Series Column -->
-            <div class="col-md-6">
-                <h2 class="text-white mb-3">Series</h2>
-                @if (Model.AddedSeries != null && Model.AddedSeries.Any())
-                {
-                    <div class="row">
-                        @foreach (var series in Model.AddedSeries)
-                        {
-                            <div class="col-sm-12 col-md-6 mb-4">
-                                <a href="/Series/@series.Id" class="text-decoration-none">
-                                    <div class="card bg-dark text-white movie-item h-100">
-                                        <img src="@series.ImageLink" class="card-img-top img-fluid" alt="@series.Title" style="height: 300px; object-fit: cover;">
-                                        <div class="card-body">
-                                            <p class="card-title text-truncate">@series.Title</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        }
-                    </div>
-                }
-                else
-                {
-                    <p class="text-white">There is nothing to see here...</p>
                 }
             </div>
-        </div>
+        }
+    </div>
+    <div class="tashak container mt-4">
+        <h2 class="textborderstyle text-white mb-3">Series you may like</h2>
+        @if (Model.SeriesResults != null && Model.SeriesResults.Any())
+        {
+            <div class="scrolling-wrapper">
+                @foreach (var series in Model.SeriesResults)
+                {
+                    @if (!Model.IsRated(series.Id))
+                    {
+                        <div class="card-wrapper">
+                            <a href="/Series/@series.Id" class="card-link">
+                                <div class="card">
+                                    <img src="@series.ImageLink" class="card-img-top" alt="@series.Title">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@series.Title</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+
+                }
+            </div>
+        }
+        else
+        {
+            <div class="scrolling-wrapper">
+                @foreach (var series in Model.SeriesAlt)
+                {
+                    @if (!Model.IsRated(series.Id))
+                    {
+                        <div class="card-wrapper">
+                            <a href="/Series/@series.Id" class="card-link">
+                                <div class="card">
+                                    <img src="@series.ImageLink" class="card-img-top" alt="@series.Title">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@series.Title</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+
+                }
+            </div>
+        }
     </div>
 </body>

@@ -286,5 +286,81 @@ namespace MovieNight_DataAccess.Controllers
 
             return new List<Series>();
         }
+        public List<Series> SortRateDesc()
+        {
+            string query = $"SELECT * FROM ObjectToWatch JOIN Series ON ObjectToWatch.id = Series.id JOIN Categories ON ObjectToWatch.categoryId = Categories.id " +
+                $"ORDER BY ObjectToWatch.id DESC";
+
+            // Open the connection
+            connection.Open();
+
+            // Creating Command string to combine the query and the connection String
+            SqlCommand command = new SqlCommand(query, Connection.connection);
+
+            try
+            {
+                // Execute the query and get the data
+                using SqlDataReader reader = command.ExecuteReader();
+                List<Series> series = new List<Series>();
+                while (reader.Read())
+                {
+                    Category category = new Category((int)reader.GetValue(12), (string)reader.GetValue(13));
+                    series.Add(new Series((int)reader.GetValue(0), (int)reader.GetValue(10), (int)reader.GetValue(11), (string)reader.GetValue(1), (string)reader.GetValue(2), (string)reader.GetValue(3),
+                        (string)reader.GetValue(4), category, (string)reader.GetValue(6), (int)reader.GetValue(7), (int)reader.GetValue(8)));
+                }
+                reader.Close();
+                return series;
+            }
+            catch (SqlException e)
+            {
+                // Handle any errors that may have occurred.
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                // Close the connection
+                connection.Close();
+            }
+
+            return new List<Series>();
+        }
+        public List<Series> SortRateAsc()
+        {
+            string query = $"SELECT * FROM ObjectToWatch JOIN Series ON ObjectToWatch.id = Series.id JOIN Categories ON ObjectToWatch.categoryId = Categories.id " +
+                $"ORDER BY ObjectToWatch.id ASC";
+
+            // Open the connection
+            connection.Open();
+
+            // Creating Command string to combine the query and the connection String
+            SqlCommand command = new SqlCommand(query, Connection.connection);
+
+            try
+            {
+                // Execute the query and get the data
+                using SqlDataReader reader = command.ExecuteReader();
+                List<Series> series = new List<Series>();
+                while (reader.Read())
+                {
+                    Category category = new Category((int)reader.GetValue(12), (string)reader.GetValue(13));
+                    series.Add(new Series((int)reader.GetValue(0), (int)reader.GetValue(10), (int)reader.GetValue(11), (string)reader.GetValue(1), (string)reader.GetValue(2), (string)reader.GetValue(3),
+                        (string)reader.GetValue(4), category, (string)reader.GetValue(6), (int)reader.GetValue(7), (int)reader.GetValue(8)));
+                }
+                reader.Close();
+                return series;
+            }
+            catch (SqlException e)
+            {
+                // Handle any errors that may have occurred.
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                // Close the connection
+                connection.Close();
+            }
+
+            return new List<Series>();
+        }
     }
 }

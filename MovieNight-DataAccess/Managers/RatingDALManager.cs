@@ -295,7 +295,6 @@ namespace MovieNight_DataAccess.Controllers
                 {
                     if ((object)reader.GetValue(0) is int)
                     {
-                        Debug.WriteLine((object?)reader.GetValue(0));
                         count = (int)reader.GetValue(0);
                     }
                 }
@@ -311,6 +310,72 @@ namespace MovieNight_DataAccess.Controllers
                 connection.Close();
             }
             return count;
+        }
+        public List<Rating> TotalMovieRatings()
+        {
+            string query = $"SELECT * FROM {tableName} JOIN Movies ON Movies.id = Rating.mediaId";
+
+            // Open the connection
+            connection.Open();
+
+            // Creating Command string to combine the query and the connection String
+            SqlCommand command = new SqlCommand(query, Connection.connection);
+
+            List<Rating> ratings = new List<Rating>();
+            try
+            {
+                // Execute the query and get the data
+                using SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ratings.Add(new Rating((int)reader.GetValue(0), (int)reader.GetValue(1), (int)reader.GetValue(3), (int)reader.GetValue(2), (DateTime)reader.GetValue(4)));
+                }
+                return ratings;
+            }
+            catch (SqlException e)
+            {
+                // Handle any errors that may have occurred.
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return ratings;
+        }
+        public List<Rating> TotalSeriesRatings()
+        {
+            string query = $"SELECT * FROM {tableName} JOIN Series ON Series.id = Rating.mediaId";
+
+            // Open the connection
+            connection.Open();
+
+            // Creating Command string to combine the query and the connection String
+            SqlCommand command = new SqlCommand(query, Connection.connection);
+
+            List<Rating> ratings = new List<Rating>();
+            try
+            {
+                // Execute the query and get the data
+                using SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ratings.Add(new Rating((int)reader.GetValue(0), (int)reader.GetValue(1), (int)reader.GetValue(3), (int)reader.GetValue(2), (DateTime)reader.GetValue(4)));
+                }
+                return ratings;
+            }
+            catch (SqlException e)
+            {
+                // Handle any errors that may have occurred.
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return ratings;
         }
     }
 }

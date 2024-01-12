@@ -30,7 +30,7 @@ namespace MovieNight.Pages.Account
         public string? Password { get; set; }
 
         [BindProperty]
-        [StringLength(32, MinimumLength = 8, ErrorMessage = "Password should be between 8 and 32 symbols!")]
+        [StringLength(32, MinimumLength = 8, ErrorMessage = "Passwords should match!")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Password is required!")]
         public string? RepeatPassword { get; set; }
 
@@ -59,10 +59,10 @@ namespace MovieNight.Pages.Account
         string passwordSalt;
         string passwordHash;
 
-        public RegisterModel()
+        public RegisterModel(IUserManager _userManager, IPasswordHashingManager _hashing)
         {
-            userManager = new UserManager(new UserDALManager());
-            hashing = new PasswordHashingManager();
+            userManager = _userManager;
+            hashing = _hashing;
         }
 
         public IActionResult OnPost()

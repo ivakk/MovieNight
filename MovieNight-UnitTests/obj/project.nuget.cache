@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OcOpApgKZwyWMKZkq0YiPdijJ/M3GfY9IKXkmkgfp1cPjGdLrKoVqz4ZOsnkA6zi1FZNncpqMIlzEi3WdCKa0A==",
+  "dgSpecHash": "76p9QvCPpwDuofTuY29e3YSp8bOBU2QJ6eRZlu+2+nwq0p3UJ8f6OzgRD36zUZ8a5MS/HkrOQzGCRY+knbJcww==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ivoml\\Desktop\\1412mn\\movienight\\MovieNight-UnitTests\\MovieNight-UnitTests.csproj",
+  "projectFilePath": "C:\\Users\\ivoml\\Desktop\\tashkii\\movienight\\MovieNight-UnitTests\\MovieNight-UnitTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ivoml\\.nuget\\packages\\awssdk.core\\3.7.202.20\\awssdk.core.3.7.202.20.nupkg.sha512",
     "C:\\Users\\ivoml\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",

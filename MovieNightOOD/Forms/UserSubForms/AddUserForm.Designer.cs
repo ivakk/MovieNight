@@ -66,9 +66,9 @@
             groupBox1.Controls.Add(tbFirstName);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox1.Location = new Point(465, 150);
+            groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(520, 680);
+            groupBox1.Size = new Size(500, 520);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "ADD/EDIT USER";
@@ -203,7 +203,7 @@
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnAdd.ForeColor = Color.WhiteSmoke;
-            btnAdd.Location = new Point(316, 613);
+            btnAdd.Location = new Point(314, 454);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(137, 43);
             btnAdd.TabIndex = 13;
